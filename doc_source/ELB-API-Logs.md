@@ -6,7 +6,7 @@ CloudTrail logs calls to the AWS APIs, including the Elastic Load Balancing API,
 
 To monitor other actions for your load balancer, such as when a client makes a request to your load balancer, use access logs\. For more information, see [Access Logs for Your Classic Load Balancer](access-log-collection.md)\.
 
-
+**Topics**
 + [Enable CloudTrail Event Logging](#configure-ct-log)
 + [Elastic Load Balancing Event Information](#ct-log-files)
 

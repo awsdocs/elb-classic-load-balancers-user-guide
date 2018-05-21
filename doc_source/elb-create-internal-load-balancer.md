@@ -2,15 +2,13 @@
 
 You can create an internal load balancer to distribute traffic to your EC2 instances from clients with access to the VPC for the load balancer\.
 
-
+**Topics**
 + [Prerequisites](#create-internal-lb-prereq)
 + [Create an Internal Load Balancer Using the Console](#create-internal-lb)
 + [Create an Internal Load Balancer Using the AWS CLI](#create-internal-lb-cli)
 
 ## Prerequisites<a name="create-internal-lb-prereq"></a>
-
 + If you have not yet created a VPC for your load balancer, you must create it before you get started\. For more information, see [Prepare Your VPC and EC2 Instances](elb-backend-instances.md#set-up-ec2)\.
-
 + Launch the EC2 instances that you plan to register with your internal load balancer\. Ensure that you launch them in private subnets in the VPC intended for the load balancer\.
 
 ## Create an Internal Load Balancer Using the Console<a name="create-internal-lb"></a>

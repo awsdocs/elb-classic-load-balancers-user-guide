@@ -4,7 +4,7 @@ This tutorial provides a hands\-on introduction to Classic Load Balancers throug
 
 Note that you can create your load balancer for use with EC2\-Classic or a VPC\. Some of the tasks described in this tutorial apply only to load balancers in a VPC\.
 
-
+**Topics**
 + [Before You Begin](#getting-started-prerequisites)
 + [Step 1: Select a Load Balancer Type](#select-load-balancer-type)
 + [Step 2: Define Your Load Balancer](#define-load-balancer)
@@ -16,11 +16,8 @@ Note that you can create your load balancer for use with EC2\-Classic or a VPC\.
 + [Step 8: Delete Your Load Balancer \(Optional\)](#delete-load-balancer)
 
 ## Before You Begin<a name="getting-started-prerequisites"></a>
-
 + Complete the steps in [Prepare Your VPC and EC2 Instances](elb-backend-instances.md#set-up-ec2)\.
-
 + Launch the EC2 instances that you plan to register with your load balancer\. Ensure that the security groups for these instances allow HTTP access on port 80\.
-
 + Install a web server, such as Apache or Internet Information Services \(IIS\), on each instance, enter its DNS name into the address field of an Internet\-connected web browser, and verify that the browser displays the default page of the server\.
 
 ## Step 1: Select a Load Balancer Type<a name="select-load-balancer-type"></a>
@@ -116,9 +113,7 @@ When you register an instance with an elastic network interface \(ENI\) attached
 1. Choose **Next: Add Tags**\.
 
 Alternatively, you can register instances with your load balancer later on using the following options:
-
-+ Select running instances after you create the load balancer\. For more information, see Register Instances with Your Load Balancer\.
-
++ Select running instances after you create the load balancer\. For more information, see [Register Instances with Your Load Balancer](elb-deregister-register-instances.md)\.
 + Set up Auto Scaling to register the instances automatically when it launches them\. For more information, see [Set Up a Scaled and Load\-Balanced Application](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-register-lbs-with-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 ## Step 6: Tag Your Load Balancer \(Optional\)<a name="create-tags"></a>

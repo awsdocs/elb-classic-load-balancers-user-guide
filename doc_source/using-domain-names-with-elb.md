@@ -4,7 +4,7 @@ Each Classic Load Balancer receives a default Domain Name System \(DNS\) name\. 
 
 If you'd prefer to use a friendly DNS name for your load balancer, such as `www.example.com`, instead of the default DNS name, you can create a custom domain name and associate it with the DNS name for your load balancer\. When a client makes a request using this custom domain name, the DNS server resolves it to the DNS name for your load balancer\.
 
-
+**Topics**
 + [Associating Your Custom Domain Name with Your Load Balancer Name](#dns-associate-custom-elb)
 + [Configure DNS Failover for Your Load Balancer](#configure-dns-failover)
 + [Disassociating Your Custom Domain Name from Your Load Balancer](#dns-disassociate-custom-elb)
@@ -12,9 +12,7 @@ If you'd prefer to use a friendly DNS name for your load balancer, such as `www.
 ## Associating Your Custom Domain Name with Your Load Balancer Name<a name="dns-associate-custom-elb"></a>
 
 First, if you haven't already done so, register your domain name\. The Internet Corporation for Assigned Names and Numbers \(ICANN\) manages domain names on the Internet\. You register a domain name using a *domain name registrar*, an ICANN\-accredited organization that manages the registry of domain names\. The website for your registrar will provide detailed instructions and pricing information for registering your domain name\. For more information, see the following resources:
-
 + To use Amazon Route 53 to register a domain name, see [Registering Domain Names Using Route 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar.html) in the *Amazon Route 53 Developer Guide*\.
-
 + For a list of accredited registrars, see the [Accredited Registrar Directory](http://www.internic.net/regist.html)\.
 
 Next, use your DNS service, such as your domain registrar, to create a CNAME record to route queries to your load balancer\. For more information, see the documentation for your DNS service\.
@@ -100,11 +98,8 @@ For example, suppose that you have a web application for `www.example.com`, and 
 1. Choose **Create**\.
 
 1. Repeat the same steps to create an alias record set for your secondary load balancer, with the following exceptions:
-
    + For **Alias Target**, select your secondary load balancer\.
-
    + For **Failover Record Type**, select **Secondary**\.
-
    + For **Evaluate Target Health**, select **Yes** to evaluate the health of the secondary load balancer\. If the secondary load balancer is unhealthy, Route 53 routes traffic to the primary load balancer\. If you select **No**, Route 53 assumes that the secondary load balancer is healthy and routes traffic to it whenever the primary load balancer is unhealthy\.
 
 For more information, see [Configuring Route 53 Active\-Active and Active\-Passive Failover](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html) in the *Amazon Route 53 Developer Guide*\.

@@ -8,7 +8,7 @@ To replace a certificate, you must first create a new certificate by following t
 
 Note that renewing or replacing a certificate does not affect requests that were already received by a load balancer node and are pending routing to a healthy target\.
 
-
+**Topics**
 + [Replace the SSL Certificate Using the Console](#us-update-lb-SSLcert-console)
 + [Replace the SSL Certificate Using the AWS CLI](#us-update-lb-SSLcert-cli)
 
@@ -27,11 +27,8 @@ You can replace the certificate deployed on your load balancer with a certificat
 1. On the **Listeners** tab, for **SSL Certificate**, choose **Change**\.
 
 1. On the **Select Certificate** page, do one of the following:
-
    + If you created or imported a certificate using AWS Certificate Manager, select **Choose an existing certificate from AWS Certificate Manager \(ACM\)**, select the certificate from **Certificate**, and then choose **Save**\.
-
    + If you imported a certificate using IAM, select **Choose an existing certificate from AWS Identity and Access Management \(IAM\)**, select the certificate from **Certificate**, and then choose **Save**\.
-
    + If you have a certificate to import but ACM is not supported in the region, select **Upload a new SSL Certificate to AWS Identity and Access Management \(IAM\)**\. Type a name for the certificate, copy the required information to the form, and then choose **Save**\. Note that the certificate chain is not required if the certificate is a self\-signed certificate\.
 
 ## Replace the SSL Certificate Using the AWS CLI<a name="us-update-lb-SSLcert-cli"></a>

@@ -5,7 +5,7 @@ To enable access logs for your load balancer, you must specify the name of the A
 **Important**  
 The bucket and your load balancer must be in the same region\. The bucket can be owned by a different account than the account that owns the load balancer\.
 
-
+**Topics**
 + [Step 1: Create an S3 Bucket](#create-s3-bucket)
 + [Step 2: Attach a Policy to Your S3 Bucket](#attach-bucket-policy)
 + [Step 3: Enable Access Logs](#enable-access-logs-console)
@@ -124,19 +124,17 @@ Use the following example to capture and deliver logs to your S3 bucket every 60
 
 1. Select your load balancer\.
 
-1. On the **Description** tab, for **Access logs**, choose **\(Edit\)**\.
+1. On the **Description** tab, choose **Configure Access Logs**\.
 
 1. On the **Configure Access Logs** page, do the following:
 
-   1. Select **Enable access logs**\.
+   1. Choose **Enable access logs**\.
 
    1. Leave **Interval** as the default, `60 minutes`\.
 
-   1. For **S3 location**, type the name of your S3 bucket, including the prefix \(for example, `my-loadbalancer-logs/my-app`\)\.
-**Tip**  
-If you want Elastic Load Balancing to create the bucket, you must specify a name that is unique across all existing bucket names in Amazon S3\. In some regions, there might be additional restrictions on bucket names\. For more information, see [Bucket Restrictions and Limitations](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+   1. For **S3 location**, type the name of your S3 bucket, including the prefix \(for example, `my-loadbalancer-logs/my-app`\)\. You can specify the name of an existing bucket or a name for a new bucket\.
 
-   1. \(Optional\) If you want Elastic Load Balancing to create the bucket, select **Create this location for me**\.
+   1. \(Optional\) If the bucket does not exist, choose **Create this location for me**\. You must specify a name that is unique across all existing bucket names in Amazon S3 and follows the DNS naming conventions\. For more information, see [Rules for Bucket Naming](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
 
    1. Choose **Save**\.
 
@@ -191,3 +189,6 @@ After the access log is enabled for your load balancer, Elastic Load Balancing v
    ```
    my-bucket/prefix/AWSLogs/123456789012/ELBAccessLogTestFile
    ```
+
+**To manage the S3 bucket for your access logs**  
+After you enable access logging, be sure to disable access logging before you delete the bucket with your access logs\. Otherwise, if there is a new bucket with the same name and the required bucket policy created in an AWS account that you don't own, Elastic Load Balancing could write the access logs for your load balancer to this new bucket\.

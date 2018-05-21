@@ -4,7 +4,7 @@ Your load balancer checks the health of its registered instances using either th
 
 If the current state of some or all your instances is `OutOfService` and the description field displays the message that the `Instance has failed at least the Unhealthy Threshold number of health checks consecutively`, the instances have failed the load balancer health check\. The following are the issues to look for, the potential causes, and the steps you can take to resolve the issues\.
 
-
+**Topics**
 + [Health check target page error](#ts-elb-healthcheck-targetpage)
 + [Connection to the instances has timed out](#ts-elb-healthcheck-failed)
 + [Public key authentication is failing](#ts-elb-healthcheck-publickey)
@@ -55,11 +55,8 @@ If you are using an HTTP/HTTPS connection and getting a non\-200 response, see [
 **Cause 2**: The instance is under significant load and is taking longer than your configured response timeout period to respond\.
 
 **Solution 2**:
-
 + Check the monitoring graph for over\-utilization of CPU\. For information, see [Get Statistics for a Specific EC2 Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/US_SingleMetricPerInstance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
-
 + Check the utilization of other application resources, such as memory or limits, by connecting to your EC2 instances\.
-
 + If necessary, add more instances or enable Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](http://docs.aws.amazon.com/autoscaling/latest/userguide/)\.
 
 **Cause 3**: If you are using an HTTP or an HTTPS connection and the health check is being performed on a target page specified in the ping path field \(for example, `HTTP:80/index.html`\), the target page might be taking longer to respond than your configured timeout\.

@@ -4,7 +4,7 @@ When you register an instance with your load balancer, there are a number of ste
 
 The following are issues your load balancer might encounter when registering your EC2 instances, the potential causes, and the steps you can take to resolve the issues\.
 
-
+**Topics**
 + [Taking too long to register an EC2 instance](#ts-elb-register-too-long)
 + [Unable to register an instance launched from a paid AMI](#ts-elb-paid-ami-instance)
 

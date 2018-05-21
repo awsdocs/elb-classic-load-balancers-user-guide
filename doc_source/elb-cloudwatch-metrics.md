@@ -8,7 +8,7 @@ Elastic Load Balancing reports metrics to CloudWatch only when requests are flow
 
 For more information about Amazon CloudWatch, see the *[Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)*\.
 
-
+**Topics**
 + [Classic Load Balancer Metrics](#loadbalancing-metrics-clb)
 + [Metric Dimensions for Classic Load Balancers](#load-balancer-metric-dimensions-clb)
 + [Statistics for Classic Load Balancer Metrics](#measure-stats)
@@ -86,29 +86,17 @@ Alternatively, you can view metrics for your load balancer using the CloudWatch 
 1. \(Optional\) To filter the results by time, select a time range from **Showing data for**\.
 
 1. To get a larger view of a single metric, select its graph\. The following metrics are available:
-
    + Healthy Hosts — `HealthyHostCount`
-
    + Unhealthy Hosts — `UnHealthyHostCount`
-
    + Average Latency — `Latency`
-
    + Sum Requests — `RequestCount`
-
    + Backend Connection Errors — `BackendConnectionErrors`
-
    + Surge Queue Length — `SurgeQueueLength`
-
    + Spillover Count — `SpilloverCount`
-
    + Sum HTTP 2XXs — `HTTPCode_Backend_2XX`
-
    + Sum HTTP 4XXs — `HTTPCode_Backend_4XX`
-
    + Sum HTTP 5XXs — `HTTPCode_Backend_5XX`
-
    + Sum ELB HTTP 4XXs — `HTTPCode_ELB_4XX`
-
    + Sum ELB HTTP 5XXs — `HTTPCode_ELB_5XX`
 
 **To view metrics using the CloudWatch console**
@@ -120,13 +108,9 @@ Alternatively, you can view metrics for your load balancer using the CloudWatch 
 1. Select the **ELB** namespace\.
 
 1. Do one of the following:
-
    + Select a metric dimension to view metrics by load balancer, by Availability Zone, or across all load balancers\.
-
    + To view a metric across all dimensions, type its name in the search field\.
-
    + To view the metrics for a single load balancer, type its name in the search field\.
-
    + To view the metrics for a single Availability Zone, type its name in the search field\.
 
 ## Create CloudWatch Alarms for Your Load Balancer<a name="create_cw_alarms"></a>
@@ -134,11 +118,8 @@ Alternatively, you can view metrics for your load balancer using the CloudWatch 
 An alarm watches a single metric over the time period that you specify\. Depending on the value of the metric relative to a threshold that you define, the alarm can send one or more notifications using Amazon SNS, a service that enables applications, end users, and devices to instantly send and receive notifications\. For more information, see [Get Started with Amazon SNS](http://docs.aws.amazon.com/sns/latest/gsg/Welcome.html)\.
 
 An alarm sends notifications to Amazon SNS when the specified metric reaches the defined range and remains in that range for a specified period of time\. An alarm has three possible states:
-
 + `OK`—The value of the metric is within the range you've specified\.
-
 + `ALARM`—The value of the metric is outside the range that you've specified for the specified period of time\.
-
 + `INSUFFICIENT_DATA`—Either the metric is not yet available or there is not enough data to determine the alarm state\.
 
 Whenever the state of an alarm changes, CloudWatch uses Amazon SNS to send a notification to the email addresses that you specified\.

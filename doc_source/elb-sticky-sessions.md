@@ -7,26 +7,21 @@ The key to managing sticky sessions is to determine how long your load balancer 
 Elastic Load Balancing creates a cookie, named AWSELB, that is used to map the session to the instance\.
 
 **Requirements**
-
 + An HTTP/HTTPS load balancer\.
-
 + At least one healthy instance in each Availability Zone\.
 
 **Compatibility**
-
 + The RFC for the path property of a cookie allows underscores\. However, Elastic Load Balancing URI encodes underscore characters as `%5F` because some browsers, such as Internet Explorer 7, expect underscores to be URI encoded as `%5F`\. Because of the potential to impact browsers that are currently working, Elastic Load Balancing continues to URI encode underscore characters\. For example, if the cookie has the property `path=/my_path`, Elastic Load Balancing changes this property in the forwarded request to `path=/my%5Fpath`\.
-
 + You can't set the `secure` flag or `HttpOnly` flag on your duration\-based session stickiness cookies\. However, these cookies contain no sensitive data\. Note that if you set the `secure` flag or `HttpOnly` flag on an application\-controlled session stickiness cookie, it is also set on the AWSELB cookie\.
-
 + If you have a trailing semicolon in the `Set-Cookie` field of an application cookie, the load balancer ignores the cookie\.
 
-
+**Topics**
 + [Duration\-Based Session Stickiness](#enable-sticky-sessions-duration)
 + [Application\-Controlled Session Stickiness](#enable-sticky-sessions-application)
 
 ## Duration\-Based Session Stickiness<a name="enable-sticky-sessions-duration"></a>
 
-The load balancer uses a special cookie to track the instance for each request to each listener\. When the load balancer receives a request, it first checks to see if this cookie is present in the request\. If so, the request is sent to the instance specified in the cookie\. If there is no cookie, the load balancer chooses an instance based on the existing load balancing algorithm\. A cookie is inserted into the response for binding subsequent requests from the same user to that instance\. The stickiness policy configuration defines a cookie expiration, which establishes the duration of validity for each cookie\. After a cookie expires, the session is no longer sticky\.
+The load balancer uses a special cookie to track the instance for each request to each listener\. When the load balancer receives a request, it first checks to see if this cookie is present in the request\. If so, the request is sent to the instance specified in the cookie\. If there is no cookie, the load balancer chooses an instance based on the existing load balancing algorithm\. A cookie is inserted into the response for binding subsequent requests from the same user to that instance\. The stickiness policy configuration defines a cookie expiration, which establishes the duration of validity for each cookie\. The load balancer does not refresh the expiry time of the cookie and does not check whether the cookie is expired before using it\. After a cookie expires, the session is no longer sticky\. The client should remove the cookie from its cookie store upon expiry\.
 
 If an instance fails or becomes unhealthy, the load balancer stops routing requests to that instance, and chooses a new healthy instance based on the existing load balancing algorithm\. The request is routed to the new instance as if there is no cookie and the session is no longer sticky\.
 

@@ -10,7 +10,7 @@ If your application has multiple tiers, for example web servers that must be con
 
 ![\[An internal load balancer routes traffic to your EC2 instances in private subnets.\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/internal_load_balancer.png)
 
-
+**Topics**
 + [Public DNS Name for Your Load Balancer](#internal-public-dns-name)
 + [Create an Internal Classic Load Balancer](elb-create-internal-load-balancer.md)
 

@@ -4,7 +4,7 @@ Your load balancer sends metrics to Amazon CloudWatch for the HTTP response code
 
 The following are response code metrics returned by CloudWatch for your load balancer, the potential causes, and the steps you can take to resolve the issues\.
 
-
+**Topics**
 + [HTTPCode\_ELB\_4XX](#ts-elb-error-metrics-ELB_4XX)
 + [HTTPCode\_ELB\_5XX](#ts-elb-error-metrics-ELB_5XX)
 + [HTTPCode\_Backend\_2XX](#ts-elb-error-metrics-Backend_2XX)
@@ -17,11 +17,8 @@ The following are response code metrics returned by CloudWatch for your load bal
 **Cause**: A malformed or canceled request from the client\.
 
 **Solutions**
-
 + See [HTTP 400: BAD\_REQUEST](ts-elb-error-message.md#ts-elb-errorcodes-http400)\.
-
 + See [HTTP 405: METHOD\_NOT\_ALLOWED](ts-elb-error-message.md#ts-elb-errorcodes-http405)\.
-
 + See [HTTP 408: Request Timeout](ts-elb-error-message.md#ts-elb-errorcodes-http408)\.
 
 ## HTTPCode\_ELB\_5XX<a name="ts-elb-error-metrics-ELB_5XX"></a>
@@ -29,11 +26,8 @@ The following are response code metrics returned by CloudWatch for your load bal
 **Cause**: Either the load balancer or the registered instance is causing the error or the load balancer is unable to parse the response\.
 
 **Solutions**
-
 + See [HTTP 502: Bad Gateway](ts-elb-error-message.md#ts-elb-errorcodes-http502)\.
-
 + See [HTTP 503: Service Unavailable](ts-elb-error-message.md#ts-elb-errorcodes-http503)\.
-
 + See [HTTP 504: Gateway Timeout](ts-elb-error-message.md#ts-elb-errorcodes-http504)\.
 
 ## HTTPCode\_Backend\_2XX<a name="ts-elb-error-metrics-Backend_2XX"></a>

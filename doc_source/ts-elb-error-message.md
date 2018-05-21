@@ -10,7 +10,7 @@ The EC2 instance processes a valid request by implementing the method in the req
 
 The following are error messages returned by your load balancer, the potential causes, and the steps you can take to resolve the issues\.
 
-
+**Topics**
 + [HTTP 400: BAD\_REQUEST](#ts-elb-errorcodes-http400)
 + [HTTP 405: METHOD\_NOT\_ALLOWED](#ts-elb-errorcodes-http405)
 + [HTTP 408: Request Timeout](#ts-elb-errorcodes-http408)

@@ -10,7 +10,7 @@ If you have an existing load balancer with an SSL negotiation configuration that
 
 The following examples show you how to update the SSL negotiation configuration for an HTTPS/SSL listener\. Note that the change does not affect requests that were received by a load balancer node and are pending routing to a healthy instance, but the updated configuration will be used with new requests that are received\.
 
-
+**Topics**
 + [Update the SSL Negotiation Configuration Using the Console](#ssl-config-update-console)
 + [Update the SSL Negotiation Configuration Using the AWS CLI](#ssl-config-update-cli)
 
@@ -29,11 +29,8 @@ By default, Elastic Load Balancing associates the latest predefined policy with 
 1. On the **Listeners** tab, for **Cipher**, choose **Change**\.
 
 1. On the **Select a Cipher** page, select a security policy using one of the following options:
-
    + \(Recommended\) Select **Predefined Security Policy**, keep the default policy, **ELBSecurityPolicy\-2016\-08**, and then choose **Save**\.
-
    + Select **Predefined Security Policy**, select a predefined policy other than the default, and then choose **Save**\.
-
    + Select **Custom Security Policy** and enable at least one protocol and one cipher as follows:
 
      1. For **SSL Protocols**, select one or more protocols to enable\.

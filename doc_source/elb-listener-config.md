@@ -3,13 +3,9 @@
 Before you start using Elastic Load Balancing, you must configure one or more *listeners* for your Classic Load Balancer\. A listener is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections, and a protocol and a port for back\-end \(load balancer to back\-end instance\) connections\.
 
 Elastic Load Balancing supports the following protocols:
-
 + HTTP
-
 + HTTPS \(secure HTTP\)
-
 + TCP
-
 + SSL \(secure TCP\)
 
 The HTTPS protocol uses the SSL protocol to establish secure connections over the HTTP layer\. You can also use the SSL protocol to establish secure connections over the TCP layer\.
@@ -19,12 +15,10 @@ If the front\-end connection uses TCP or SSL, then your back\-end connections ca
 Back\-end instances can listen on ports 1\-65535\.
 
 Load balancers can listen on the following ports:
-
 + \[EC2\-VPC\] 1\-65535
-
 + \[EC2\-Classic\] 25, 80, 443, 465, 587, 1024\-65535
 
-
+**Topics**
 + [Protocols](#elb-listener-protocols)
 + [HTTPS/SSL Listeners](#https-ssl-listeners)
 + [Listener Configurations for Classic Load Balancers](using-elb-listenerconfig-quickref.md)
@@ -76,4 +70,4 @@ Elastic Load Balancing provides predefined SSL negotiation configurations that a
 
 If you use HTTPS or SSL for your back\-end connections, you can enable authentication of your registered instances\. You can then use the authentication process to ensure that the instances accept only encrypted communication, and to ensure that each registered instance has the correct public key\.
 
-For more information, see Configure Back\-end Server Authentication\.
+For more information, see [Configure Back\-end Server Authentication](elb-create-https-ssl-load-balancer.md#configure_backendauth_clt)\.

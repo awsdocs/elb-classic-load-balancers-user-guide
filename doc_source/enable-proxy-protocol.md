@@ -7,7 +7,7 @@ By default, when you use Transmission Control Protocol \(TCP\) for both front\-e
 **Note**  
 The AWS Management Console does not support enabling Proxy Protocol\.
 
-
+**Topics**
 + [Proxy Protocol Header](#proxy-protocol)
 + [Prerequisites for Enabling Proxy Protocol](#proxy-protocol-prerequisites)
 + [Enable Proxy Protocol Using the AWS CLI](#enable-proxy-protocol-cli)
@@ -42,11 +42,8 @@ PROXY TCP6 2001:DB8::21f:5bff:febf:ce22:8a2e 2001:DB8::12f:8baa:eafc:ce29:6b2e 3
 ## Prerequisites for Enabling Proxy Protocol<a name="proxy-protocol-prerequisites"></a>
 
 Before you begin, do the following:
-
 + Confirm that your load balancer is not behind a proxy server with Proxy Protocol enabled\. If Proxy Protocol is enabled on both the proxy server and the load balancer, the load balancer adds another header to the request, which already has a header from the proxy server\. Depending on how your instance is configured, this duplication might result in errors\.
-
 + Confirm that your instances can process the Proxy Protocol information\.
-
 + Confirm that your listener settings support Proxy Protocol\. For more information, see [Listener Configurations for Classic Load Balancers](using-elb-listenerconfig-quickref.md)\.
 
 ## Enable Proxy Protocol Using the AWS CLI<a name="enable-proxy-protocol-cli"></a>

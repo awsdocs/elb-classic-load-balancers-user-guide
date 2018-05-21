@@ -6,7 +6,7 @@ You can add multiple tags to each Classic Load Balancer\. Tag keys must be uniqu
 
 When you are finished with a tag, you can remove it from your load balancer\.
 
-
+**Topics**
 + [Tag Restrictions](#tag-restrictions)
 + [Add a Tag](#add-tags)
 + [Remove a Tag](#remove-tags)
@@ -14,15 +14,10 @@ When you are finished with a tag, you can remove it from your load balancer\.
 ## Tag Restrictions<a name="tag-restrictions"></a>
 
 The following basic restrictions apply to tags:
-
 + Maximum number of tags per resource—50
-
 + Maximum key length—127 Unicode characters
-
 + Maximum value length—255 Unicode characters
-
 + Tag keys and values are case sensitive\. Allowed characters are letters, spaces, and numbers representable in UTF\-8, plus the following special characters: \+ \- = \. \_ : / @\. Do not use leading or trailing spaces\.
-
 + Do not use the `aws:` prefix in your tag names or values because it is reserved for AWS use\. You can't edit or delete tag names or values with this prefix\. Tags with this prefix do not count against your tags per resource limit\. 
 
 ## Add a Tag<a name="add-tags"></a>

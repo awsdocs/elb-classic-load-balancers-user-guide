@@ -12,7 +12,7 @@ If your instances are part of an Auto Scaling group and connection draining is e
 
 You can disable connection draining if you want your load balancer to immediately close connections to the instances that are de\-registering or have become unhealthy\. When connection draining is disabled, any in\-flight requests made to instances that are de\-registering or unhealthy are not completed\.
 
-
+**Topics**
 + [Enable Connection Draining](#enable-conn-drain)
 + [Disable Connection Draining](#disable-conn-drain)
 

@@ -10,7 +10,7 @@ You might want to remove an Availability Zone from your load balancer temporaril
 
 If your load balancer is in a VPC, see [Add or Remove Subnets for Your Classic Load Balancer in a VPC](elb-manage-subnets.md)\.
 
-
+**Topics**
 + [Add an Availability Zone](#add-availability-zone)
 + [Remove an Availability Zone](#remove-availability-zone)
 

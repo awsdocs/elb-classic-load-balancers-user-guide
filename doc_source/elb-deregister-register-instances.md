@@ -12,7 +12,7 @@ Elastic Load Balancing registers your EC2 instance with your load balancer using
 
 \[EC2\-VPC\] When you register an instance with an elastic network interface \(ENI\) attached, the load balancer routes requests to the primary IP address of the primary interface \(eth0\) of the instance\.
 
-
+**Topics**
 + [Prerequisites](#elb-register-instances-prereq)
 + [Register an Instance](#elb-register-instances)
 + [Deregister an Instance](#elb-deregister-instances)

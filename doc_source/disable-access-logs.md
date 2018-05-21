@@ -10,7 +10,7 @@ You can disable access logs for your load balancer at any time\. After you disab
 
 1. Select your load balancer\.
 
-1. On the **Description** tab, for **Access Logs**, choose **\(Edit\)**\.
+1. On the **Description** tab, choose **Configure Access Logs**\.
 
 1. On the **Configure Access Logs** page, clear **Enable access logs**\.
 

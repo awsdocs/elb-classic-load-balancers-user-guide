@@ -6,7 +6,7 @@ Access logging is an optional feature of Elastic Load Balancing that is disabled
 
 There is no additional charge for access logs\. You will be charged storage costs for Amazon S3, but will not be charged for the bandwidth used by Elastic Load Balancing to send log files to Amazon S3\. For more information about storage costs, see [Amazon S3 Pricing](https://aws.amazon.com/s3/pricing/)\.
 
-
+**Topics**
 + [Access Log Files](#access-log-file-format)
 + [Access Log Entries](#access-log-entry-format)
 + [Processing Access Logs](#log-processing-tools)
@@ -129,11 +129,7 @@ The following is an example log entry for an SSL listener \(port 8443 to port 80
 ## Processing Access Logs<a name="log-processing-tools"></a>
 
 If there is a lot of demand on your website, your load balancer can generate log files with gigabytes of data\. You might not be able to process such a large amount of data using line\-by\-line processing\. Therefore, you might have to use analytical tools that provide parallel processing solutions\. For example, you can use the following analytical tools to analyze and process access logs:
-
 + Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL\. For more information, see [Querying Classic Load Balancer Logs](http://docs.aws.amazon.com/athena/latest/ug/elasticloadbalancer-classic-logs.html) in the *Amazon Athena User Guide*\.
-
 + [Loggly](https://www.loggly.com/docs/s3-ingestion-auto/)
-
 + [Splunk](http://apps.splunk.com/app/1731/)
-
 + [Sumo Logic](http://sumologic.com/applications/aws-elastic-load-balancing/)

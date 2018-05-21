@@ -5,12 +5,10 @@ HTTP requests and HTTP responses use header fields to send information about the
 For more information about HTTP connections, see [Request Routing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#request-routing) in the *Elastic Load Balancing User Guide*\.
 
 **Prerequisites**
-
 + Confirm that your listener settings support the X\-Forwarded headers\. For more information, see [Listener Configurations for Classic Load Balancers](using-elb-listenerconfig-quickref.md)\.
-
 + Configure your web server to log client IP addresses\.
 
-
+**Topics**
 + [X\-Forwarded\-For](#x-forwarded-for)
 + [X\-Forwarded\-Proto](#x-forwarded-proto)
 + [X\-Forwarded\-Port](#x-forwarded-port)

@@ -6,7 +6,7 @@ There is a significant difference between the way Classic load balancers support
 
 In both EC2\-Classic and in a VPC, you must ensure that the security groups for your instances allow the load balancer to communicate with your instances on both the listener port and the health check port\. In a VPC, your security groups and network access control lists \(ACL\) must allow traffic in both directions on these ports\.
 
-
+**Topics**
 + [Security Groups for Load Balancers in a VPC](#elb-vpc-security-groups)
 + [Security Groups for Instances in a VPC](#elb-vpc-instance-security-groups)
 + [Network ACLs for Load Balancers in a VPC](#elb-vpc-nacl)
@@ -22,7 +22,7 @@ When you use the AWS Management Console to create a load balancer in a VPC, you 
 
 If you add a listener to an existing load balancer, you must review your security groups to ensure they allow traffic on the new listener port in both directions\.
 
-
+**Topics**
 + [Recommended Rules for Load Balancer Security Groups](#recommended-sg-rules)
 + [Manage Security Groups Using the Console](#assign-sg-console)
 + [Manage Security Groups Using the AWS CLI](#assign-sg-cli)

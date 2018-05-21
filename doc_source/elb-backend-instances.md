@@ -2,7 +2,7 @@
 
 After you've created your Classic Load Balancer, you must register your EC2 instances with the load balancer\. You can select EC2 instances from a single Availability Zone or multiple Availability Zones within the same region as the load balancer\. Elastic Load Balancing routinely performs health checks on registered EC2 instances, and automatically distributes incoming requests to the DNS name of your load balancer across the registered, healthy EC2 instances\.
 
-
+**Topics**
 + [Best Practices for Your Instances](#backend-instance-best-practices)
 + [Prepare Your VPC and EC2 Instances](#set-up-ec2)
 + [Configure Health Checks for Your Classic Load Balancer](elb-healthchecks.md)
@@ -12,11 +12,8 @@ After you've created your Classic Load Balancer, you must register your EC2 inst
 + [Register or Deregister EC2 Instances for Your Classic Load Balancer](elb-deregister-register-instances.md)
 
 ## Best Practices for Your Instances<a name="backend-instance-best-practices"></a>
-
 + Install a web server, such as Apache or Internet Information Services \(IIS\), on all instances that you plan to register with your load balancer\.
-
 + For HTTP and HTTPS listeners, we recommend that you enable the keep\-alive option in your EC2 instances, which enables the load balancer to re\-use the connections to your instances for multiple client requests\. This reduces the load on your web server and improves the throughput of the load balancer\. The keep\-alive timeout should be at least 60 seconds to ensure that the load balancer is responsible for closing the connection to your instance\.
-
 + Elastic Load Balancing supports Path Maximum Transmission Unit \(MTU\) Discovery\. To ensure that Path MTU Discovery can function correctly, you must ensure that the security group for your instance allows ICMP fragmentation required \(type 3, code 4\) messages\. For more information, see [Path MTU Discovery](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Prepare Your VPC and EC2 Instances<a name="set-up-ec2"></a>

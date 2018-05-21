@@ -41,25 +41,14 @@ The following table describes the most recent predefined security policies, incl
 **Predefined Security Policies**
 
 The following are the predefined security policies for Classic Load Balancers\. To describe a predefined policy, use the [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command\.
-
 + ELBSecurityPolicy\-2016\-08
-
 + ELBSecurityPolicy\-TLS\-1\-2\-2017\-01
-
 + ELBSecurityPolicy\-TLS\-1\-1\-2017\-01
-
 + ELBSecurityPolicy\-2015\-05
-
 + ELBSecurityPolicy\-2015\-03
-
 + ELBSecurityPolicy\-2015\-02
-
 + ELBSecurityPolicy\-2014\-10
-
 + ELBSecurityPolicy\-2014\-01
-
 + ELBSecurityPolicy\-2011\-08
-
 + ELBSample\-ELBDefaultNegotiationPolicy or ELBSample\-ELBDefaultCipherPolicy
-
 + ELBSample\-OpenSSLDefaultNegotiationPolicy or ELBSample\-OpenSSLDefaultCipherPolicy

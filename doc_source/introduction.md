@@ -23,21 +23,15 @@ For more information, see [How Elastic Load Balancing Works](http://docs.aws.ama
 ## Benefits<a name="classic-load-balancer-benefits"></a>
 
 Using a Classic Load Balancer instead of an Application Load Balancer has the following benefits:
-
 + Support for EC2\-Classic
-
 + Support for TCP and SSL listeners
-
 + Support for sticky sessions using application\-generated cookies
 
 For more information about the features supported by each load balancer type, see [Comparison of Elastic Load Balancing Products](https://aws.amazon.com/elasticloadbalancing/details/#compare)\.
 
 ## How to Get Started<a name="classic-load-balancer-getting-started"></a>
-
 + To learn how to create a Classic Load Balancer and register EC2 instances with it, see [Tutorial: Create a Classic Load Balancer](elb-getting-started.md)\.
-
 + To learn how to create an HTTPS load balancer and register EC2 instances with it, see [Create a Classic Load Balancer with an HTTPS Listener](elb-create-https-ssl-load-balancer.md)\.
-
 + To learn how to use the various features supported by Elastic Load Balancing, see [Configure Your Classic Load Balancer](elb-configure-load-balancer.md)\.
 
 ## Pricing<a name="classic-load-balancer-pricing"></a>

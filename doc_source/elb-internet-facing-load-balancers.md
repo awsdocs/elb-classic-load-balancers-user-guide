@@ -6,7 +6,7 @@ An Internet\-facing load balancer has a publicly resolvable DNS name, so it can 
 
 If a load balancer is in a VPC with ClassicLink enabled, its instances can be linked EC2\-Classic instances\. If a load balancer is in EC2\-Classic, its instances must be in EC2\-Classic\.
 
-
+**Topics**
 + [Public DNS Names for Your Load Balancer](#internet-facing-ip-addresses)
 + [Create an Internet\-Facing Load Balancer](#elb-create-internet-facing-load-balancer)
 

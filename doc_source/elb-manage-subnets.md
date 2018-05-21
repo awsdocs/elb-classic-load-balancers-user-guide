@@ -10,7 +10,7 @@ You might want to remove a subnet from your load balancer temporarily when its A
 
 If your load balancer is in EC2\-Classic, see [Add or Remove Availability Zones for Your Load Balancer in EC2\-Classic](enable-disable-az.md)\.
 
-
+**Topics**
 + [Requirements](#elb-subnet-requirements)
 + [Add a Subnet](#attach-subnet)
 + [Remove a Subnet](#remove-subnet)
@@ -18,9 +18,7 @@ If your load balancer is in EC2\-Classic, see [Add or Remove Availability Zones 
 ## Requirements<a name="elb-subnet-requirements"></a>
 
 When you update the subnets for your load balancer, you must meet the following requirements:
-
 + The load balancer must have at least one subnet at all times\.
-
 + You can add at most one subnet per Availability Zone\.
 
 Because there are separate APIs to add and remove subnets from a load balancer, you must consider the order of operations carefully when swapping the current subnets for new subnets in order to meet these requirements\. Also, you must temporarily add a subnet from another Availability Zone if you need to swap all subnets for your load balancer\. For example, if your load balancer has a single Availability Zone and you need to swap its subnet for another subnet, you must first add a subnet from a second Availability Zone\. Then you can remove the subnet from the original Availability Zone \(without going below one subnet\), add a new subnet from the original Availability Zone \(without exceeding one subnet per Availability Zone\), and then remove the subnet from the second Availability Zone \(if it is only needed to perform the swap\)\.

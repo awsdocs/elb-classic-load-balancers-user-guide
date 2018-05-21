@@ -1,6 +1,6 @@
 # Configure Your Classic Load Balancer<a name="elb-configure-load-balancer"></a>
 
-
+**Topics**
 + [Configure the Idle Connection Timeout for Your Classic Load Balancer](config-idle-timeout.md)
 + [Configure Cross\-Zone Load Balancing for Your Classic Load Balancer](enable-disable-crosszone-lb.md)
 + [Configure Connection Draining for Your Classic Load Balancer](config-conn-drain.md)

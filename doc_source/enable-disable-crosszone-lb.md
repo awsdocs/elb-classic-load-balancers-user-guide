@@ -1,6 +1,6 @@
 # Configure Cross\-Zone Load Balancing for Your Classic Load Balancer<a name="enable-disable-crosszone-lb"></a>
 
-If the load balancer nodes for your Classic Load Balancer can distribute requests regardless of Availability Zone, this is known as *cross\-zone load balancing*\. With cross\-zone load balancing enabled, your load balancer nodes distribute incoming requests evenly across the Availability Zones enabled for your load balancer\. Otherwise, each load balancer node distributes requests only to instances in its Availability Zone\. For example, if you have 10 instances in Availability Zone us\-west\-2a and 2 instances in us\-west\-2b, the requests are distributed evenly across all 12 instances if cross\-zone load balancing is enabled\. Otherwise, the 2 instances in us\-west\-2b serve the same number of requests as the 10 instances in us\-west\-2a\.
+With *cross\-zone load balancing*, each load balancer node for your Classic Load Balancer distributes requests evenly across the registered instances in all enabled Availability Zones\. If cross\-zone load balancing is disabled, each load balancer node distributes requests evenly across the registered instances in its Availability Zone only\. For more information, see [Cross\-Zone Load Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#cross-zone-load-balancing) in the *Elastic Load Balancing User Guide*\.
 
 Cross\-zone load balancing reduces the need to maintain equivalent numbers of instances in each enabled Availability Zone, and improves your application's ability to handle the loss of one or more instances\. However, we still recommend that you maintain approximately equivalent numbers of instances in each enabled Availability Zone for higher fault tolerance\.
 
@@ -8,7 +8,7 @@ For environments where clients cache DNS lookups, incoming requests might favor 
 
 When you create a Classic Load Balancer, the default for cross\-zone load balancing depends on how you create the load balancer\. With the API or CLI, cross\-zone load balancing is disabled by default\. With the AWS Management Console, the option to enable cross\-zone load balancing is selected by default\. After you create a Classic Load Balancer, you can enable or disable cross\-zone load balancing at any time\.
 
-
+**Topics**
 + [Enable Cross\-Zone Load Balancing](#enable-cross-zone)
 + [Disable Cross\-Zone Load Balancing](#disable-cross-zone)
 

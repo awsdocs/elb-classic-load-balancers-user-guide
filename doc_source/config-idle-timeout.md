@@ -8,7 +8,7 @@ If you use HTTP and HTTPS listeners, we recommend that you enable the HTTP keep\
 
 Note that TCP keep\-alive probes do not prevent the load balancer from terminating the connection because they do not send data in the payload\.
 
-
+**Topics**
 + [Configure the Idle Timeout Using the Console](#config-idle-timeout-console)
 + [Configure the Idle Timeout Using the AWS CLI](#config-idle-timeout-awscli)
 

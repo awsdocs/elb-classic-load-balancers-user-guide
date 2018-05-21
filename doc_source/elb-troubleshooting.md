@@ -51,7 +51,7 @@ The following tables list the troubleshooting resources that you'll find useful 
 
 | Issue | 
 | --- | 
-| Clients cannot connect to the load balancer | 
+| [Clients cannot connect to the load balancer](ts-elb-connection-failed.md) | 
 
 
 **Instance Registration Issues**  
