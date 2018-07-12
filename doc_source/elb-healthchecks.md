@@ -29,7 +29,9 @@ A health configuration contains the information that a load balancer uses to det
 |  Unhealthy Threshold  |  The number of consecutive failed health checks that must occur before declaring an EC2 instance unhealthy\. Valid values: 2 to 10 Default: 2  | 
 |  Healthy Threshold  |  The number of consecutive successful health checks that must occur before declaring an EC2 instance healthy\. Valid values: 2 to 10 Default: 10  | 
 
-The load balancer sends a request to each registered instance at the ping port and ping path every `Interval` seconds\. An instance is considered healthy if it returns a 200 response code within the health check interval\. If the health checks exceed the threshold for consecutive failed responses, the load balancer takes the instance out of service\. When the health checks exceed the threshold for consecutive successful responses, the load balancer puts the instance back in service\.
+The load balancer sends a health check request to each registered instance every `Interval` seconds, using the specified port, protocol, and ping path\. Each health check request is independent and lasts the entire interval\. The time it takes for the instance to respond does not affect the interval for the next health check\. If the health checks exceed **UnhealthyThresholdCount** consecutive failures, the load balancer takes the instance out of service\. When the health checks exceed **HealthyThresholdCount** consecutive successes, the load balancer puts the instance back in service\.
+
+An HTTP/HTTPS health check succeeds if the instance returns a 200 response code within the health check interval\. A TCP health check succeeds if the TCP connection succeeds\. An SSL health check succeeds if the SSL handshake succeeds\.
 
 ## Update the Health Check Configuration<a name="update-health-check-config"></a>
 

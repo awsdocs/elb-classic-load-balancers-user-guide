@@ -13,7 +13,7 @@ We recommend that you use AWS Certificate Manager \(ACM\) to create or import ce
 To allow an IAM user to deploy the certificate on your load balancer using the AWS Management Console, you must allow access to the ACM `ListCertificates` API action\. For more information, see [Listing Certificates](http://docs.aws.amazon.com/acm/latest/userguide/authen-inlinepolicies.html#policy-list-certificates) in the *AWS Certificate Manager User Guide*\.
 
 **Important**  
-ACM supports RSA certificates with a 4096 key length and EC certificates\. However, you cannot install these certificates on your load balancer through integration with ACM\. You must upload these certificates to IAM in order to use them with your load balancer\.
+You cannot install certificates with 4096\-bit RSA keys or EC keys on your load balancer through integration with ACM\. You must upload certificates with 4096\-bit RSA keys or EC keys to IAM in order to use them with your load balancer\.
 
 ## Import an SSL/TLS Certificate Using IAM<a name="import-certificate-iam"></a>
 

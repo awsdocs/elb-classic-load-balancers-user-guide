@@ -1,6 +1,6 @@
 # HTTP Headers and Classic Load Balancers<a name="x-forwarded-headers"></a>
 
-HTTP requests and HTTP responses use header fields to send information about the HTTP messages\. Header fields are colon\-separated name\-value pairs that are separated by a carriage return \(CR\) and a line feed \(LF\)\. A standard set of HTTP header fields is defined in RFC 2616, [Message Headers](http://tools.ietf.org/html/rfc2616#section-4.2)\. There are also non\-standard HTTP headers available that are widely used by the applications\. Some of the non\-standard HTTP headers have a `X-Forwarded` prefix\. Classic Load Balancers support the following `X-Forwarded` headers\.
+HTTP requests and HTTP responses use header fields to send information about the HTTP messages\. Header fields are colon\-separated name\-value pairs that are separated by a carriage return \(CR\) and a line feed \(LF\)\. A standard set of HTTP header fields is defined in RFC 2616, [Message Headers](http://tools.ietf.org/html/rfc2616#section-4.2)\. There are also non\-standard HTTP headers available that are widely used by the applications\. Some of the non\-standard HTTP headers have an `X-Forwarded` prefix\. Classic Load Balancers support the following `X-Forwarded` headers\.
 
 For more information about HTTP connections, see [Request Routing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#request-routing) in the *Elastic Load Balancing User Guide*\.
 
@@ -33,12 +33,6 @@ The following is an example `X-Forwarded-For` request header for a client with a
 
 ```
 X-Forwarded-For: 2001:DB8::21f:5bff:febf:ce22:8a2e
-```
-
-If a request from a client already contains an `X-Forwarded-For` header, Elastic Load Balancing appends the IP address of the client at the end of the header value\. In this case, the last IP address in the list is the IP address of the client\. For example, the following header contains two IP addresses added by the client, which might not be trustworthy, plus the client IP address added by Elastic Load Balancing: 
-
-```
-X-Forwarded-For: ip-address-1, ip-address-2, client-ip-address
 ```
 
 ## X\-Forwarded\-Proto<a name="x-forwarded-proto"></a>
