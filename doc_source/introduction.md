@@ -25,7 +25,6 @@ For more information, see [How Elastic Load Balancing Works](http://docs.aws.ama
 Using a Classic Load Balancer instead of an Application Load Balancer has the following benefits:
 + Support for EC2\-Classic
 + Support for TCP and SSL listeners
-+ Support for sticky sessions using application\-generated cookies
 
 For more information about the features supported by each load balancer type, see [Comparison of Elastic Load Balancing Products](https://aws.amazon.com/elasticloadbalancing/details/#compare)\.
 
