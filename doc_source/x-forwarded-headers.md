@@ -2,7 +2,7 @@
 
 HTTP requests and HTTP responses use header fields to send information about the HTTP messages\. Header fields are colon\-separated name\-value pairs that are separated by a carriage return \(CR\) and a line feed \(LF\)\. A standard set of HTTP header fields is defined in RFC 2616, [Message Headers](http://tools.ietf.org/html/rfc2616#section-4.2)\. There are also non\-standard HTTP headers available that are widely used by the applications\. Some of the non\-standard HTTP headers have an `X-Forwarded` prefix\. Classic Load Balancers support the following `X-Forwarded` headers\.
 
-For more information about HTTP connections, see [Request Routing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#request-routing) in the *Elastic Load Balancing User Guide*\.
+For more information about HTTP connections, see [Request Routing](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#request-routing) in the *Elastic Load Balancing User Guide*\.
 
 **Prerequisites**
 + Confirm that your listener settings support the X\-Forwarded headers\. For more information, see [Listener Configurations for Classic Load Balancers](using-elb-listenerconfig-quickref.md)\.

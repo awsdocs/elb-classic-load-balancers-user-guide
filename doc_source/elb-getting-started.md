@@ -22,7 +22,7 @@ Note that you can create your load balancer for use with EC2\-Classic or a VPC\.
 
 ## Step 1: Select a Load Balancer Type<a name="select-load-balancer-type"></a>
 
-Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. For this tutorial, you create a Classic Load Balancer\. Alternatively, to create an Application Load Balancer, see [Getting Started with Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html) in the *User Guide for Application Load Balancers*\. To create a Network Load Balancer, see [Getting Started with Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html) in the *User Guide for Network Load Balancers*\.
+Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. For this tutorial, you create a Classic Load Balancer\. Alternatively, to create an Application Load Balancer, see [Getting Started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html) in the *User Guide for Application Load Balancers*\. To create a Network Load Balancer, see [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html) in the *User Guide for Network Load Balancers*\.
 
 **To create a Classic Load Balancer**
 
@@ -114,7 +114,7 @@ When you register an instance with an elastic network interface \(ENI\) attached
 
 Alternatively, you can register instances with your load balancer later on using the following options:
 + Select running instances after you create the load balancer\. For more information, see [Register Instances with Your Load Balancer](elb-deregister-register-instances.md)\.
-+ Set up Auto Scaling to register the instances automatically when it launches them\. For more information, see [Set Up a Scaled and Load\-Balanced Application](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-register-lbs-with-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
++ Set up Auto Scaling to register the instances automatically when it launches them\. For more information, see [Set Up a Scaled and Load\-Balanced Application](https://docs.aws.amazon.com/autoscaling/latest/userguide/as-register-lbs-with-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 ## Step 6: Tag Your Load Balancer \(Optional\)<a name="create-tags"></a>
 
@@ -162,4 +162,4 @@ As soon as your load balancer becomes available, you are billed for each hour or
 
 1. When prompted for confirmation, choose **Yes, Delete**\.
 
-1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and Start Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and Start Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.

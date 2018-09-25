@@ -37,7 +37,7 @@ You can enable connection draining for your load balancer at any time\.
 1. Choose **Save**\.
 
 **To enable connection draining using the AWS CLI**  
-Use the following [modify\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command:
+Use the following [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command:
 
 ```
 aws elb modify-load-balancer-attributes --load-balancer-name my-loadbalancer --load-balancer-attributes "{\"ConnectionDraining\":{\"Enabled\":true,\"Timeout\":300}}"
@@ -76,7 +76,7 @@ You can disable connection draining for your load balancer at any time\.
 1. Choose **Save**\.
 
 **To disable connection draining using the AWS CLI**  
-Use the following [modify\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command:
+Use the following [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command:
 
 ```
 aws elb modify-load-balancer-attributes --load-balancer-name my-loadbalancer --load-balancer-attributes "{\"ConnectionDraining\":{\"Enabled\":false}}"

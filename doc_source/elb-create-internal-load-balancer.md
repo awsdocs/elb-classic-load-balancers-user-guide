@@ -76,7 +76,7 @@ By default, Elastic Load Balancing creates an Internet\-facing load balancer\. U
 
 **To create an internal load balancer**
 
-1. Use the [create\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer.html) command with the `--scheme` option set to `internal`, as follows:
+1. Use the [create\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer.html) command with the `--scheme` option set to `internal`, as follows:
 
    ```
    aws elb create-load-balancer --load-balancer-name my-internal-loadbalancer --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80
@@ -91,7 +91,7 @@ By default, Elastic Load Balancing creates an Internet\-facing load balancer\. U
    }
    ```
 
-1. Use the following [register\-instances\-with\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/register-instances-with-load-balancer.html) command to add instances:
+1. Use the following [register\-instances\-with\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/register-instances-with-load-balancer.html) command to add instances:
 
    ```
    aws elb register-instances-with-load-balancer --load-balancer-name my-internal-loadbalancer --instances i-4f8cf126 i-0bb7ca62
@@ -112,7 +112,7 @@ By default, Elastic Load Balancing creates an Internet\-facing load balancer\. U
    }
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify the internal load balancer: 
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify the internal load balancer: 
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-internal-loadbalancer

@@ -2,7 +2,7 @@
 
 If you have an HTTPS listener, you deployed an SSL server certificate on your load balancer when you created the listener\. Each certificate comes with a validity period\. You must ensure that you renew or replace the certificate before its validity period ends\.
 
-Certificates provided by AWS Certificate Manager and deployed on your load balancer can be renewed automatically\. ACM attempts to renew certificates before they expire\. For more information, see [Managed Renewal](http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) in the *AWS Certificate Manager User Guide*\. If you imported a certificate into ACM, you must monitor the expiration date of the certificate and renew it before it expires\. For more information, see [Importing Certificates](http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*\. After a certificate that is deployed on a load balancer is renewed, new requests use the renewed certificate\.
+Certificates provided by AWS Certificate Manager and deployed on your load balancer can be renewed automatically\. ACM attempts to renew certificates before they expire\. For more information, see [Managed Renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) in the *AWS Certificate Manager User Guide*\. If you imported a certificate into ACM, you must monitor the expiration date of the certificate and renew it before it expires\. For more information, see [Importing Certificates](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*\. After a certificate that is deployed on a load balancer is renewed, new requests use the renewed certificate\.
 
 To replace a certificate, you must first create a new certificate by following the same steps that you used when you created the current certificate\. Then, you can replace the certificate\. After a certificate that is deployed on a load balancer is replaced, new requests use the new certificate\.
 
@@ -37,13 +37,13 @@ You can replace the certificate deployed on your load balancer with a certificat
 
 **To replace an SSL certificate with a certificate provided by ACM**
 
-1. Use the following [request\-certificate](http://docs.aws.amazon.com/cli/latest/reference/acm/request-certificate.html) command to request a new certificate:
+1. Use the following [request\-certificate](https://docs.aws.amazon.com/cli/latest/reference/acm/request-certificate.html) command to request a new certificate:
 
    ```
    aws acm request-certificate --domain-name www.example.com
    ```
 
-1. Use the following [set\-load\-balancer\-listener\-ssl\-certificate](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-listener-ssl-certificate.html) command to set the certificate:
+1. Use the following [set\-load\-balancer\-listener\-ssl\-certificate](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-listener-ssl-certificate.html) command to set the certificate:
 
    ```
    aws elb set-load-balancer-listener-ssl-certificate --load-balancer-name my-load-balancer --load-balancer-port 443 --ssl-certificate-id arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012
@@ -51,15 +51,15 @@ You can replace the certificate deployed on your load balancer with a certificat
 
 **To replace an SSL certificate with a certificate uploaded to IAM**
 
-1. If you have an SSL certificate but have not uploaded it, see [Uploading a Server Certificate](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html#upload-server-certificate) in the *IAM User Guide*\.
+1. If you have an SSL certificate but have not uploaded it, see [Uploading a Server Certificate](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html#upload-server-certificate) in the *IAM User Guide*\.
 
-1. Use the following [get\-server\-certificate](http://docs.aws.amazon.com/cli/latest/reference/iam/get-server-certificate.html) command to get the ARN of the certificate:
+1. Use the following [get\-server\-certificate](https://docs.aws.amazon.com/cli/latest/reference/iam/get-server-certificate.html) command to get the ARN of the certificate:
 
    ```
    aws iam get-server-certificate --server-certificate-name my-new-certificate
    ```
 
-1. Use the following [set\-load\-balancer\-listener\-ssl\-certificate](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-listener-ssl-certificate.html) command to set the certificate:
+1. Use the following [set\-load\-balancer\-listener\-ssl\-certificate](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-listener-ssl-certificate.html) command to set the certificate:
 
    ```
    aws elb set-load-balancer-listener-ssl-certificate --load-balancer-name my-load-balancer --load-balancer-port 443 --ssl-certificate-id arn:aws:iam::123456789012:server-certificate/my-new-certificate

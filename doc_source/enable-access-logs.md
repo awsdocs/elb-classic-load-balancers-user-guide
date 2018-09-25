@@ -26,7 +26,7 @@ If you will use the console to enable access logs, you can skip this step and ha
 
 1. On the **Create a Bucket** page, do the following:
 
-   1. For **Bucket Name**, type a name for your bucket \(for example, `my-loadbalancer-logs`\)\. This name must be unique across all existing bucket names in Amazon S3\. In some regions, there might be additional restrictions on bucket names\. For more information, see [Bucket Restrictions and Limitations](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+   1. For **Bucket Name**, type a name for your bucket \(for example, `my-loadbalancer-logs`\)\. This name must be unique across all existing bucket names in Amazon S3\. In some regions, there might be additional restrictions on bucket names\. For more information, see [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
    1. For **Region**, select the region where you created your load balancer\.
 
@@ -134,7 +134,7 @@ Use the following example to capture and deliver logs to your S3 bucket every 60
 
    1. For **S3 location**, type the name of your S3 bucket, including the prefix \(for example, `my-loadbalancer-logs/my-app`\)\. You can specify the name of an existing bucket or a name for a new bucket\.
 
-   1. \(Optional\) If the bucket does not exist, choose **Create this location for me**\. You must specify a name that is unique across all existing bucket names in Amazon S3 and follows the DNS naming conventions\. For more information, see [Rules for Bucket Naming](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
+   1. \(Optional\) If the bucket does not exist, choose **Create this location for me**\. You must specify a name that is unique across all existing bucket names in Amazon S3 and follows the DNS naming conventions\. For more information, see [Rules for Bucket Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
 
    1. Choose **Save**\.
 
@@ -152,7 +152,7 @@ First, create a \.json file that enables Elastic Load Balancing to capture and d
 }
 ```
 
-To enable access logs, specify the \.json file in the [modify\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command as follows:
+To enable access logs, specify the \.json file in the [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command as follows:
 
 ```
 aws elb modify-load-balancer-attributes --load-balancer-name my-loadbalancer --load-balancer-attributes file://my-json-file.json

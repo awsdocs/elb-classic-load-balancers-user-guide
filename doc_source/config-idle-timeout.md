@@ -4,7 +4,7 @@ For each request that a client makes through a Classic Load Balancer, the load b
 
 By default, Elastic Load Balancing sets the idle timeout to 60 seconds for both connections\. Therefore, if the instance doesn't send some data at least every 60 seconds while the request is in flight, the load balancer can close the connection\. To ensure that lengthy operations such as file uploads have time to complete, send at least 1 byte of data before each idle timeout period elapses, and increase the length of the idle timeout period as needed\.
 
-If you use HTTP and HTTPS listeners, we recommend that you enable the HTTP keep\-alive option for your instances\. You can enable keep\-alive in your web server settings or in the kernel settings for your instances\. Keep\-alive, when enabled, enables the load balancer to reuse connections to your instance, which reduces the CPU utilization\. To ensure that the load balancer is responsible for closing the connections to your instance, make sure that the value you set for the HTTP keep\-alive time is greater than the idle timeout setting on your load balancer\.
+If you use HTTP and HTTPS listeners, we recommend that you enable the HTTP keep\-alive option for your instances\. You can enable keep\-alive in the web server settings for your instances\. Keep\-alive, when enabled, enables the load balancer to reuse connections to your instance, which reduces the CPU utilization\. To ensure that the load balancer is responsible for closing the connections to your instance, make sure that the value you set for the HTTP keep\-alive time is greater than the idle timeout setting on your load balancer\.
 
 Note that TCP keep\-alive probes do not prevent the load balancer from terminating the connection because they do not send data in the payload\.
 
@@ -32,7 +32,7 @@ Use the following procedure to set the idle timeout for your load balancer\.
 
 ## Configure the Idle Timeout Using the AWS CLI<a name="config-idle-timeout-awscli"></a>
 
-Use the following [modify\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command to set the idle timeout for your load balancer:
+Use the following [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command to set the idle timeout for your load balancer:
 
 ```
 aws elb modify-load-balancer-attributes --load-balancer-name my-loadbalancer --load-balancer-attributes "{\"ConnectionSettings\":{\"IdleTimeout\":30}}"

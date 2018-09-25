@@ -33,7 +33,7 @@ You can expand the availability of your application to an additional Availabilit
 1. Choose **Save**\.
 
 **To add an Availability Zone using the AWS CLI**  
-Use the following [enable\-availability\-zones\-for\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/enable-availability-zones-for-load-balancer.html) command to add an Availability Zone:
+Use the following [enable\-availability\-zones\-for\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/enable-availability-zones-for-load-balancer.html) command to add an Availability Zone:
 
 ```
 aws elb enable-availability-zones-for-load-balancer --load-balancer-name my-loadbalancer --availability-zones us-west-2b
@@ -69,7 +69,7 @@ You can remove an Availability Zone from your load balancer\. Note that after yo
 1. Choose **Save**\.
 
 **To remove an Availability Zone using the AWS CLI**  
-Use the following [disable\-availability\-zones\-for\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/disable-availability-zones-for-load-balancer.html) command:
+Use the following [disable\-availability\-zones\-for\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/disable-availability-zones-for-load-balancer.html) command:
 
 ```
 aws elb disable-availability-zones-for-load-balancer --load-balancer-name my-loadbalancer --availability-zones us-west-2a

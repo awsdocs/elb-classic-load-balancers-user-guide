@@ -6,7 +6,7 @@ You can use metrics to verify that your system is performing as expected\. For e
 
 Elastic Load Balancing reports metrics to CloudWatch only when requests are flowing through the load balancer\. If there are requests flowing through the load balancer, Elastic Load Balancing measures and sends its metrics in 60\-second intervals\. If there are no requests flowing through the load balancer or no data for a metric, the metric is not reported\.
 
-For more information about Amazon CloudWatch, see the *[Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)*\.
+For more information about Amazon CloudWatch, see the *[Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)*\.
 
 **Topics**
 + [Classic Load Balancer Metrics](#loadbalancing-metrics-clb)
@@ -35,7 +35,7 @@ The `AWS/ELB` namespace includes the following metrics\.
 
 <a name="estimated-metrics"></a>The following metrics enable you to estimate your costs if you migrate a Classic Load Balancer to an Application Load Balancer\. These metrics are intended for informational use only, not for use with CloudWatch alarms\. Note that if your Classic Load Balancer has multiple listeners, these metrics are aggregated across the listeners\.
 
-These estimates are based on a load balancer with one default rule and a certificate that is 2K in size\. If you use a certificate that is 4K or greater in size, we recommend that you estimate your costs as follows: create an Application Load Balancer based on your Classic Load Balancer using the migration tool and monitor the `ConsumedLCUs` metric for the Application Load Balancer\. For more information, see [Migrate from a Classic Load Balancer to an Application Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/migrate-to-application-load-balancer.html) in the *Elastic Load Balancing User Guide*\.
+These estimates are based on a load balancer with one default rule and a certificate that is 2K in size\. If you use a certificate that is 4K or greater in size, we recommend that you estimate your costs as follows: create an Application Load Balancer based on your Classic Load Balancer using the migration tool and monitor the `ConsumedLCUs` metric for the Application Load Balancer\. For more information, see [Migrate from a Classic Load Balancer to an Application Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/migrate-to-application-load-balancer.html) in the *Elastic Load Balancing User Guide*\.
 
 
 | Metric | Description | 
@@ -115,7 +115,7 @@ Alternatively, you can view metrics for your load balancer using the CloudWatch 
 
 ## Create CloudWatch Alarms for Your Load Balancer<a name="create_cw_alarms"></a>
 
-An alarm watches a single metric over the time period that you specify\. Depending on the value of the metric relative to a threshold that you define, the alarm can send one or more notifications using Amazon SNS, a service that enables applications, end users, and devices to instantly send and receive notifications\. For more information, see [Get Started with Amazon SNS](http://docs.aws.amazon.com/sns/latest/gsg/Welcome.html)\.
+An alarm watches a single metric over the time period that you specify\. Depending on the value of the metric relative to a threshold that you define, the alarm can send one or more notifications using Amazon SNS, a service that enables applications, end users, and devices to instantly send and receive notifications\. For more information, see [Get Started with Amazon SNS](https://docs.aws.amazon.com/sns/latest/gsg/Welcome.html)\.
 
 An alarm sends notifications to Amazon SNS when the specified metric reaches the defined range and remains in that range for a specified period of time\. An alarm has three possible states:
 + `OK`—The value of the metric is within the range you've specified\.
@@ -127,7 +127,7 @@ Whenever the state of an alarm changes, CloudWatch uses Amazon SNS to send a not
 Use the following procedure to create an alarm for your load balancer using the Amazon EC2 console\. The alarm sends notifications to an SNS topic whenever the load balancer's latency is above 120 seconds for 1 consecutive period of 5 minutes\. Note that a short period creates a more sensitive alarm, while a longer period can mitigate brief spikes in a metric\.
 
 **Note**  
-Alternately, you can create an alarm for your load balancer using the CloudWatch console\. For more information, see [Send Email Based on Load Balancer Alarm](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_AlarmAtThresholdELB.html) in the *Amazon CloudWatch User Guide*\.
+Alternately, you can create an alarm for your load balancer using the CloudWatch console\. For more information, see [Send Email Based on Load Balancer Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_AlarmAtThresholdELB.html) in the *Amazon CloudWatch User Guide*\.
 
 **To create an alarm for your load balancer**
 

@@ -54,7 +54,7 @@ Use the following procedure to create a new policy for your load balancer of typ
 
 **To enable proxy protocol for your load balancer**
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-policy\-types](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policy-types.html) command to list the policies supported by Elastic Load Balancing:
+1. \(Optional\) Use the following [describe\-load\-balancer\-policy\-types](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policy-types.html) command to list the policies supported by Elastic Load Balancing:
 
    ```
    aws elb describe-load-balancer-policy-types
@@ -83,19 +83,19 @@ Use the following procedure to create a new policy for your load balancer of typ
    }
    ```
 
-1. Use the following [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create a policy that enables Proxy Protocol:
+1. Use the following [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create a policy that enables Proxy Protocol:
 
    ```
    aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer --policy-name my-ProxyProtocol-policy --policy-type-name ProxyProtocolPolicyType --policy-attributes AttributeName=ProxyProtocol,AttributeValue=true
    ```
 
-1. Use the following [set\-load\-balancer\-policies\-for\-backend\-server](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command to enable the newly created policy on the specified port\. Note that this command replaces the current set of enabled policies\. Therefore, the `--policy-names` option must specify both the policy that you are adding to the list \(for example, `my-ProxyProtocol-policy`\) and any policies that are currently enabled \(for example, `my-existing-policy`\)\.
+1. Use the following [set\-load\-balancer\-policies\-for\-backend\-server](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command to enable the newly created policy on the specified port\. Note that this command replaces the current set of enabled policies\. Therefore, the `--policy-names` option must specify both the policy that you are adding to the list \(for example, `my-ProxyProtocol-policy`\) and any policies that are currently enabled \(for example, `my-existing-policy`\)\.
 
    ```
    aws elb set-load-balancer-policies-for-backend-server --load-balancer-name my-loadbalancer --instance-port 80 --policy-names my-ProxyProtocol-policy my-existing-policy
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that Proxy Protocol is enabled:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that Proxy Protocol is enabled:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer
@@ -128,7 +128,7 @@ You can disable the policies associated with your instance and then enable them 
 
 **To disable the Proxy Protocol policy**
 
-1. Use the following [set\-load\-balancer\-policies\-for\-backend\-server](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command to disable the Proxy Protocol policy by omitting it from the `--policy-names` option, but including the other policies that should remain enabled \(for example, `my-existing-policy`\)\.
+1. Use the following [set\-load\-balancer\-policies\-for\-backend\-server](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command to disable the Proxy Protocol policy by omitting it from the `--policy-names` option, but including the other policies that should remain enabled \(for example, `my-existing-policy`\)\.
 
    ```
    aws elb set-load-balancer-policies-for-backend-server --load-balancer-name my-loadbalancer --instance-port 80 --policy-names my-existing-policy
@@ -140,7 +140,7 @@ You can disable the policies associated with your instance and then enable them 
    aws elb set-load-balancer-policies-for-backend-server --load-balancer-name my-loadbalancer --instance-port 80 --policy-names "[]"
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is disabled:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is disabled:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer

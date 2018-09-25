@@ -14,7 +14,7 @@ The following are error messages returned by Elastic Load Balancing API, the pot
 
 **Cause 2**: If you are using the AWS CLI or API directly, you can receive this error if you provide an Amazon Resource Name \(ARN\) for a certificate that does not exist\.
 
-**Solution 2**: Use the Identity and Access Management \(IAM\) action [GetServerCertificate](http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetServerCertificate.html) to get the certificate ARN and verify that you provided the correct value for the ARN\.
+**Solution 2**: Use the Identity and Access Management \(IAM\) action [GetServerCertificate](https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetServerCertificate.html) to get the certificate ARN and verify that you provided the correct value for the ARN\.
 
 ## OutofService: A Transient Error Occurred<a name="ts-elb-error-message-service"></a>
 

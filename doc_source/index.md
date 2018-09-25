@@ -49,7 +49,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Access Logs for Your Classic Load Balancer](access-log-collection.md)
       + [Enable Access Logs for Your Classic Load Balancer](enable-access-logs.md)
       + [Disable Access Logs for Your Classic Load Balancer](disable-access-logs.md)
-   + [AWS CloudTrail Logging for Your Classic Load Balancer](ELB-API-Logs.md)
+   + [Logging API Calls for Your Classic Load Balancer Using AWS CloudTrail](ELB-API-Logs.md)
 + [Troubleshoot Your Classic Load Balancer](elb-troubleshooting.md)
    + [Troubleshoot a Classic Load Balancer: API Errors](ts-elb-error-api-response.md)
    + [Troubleshoot a Classic Load Balancer: HTTP Errors](ts-elb-error-message.md)

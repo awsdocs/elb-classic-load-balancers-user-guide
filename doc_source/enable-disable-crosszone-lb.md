@@ -1,6 +1,6 @@
 # Configure Cross\-Zone Load Balancing for Your Classic Load Balancer<a name="enable-disable-crosszone-lb"></a>
 
-With *cross\-zone load balancing*, each load balancer node for your Classic Load Balancer distributes requests evenly across the registered instances in all enabled Availability Zones\. If cross\-zone load balancing is disabled, each load balancer node distributes requests evenly across the registered instances in its Availability Zone only\. For more information, see [Cross\-Zone Load Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#cross-zone-load-balancing) in the *Elastic Load Balancing User Guide*\.
+With *cross\-zone load balancing*, each load balancer node for your Classic Load Balancer distributes requests evenly across the registered instances in all enabled Availability Zones\. If cross\-zone load balancing is disabled, each load balancer node distributes requests evenly across the registered instances in its Availability Zone only\. For more information, see [Cross\-Zone Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#cross-zone-load-balancing) in the *Elastic Load Balancing User Guide*\.
 
 Cross\-zone load balancing reduces the need to maintain equivalent numbers of instances in each enabled Availability Zone, and improves your application's ability to handle the loss of one or more instances\. However, we still recommend that you maintain approximately equivalent numbers of instances in each enabled Availability Zone for higher fault tolerance\.
 
@@ -32,7 +32,7 @@ You can enable cross\-zone load balancing for your Classic Load Balancer at any 
 
 **To enable cross\-zone load balancing using the AWS CLI**
 
-1. Use the following [modify\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command to set the `CrossZoneLoadBalancing` attribute of your load balancer to `true`:
+1. Use the following [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command to set the `CrossZoneLoadBalancing` attribute of your load balancer to `true`:
 
    ```
    aws elb modify-load-balancer-attributes --load-balancer-name my-loadbalancer --load-balancer-attributes "{\"CrossZoneLoadBalancing\":{\"Enabled\":true}}"
@@ -51,7 +51,7 @@ You can enable cross\-zone load balancing for your Classic Load Balancer at any 
     }
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-attributes.html) command to verify that cross\-zone load balancing is enabled for your load balancer:
+1. \(Optional\) Use the following [describe\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-attributes.html) command to verify that cross\-zone load balancing is enabled for your load balancer:
 
    ```
    aws elb describe-load-balancer-attributes --load-balancer-name my-loadbalancer
@@ -101,7 +101,7 @@ To disable cross\-zone load balancing, set the `CrossZoneLoadBalancing` attribut
 
 **To disable cross\-zone load balancing using the AWS CLI**
 
-1. Use the following [modify\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command:
+1. Use the following [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command:
 
    ```
    aws elb modify-load-balancer-attributes --load-balancer-name my-loadbalancer --load-balancer-attributes "{\"CrossZoneLoadBalancing\":{\"Enabled\":false}}"
@@ -120,7 +120,7 @@ To disable cross\-zone load balancing, set the `CrossZoneLoadBalancing` attribut
     }
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-attributes](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-attributes.html) command to verify that cross\-zone load balancing is disabled for your load balancer:
+1. \(Optional\) Use the following [describe\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-attributes.html) command to verify that cross\-zone load balancing is disabled for your load balancer:
 
    ```
    aws elb describe-load-balancer-attributes --load-balancer-name my-loadbalancer

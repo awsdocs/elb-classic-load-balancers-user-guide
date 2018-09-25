@@ -58,7 +58,7 @@ The following is an example log file name:
 s3://my-loadbalancer-logs/my-app/AWSLogs/123456789012/elasticloadbalancing/us-west-2/2014/02/15/123456789012_elasticloadbalancing_us-west-2_my-loadbalancer_20140215T2340Z_172.160.001.192_20sg8hgm.log
 ```
 
-You can store your log files in your bucket for as long as you want, but you can also define Amazon S3 lifecycle rules to archive or delete log files automatically\. For more information, see [Object Lifecycle Management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) in the *Amazon Simple Storage Service Developer Guide*\.
+You can store your log files in your bucket for as long as you want, but you can also define Amazon S3 lifecycle rules to archive or delete log files automatically\. For more information, see [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 ## Access Log Entries<a name="access-log-entry-format"></a>
 
@@ -129,7 +129,7 @@ The following is an example log entry for an SSL listener \(port 8443 to port 80
 ## Processing Access Logs<a name="log-processing-tools"></a>
 
 If there is a lot of demand on your website, your load balancer can generate log files with gigabytes of data\. You might not be able to process such a large amount of data using line\-by\-line processing\. Therefore, you might have to use analytical tools that provide parallel processing solutions\. For example, you can use the following analytical tools to analyze and process access logs:
-+ Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL\. For more information, see [Querying Classic Load Balancer Logs](http://docs.aws.amazon.com/athena/latest/ug/elasticloadbalancer-classic-logs.html) in the *Amazon Athena User Guide*\.
++ Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL\. For more information, see [Querying Classic Load Balancer Logs](https://docs.aws.amazon.com/athena/latest/ug/elasticloadbalancer-classic-logs.html) in the *Amazon Athena User Guide*\.
 + [Loggly](https://www.loggly.com/docs/s3-ingestion-auto/)
 + [Splunk](http://apps.splunk.com/app/1731/)
 + [Sumo Logic](http://sumologic.com/applications/aws-elastic-load-balancing/)

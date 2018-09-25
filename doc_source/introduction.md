@@ -1,6 +1,6 @@
 # What Is a Classic Load Balancer?<a name="introduction"></a>
 
-Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. This guide discusses Classic Load Balancers\. For more information about Application Load Balancers, see the [User Guide for Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/)\. For more information about Network Load Balancers, see the [User Guide for Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/)\.
+Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. This guide discusses Classic Load Balancers\. For more information about Application Load Balancers, see the [User Guide for Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/)\. For more information about Network Load Balancers, see the [User Guide for Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/)\.
 
 ## Classic Load Balancer Overview<a name="classic-load-balancer-overview"></a>
 
@@ -18,7 +18,7 @@ To ensure that your registered instances are able to handle the request load in 
 
 By default, the load balancer distributes traffic evenly across the Availability Zones that you enable for your load balancer\. To distribute traffic evenly across all registered instances in all enabled Availability Zones, enable *cross\-zone load balancing* on your load balancer\. However, we still recommend that you maintain approximately equivalent numbers of instances in each Availability Zone for better fault tolerance\.
 
-For more information, see [How Elastic Load Balancing Works](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html) in the *Elastic Load Balancing User Guide*\.
+For more information, see [How Elastic Load Balancing Works](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html) in the *Elastic Load Balancing User Guide*\.
 
 ## Benefits<a name="classic-load-balancer-benefits"></a>
 

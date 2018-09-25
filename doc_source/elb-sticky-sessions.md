@@ -45,13 +45,13 @@ If a client switches to a listener with a different backend port, stickiness is 
 
 **To enable duration\-based sticky sessions for a load balancer using the AWS CLI**
 
-1. Use the following [create\-lb\-cookie\-stickiness\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-lb-cookie-stickiness-policy.html) command to create a load balancer\-generated cookie stickiness policy with a cookie expiration period of 60 seconds:
+1. Use the following [create\-lb\-cookie\-stickiness\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-lb-cookie-stickiness-policy.html) command to create a load balancer\-generated cookie stickiness policy with a cookie expiration period of 60 seconds:
 
    ```
    aws elb create-lb-cookie-stickiness-policy --load-balancer-name my-loadbalancer --policy-name my-duration-cookie-policy --cookie-expiration-period 60
    ```
 
-1. Use the following [set\-load\-balancer\-policies\-of\-listener](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable session stickiness for the specified load balancer:
+1. Use the following [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable session stickiness for the specified load balancer:
 
    ```
    aws elb set-load-balancer-policies-of-listener --load-balancer-name my-loadbalancer --load-balancer-port 443 --policy-names my-duration-cookie-policy
@@ -59,7 +59,7 @@ If a client switches to a listener with a different backend port, stickiness is 
 **Note**  
 The `set-load-balancer-policies-of-listener` command replaces the current set of policies associated with the specified load balancer port\. Every time you use this command, specify the `--policy-names` option to list all policies to enable\.
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is enabled:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is enabled:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer
@@ -132,13 +132,13 @@ If an instance fails or becomes unhealthy, the load balancer stops routing reque
 
 **To enable application\-controlled session stickiness using the AWS CLI**
 
-1. Use the following [create\-app\-cookie\-stickiness\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-app-cookie-stickiness-policy.html) command to create an application\-generated cookie stickiness policy:
+1. Use the following [create\-app\-cookie\-stickiness\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-app-cookie-stickiness-policy.html) command to create an application\-generated cookie stickiness policy:
 
    ```
    aws elb create-app-cookie-stickiness-policy --load-balancer-name my-loadbalancer --policy-name my-app-cookie-policy --cookie-name my-app-cookie
    ```
 
-1. Use the following [set\-load\-balancer\-policies\-of\-listener](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable session stickiness for a load balancer:
+1. Use the following [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable session stickiness for a load balancer:
 
    ```
    aws elb set-load-balancer-policies-of-listener --load-balancer-name my-loadbalancer --load-balancer-port 443 --policy-names my-app-cookie-policy
@@ -146,7 +146,7 @@ If an instance fails or becomes unhealthy, the load balancer stops routing reque
 **Note**  
 The `set-load-balancer-policies-of-listener` command replaces the current set of policies associated with the specified load balancer port\. Every time you use this command, specify the `--policy-names` option to list all policies to enable\.
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the sticky policy is enabled:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the sticky policy is enabled:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer

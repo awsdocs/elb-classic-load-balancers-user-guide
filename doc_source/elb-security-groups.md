@@ -1,6 +1,6 @@
 # Configure Security Groups for Your Classic Load Balancer<a name="elb-security-groups"></a>
 
-A *security group* acts as a firewall that controls the traffic allowed to and from one or more instances\. When you launch an EC2 instance, you can associate one or more security groups with the instance\. For each security group, you add one or more rules to allow traffic\. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances associated with the security group\. For more information, see [Amazon EC2 Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+A *security group* acts as a firewall that controls the traffic allowed to and from one or more instances\. When you launch an EC2 instance, you can associate one or more security groups with the instance\. For each security group, you add one or more rules to allow traffic\. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances associated with the security group\. For more information, see [Amazon EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 There is a significant difference between the way Classic load balancers support security groups in EC2\-Classic and in a VPC\. In EC2\-Classic, Elastic Load Balancing provides a special source security group that you can use to ensure that instances receive traffic only from your load balancer\. You can't modify this source security group\. In a VPC, you provide the security group for your load balancer, which enables you to choose the ports and protocols to allow\. For example, you can open Internet Control Message Protocol \(ICMP\) connections for the load balancer to respond to ping requests \(however, ping requests are not forwarded to any instances\)\.
 
@@ -57,7 +57,7 @@ The security groups for your load balancers must allow them to communicate with 
 | *instance security group* | TCP | *instance listener* | Allow outbound traffic to instances on the instance listener port | 
 | *instance security group* | TCP | *health check* | Allow outbound traffic to instances on the health check port | 
 
-We also recommend that you allow inbound ICMP traffic to support Path MTU Discovery\. For more information, see [Path MTU Discovery](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
+We also recommend that you allow inbound ICMP traffic to support Path MTU Discovery\. For more information, see [Path MTU Discovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ### Manage Security Groups Using the Console<a name="assign-sg-console"></a>
 
@@ -79,7 +79,7 @@ Use the following procedure to change the security groups associated with your l
 
 ### Manage Security Groups Using the AWS CLI<a name="assign-sg-cli"></a>
 
-Use the following [apply\-security\-groups\-to\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/apply-security-groups-to-load-balancer.html) command to associate a security group with a load balancer in a VPC\. The specified security groups override the previously associated security groups\.
+Use the following [apply\-security\-groups\-to\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/apply-security-groups-to-load-balancer.html) command to associate a security group with a load balancer in a VPC\. The specified security groups override the previously associated security groups\.
 
 ```
 aws elb apply-security-groups-to-load-balancer --load-balancer-name my-loadbalancer --security-groups sg-53fae93f
@@ -109,7 +109,7 @@ The security groups for your instances must allow them to communicate with the l
 | *load balancer security group* | TCP | *instance listener* | Allow traffic from the load balancer on the instance listener port | 
 | *load balancer security group* | TCP | *health check* | Allow traffic from the load balancer on the health check port | 
 
-We also recommend that you allow inbound ICMP traffic to support Path MTU Discovery\. For more information, see [Path MTU Discovery](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
+We also recommend that you allow inbound ICMP traffic to support Path MTU Discovery\. For more information, see [Path MTU Discovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Network ACLs for Load Balancers in a VPC<a name="elb-vpc-nacl"></a>
 
@@ -191,7 +191,7 @@ Use the following procedure to lock down traffic between your load balancer and 
 
 **To lock down traffic between your load balancer and instances using the AWS CLI**
 
-1. Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to display the name and owner of the source security group for your load balancer:
+1. Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to display the name and owner of the source security group for your load balancer:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer
@@ -215,7 +215,7 @@ Use the following procedure to lock down traffic between your load balancer and 
 
 1. Add a rule to the security group for your instances as follows:
 
-   1. If you do not know the name of the security group for your instances, use the following [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command to get the name and ID of the security group for the specified instance:
+   1. If you do not know the name of the security group for your instances, use the following [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command to get the name and ID of the security group for the specified instance:
 
       ```
       aws ec2 describe-instances --instance-ids i-315b7e51
@@ -223,13 +223,13 @@ Use the following procedure to lock down traffic between your load balancer and 
 
       The response includes the name and ID of the security group in the `SecurityGroups` field\. Make a note of the name of the security group; you'll use it in the next step\.
 
-   1. Use the following [authorize\-security\-group\-ingress](http://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html) command to add a rule to the security group for your instance to allow traffic from your load balancer:
+   1. Use the following [authorize\-security\-group\-ingress](https://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html) command to add a rule to the security group for your instance to allow traffic from your load balancer:
 
       ```
       aws ec2 authorize-security-group-ingress --group-name my-security-group --source-security-group-name amazon-elb-sg  --source-security-group-owner-id amazon-elb
       ```
 
-1. \(Optional\) Use the following [describe\-security\-groups](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html) command to verify that the security group has the new rule:
+1. \(Optional\) Use the following [describe\-security\-groups](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html) command to verify that the security group has the new rule:
 
    ```
    aws ec2 describe-security-groups --group-names my-security-group
@@ -286,7 +286,7 @@ Use the following procedure to lock down traffic between your load balancer and 
    }
    ```
 
-1. \(Optional\) If your security group has rules that are less restrictive than the rule you just added, use the [revoke\-security\-group\-ingress](http://docs.aws.amazon.com/cli/latest/reference/ec2/revoke-security-group-ingress.html) command to remove the less restrictive rules\. For example, the following command removes a rule that allows TCP traffic from everyone \(CIDR range `0.0.0.0/0`\):
+1. \(Optional\) If your security group has rules that are less restrictive than the rule you just added, use the [revoke\-security\-group\-ingress](https://docs.aws.amazon.com/cli/latest/reference/ec2/revoke-security-group-ingress.html) command to remove the less restrictive rules\. For example, the following command removes a rule that allows TCP traffic from everyone \(CIDR range `0.0.0.0/0`\):
 
    ```
    aws ec2 revoke-security-group-ingress --group-name my-security-group --protocol tcp --port 80 --cidr 0.0.0.0/0

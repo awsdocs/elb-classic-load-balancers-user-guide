@@ -1,6 +1,6 @@
 # Predefined SSL Security Policies for Classic Load Balancers<a name="elb-security-policy-table"></a>
 
-We recommend that you always use the default predefined security policy, `ELBSecurityPolicy-2016-08`\. For more information about updating the SSL negotiation configuration for your HTTPS/SSL listener, see [Update the SSL Negotiation Configuration of Your Classic Load Balancer](ssl-config-update.md)\.
+You can choose one of the predefined security policies for your HTTPS/SSL listeners\. We recommend the default predefined security policy, `ELBSecurityPolicy-2016-08`, for general use\. You can use one of the `ELBSecurityPolicy-TLS` policies to meet compliance and security standards that require disabling certain TLS protocol versions\. For more information about updating the SSL negotiation configuration, see [Update the SSL Negotiation Configuration of Your Classic Load Balancer](ssl-config-update.md)\.
 
 The RSA\- and DSA\-based ciphers are specific to the signing algorithm used to create SSL certificate\. Make sure to create an SSL certificate using the signing algorithm that is based on the ciphers that are enabled for your security policy\.
 
@@ -40,7 +40,7 @@ The following table describes the most recent predefined security policies, incl
 
 **Predefined Security Policies**
 
-The following are the predefined security policies for Classic Load Balancers\. To describe a predefined policy, use the [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command\.
+The following are the predefined security policies for Classic Load Balancers\. To describe a predefined policy, use the [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command\.
 + ELBSecurityPolicy\-2016\-08
 + ELBSecurityPolicy\-TLS\-1\-2\-2017\-01
 + ELBSecurityPolicy\-TLS\-1\-1\-2017\-01

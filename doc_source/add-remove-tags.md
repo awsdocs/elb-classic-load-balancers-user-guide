@@ -40,7 +40,7 @@ You can add tags to your load balancer at any time\.
 1. After you have finished adding tags, choose **Save**\.
 
 **To add a tag using the AWS CLI**  
-Use the following [add\-tags](http://docs.aws.amazon.com/cli/latest/reference/elb/add-tags.html) command to add the specified tag:
+Use the following [add\-tags](https://docs.aws.amazon.com/cli/latest/reference/elb/add-tags.html) command to add the specified tag:
 
 ```
 aws elb add-tags --load-balancer-name my-loadbalancer --tag "Key=project,Value=lima"
@@ -66,7 +66,7 @@ You can remove tags from your load balancer whenever you are finished with them\
 1. After you are have finished removing tags, choose **Save**\. 
 
 **To remove a tag using the AWS CLI**  
-Use the following [remove\-tags](http://docs.aws.amazon.com/cli/latest/reference/elb/remove-tags.html) command to remove the tag with the specified key:
+Use the following [remove\-tags](https://docs.aws.amazon.com/cli/latest/reference/elb/remove-tags.html) command to remove the tag with the specified key:
 
 ```
 aws elb remove-tags --load-balancer-name my-loadbalancer --tag project

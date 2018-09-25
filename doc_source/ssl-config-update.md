@@ -47,7 +47,7 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
 
 **To use a predefined SSL security policy**
 
-1. Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the predefined security policies provided by Elastic Load Balancing:
+1. Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the predefined security policies provided by Elastic Load Balancing:
 
    ```
    aws elb describe-load-balancer-policies --query "PolicyDescriptions[?PolicyTypeName==`SSLNegotiationPolicyType`].{PolicyName:PolicyName}" --output table
@@ -83,7 +83,7 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
 
    For information about the configuration for the predefined security policies, see [Predefined SSL Security Policies](elb-security-policy-table.md)\.
 
-1. Use the [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using one of the predefined security policies that you described in the previous step\. For example, the following command uses the default predefined security policy:
+1. Use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using one of the predefined security policies that you described in the previous step\. For example, the following command uses the default predefined security policy:
 
    ```
    aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer
@@ -91,9 +91,9 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
    --policy-attributes AttributeName=Reference-Security-Policy,AttributeValue=ELBSecurityPolicy-2016-08
    ```
 
-   If you exceed the limit on the number of policies for the load balancer, use the [delete\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/delete-load-balancer-policy.html) command to delete any unused policies\.
+   If you exceed the limit on the number of policies for the load balancer, use the [delete\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/delete-load-balancer-policy.html) command to delete any unused policies\.
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
+1. \(Optional\) Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
 
    ```
    aws elb describe-load-balancer-policies --load-balancer-name my-loadbalancer --policy-name my-SSLNegotiation-policy
@@ -101,7 +101,7 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
 
    The response includes the description of the policy\.
 
-1. Use the following [set\-load\-balancer\-policies\-of\-listener](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
+1. Use the following [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
 
    ```
    aws elb set-load-balancer-policies-of-listener --load-balancer-name my-loadbalancer --load-balancer-port 443 --policy-names my-SSLNegotiation-policy
@@ -109,7 +109,7 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
 **Note**  
 The `set-load-balancer-policies-of-listener` command replaces the current set of policies for the specified load balancer port with the the specified set of policies\. The `--policy-names` list must include all policies to be enabled\. If you omit a policy that is currently enabled, it is disabled\.
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the new policy is enabled for the load balancer port:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the new policy is enabled for the load balancer port:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer
@@ -138,7 +138,7 @@ When you create a custom security policy, you must enable at least one protocol 
 
 **To use a custom SSL security policy**
 
-1. Use the [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using a custom security policy\. For example:
+1. Use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using a custom security policy\. For example:
 
    ```
    aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer 
@@ -149,9 +149,9 @@ When you create a custom security policy, you must enable at least one protocol 
     AttributeName=Server-Defined-Cipher-Order,AttributeValue=true
    ```
 
-   If you exceed the limit on the number of policies for the load balancer, use the [delete\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/delete-load-balancer-policy.html) command to delete any unused policies\.
+   If you exceed the limit on the number of policies for the load balancer, use the [delete\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/delete-load-balancer-policy.html) command to delete any unused policies\.
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
+1. \(Optional\) Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
 
    ```
    aws elb describe-load-balancer-policies --load-balancer-name my-loadbalancer --policy-name my-SSLNegotiation-policy
@@ -159,7 +159,7 @@ When you create a custom security policy, you must enable at least one protocol 
 
    The response includes the description of the policy\.
 
-1. Use the following [set\-load\-balancer\-policies\-of\-listener](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
+1. Use the following [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
 
    ```
    aws elb set-load-balancer-policies-of-listener --load-balancer-name my-loadbalancer --load-balancer-port 443 --policy-names my-SSLNegotiation-policy
@@ -167,7 +167,7 @@ When you create a custom security policy, you must enable at least one protocol 
 **Note**  
 The `set-load-balancer-policies-of-listener` command replaces the current set of policies for the specified load balancer port with the the specified set of policies\. The `--policy-names` list must include all policies to be enabled\. If you omit a policy that is currently enabled, it is disabled\.
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the new policy is enabled for the load balancer port:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the new policy is enabled for the load balancer port:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer

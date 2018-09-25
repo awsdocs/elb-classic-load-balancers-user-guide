@@ -42,7 +42,7 @@ When you are ready, register your instance with your load balancer\. If the inst
 1. Choose **Save**\.
 
 **To register your instances using the AWS CLI**  
-Use the following [register\-instances\-with\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/register-instances-with-load-balancer.html) command:
+Use the following [register\-instances\-with\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/register-instances-with-load-balancer.html) command:
 
 ```
 aws elb register-instances-with-load-balancer --load-balancer-name my-loadbalancer --instances i-4e05f721
@@ -67,7 +67,7 @@ The following is an example response that lists the instances registered with th
 
 You can deregister an instance from your load balancer if you no longer need the capacity or if you need to service the instance\.
 
-If your load balancer is attached to an Auto Scaling group, detaching the instance from the group also deregisters it from the load balancer\. For more information, see [Detach EC2 Instances From Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
+If your load balancer is attached to an Auto Scaling group, detaching the instance from the group also deregisters it from the load balancer\. For more information, see [Detach EC2 Instances From Your Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 **To deregister your instances using the console**
 
@@ -84,7 +84,7 @@ If your load balancer is attached to an Auto Scaling group, detaching the instan
 1. When prompted for confirmation, choose **Yes, Remove**\.
 
 **To deregister your instances using the AWS CLI**  
-Use the following [deregister\-instances\-from\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/deregister-instances-from-load-balancer.html) command:
+Use the following [deregister\-instances\-from\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/deregister-instances-from-load-balancer.html) command:
 
 ```
 aws elb deregister-instances-from-load-balancer --load-balancer-name my-loadbalancer --instances i-4e05f721

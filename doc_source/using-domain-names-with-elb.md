@@ -12,12 +12,12 @@ If you'd prefer to use a friendly DNS name for your load balancer, such as `www.
 ## Associating Your Custom Domain Name with Your Load Balancer Name<a name="dns-associate-custom-elb"></a>
 
 First, if you haven't already done so, register your domain name\. The Internet Corporation for Assigned Names and Numbers \(ICANN\) manages domain names on the Internet\. You register a domain name using a *domain name registrar*, an ICANN\-accredited organization that manages the registry of domain names\. The website for your registrar will provide detailed instructions and pricing information for registering your domain name\. For more information, see the following resources:
-+ To use Amazon Route 53 to register a domain name, see [Registering Domain Names Using Route 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar.html) in the *Amazon Route 53 Developer Guide*\.
++ To use Amazon Route 53 to register a domain name, see [Registering Domain Names Using Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar.html) in the *Amazon Route 53 Developer Guide*\.
 + For a list of accredited registrars, see the [Accredited Registrar Directory](http://www.internic.net/regist.html)\.
 
 Next, use your DNS service, such as your domain registrar, to create a CNAME record to route queries to your load balancer\. For more information, see the documentation for your DNS service\.
 
-Alternatively, you can use Route 53 as your DNS service\. You create a *hosted zone*, which contains information about how to route traffic on the Internet for your domain, and an *alias resource record set*, which routes queries for your domain name to your load balancer\. Route 53 doesn't charge for DNS queries for alias record sets, and you can use alias record sets to route DNS queries to your load balancer for the zone apex of your domain \(for example, `example.com`\)\. For information about transferring DNS services for existing domains to Route 53, see [Configuring Route 53 as Your DNS Service](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/creating-migrating.html) in the *Amazon Route 53 Developer Guide*\.
+Alternatively, you can use Route 53 as your DNS service\. You create a *hosted zone*, which contains information about how to route traffic on the Internet for your domain, and an *alias resource record set*, which routes queries for your domain name to your load balancer\. Route 53 doesn't charge for DNS queries for alias record sets, and you can use alias record sets to route DNS queries to your load balancer for the zone apex of your domain \(for example, `example.com`\)\. For information about transferring DNS services for existing domains to Route 53, see [Configuring Route 53 as Your DNS Service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/creating-migrating.html) in the *Amazon Route 53 Developer Guide*\.
 
 **To create a hosted zone and an alias record set for your domain using Route 53**
 
@@ -102,8 +102,8 @@ For example, suppose that you have a web application for `www.example.com`, and 
    + For **Failover Record Type**, select **Secondary**\.
    + For **Evaluate Target Health**, select **Yes** to evaluate the health of the secondary load balancer\. If the secondary load balancer is unhealthy, Route 53 routes traffic to the primary load balancer\. If you select **No**, Route 53 assumes that the secondary load balancer is healthy and routes traffic to it whenever the primary load balancer is unhealthy\.
 
-For more information, see [Configuring Route 53 Active\-Active and Active\-Passive Failover](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html) in the *Amazon Route 53 Developer Guide*\.
+For more information, see [Configuring Route 53 Active\-Active and Active\-Passive Failover](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html) in the *Amazon Route 53 Developer Guide*\.
 
 ## Disassociating Your Custom Domain Name from Your Load Balancer<a name="dns-disassociate-custom-elb"></a>
 
-You can disassociate your custom domain name from a load balancer instance by first deleting the resource record sets in your hosted zone and then deleting the hosted zone\. For more information, see [Creating, Changing, and Deleting Resource Record Sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/RRSchanges.html) and [Deleting a Hosted Zone](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html) in the *Amazon Route 53 Developer Guide*\.
+You can disassociate your custom domain name from a load balancer instance by first deleting the resource record sets in your hosted zone and then deleting the hosted zone\. For more information, see [Creating, Changing, and Deleting Resource Record Sets](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/RRSchanges.html) and [Deleting a Hosted Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html) in the *Amazon Route 53 Developer Guide*\.

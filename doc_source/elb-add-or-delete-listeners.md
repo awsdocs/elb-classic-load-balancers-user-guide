@@ -74,7 +74,7 @@ You can add an HTTPS listener to an existing load balancer\.
    arn:aws:iam::123456789012:server-certificate/my-server-certificate
    ```
 
-1. Use the following [create\-load\-balancer\-listeners](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-listeners.html) command to add a listener to your load balancer that accepts HTTPS requests on port 443 and sends the requests to the instances on port 80 using HTTP:
+1. Use the following [create\-load\-balancer\-listeners](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-listeners.html) command to add a listener to your load balancer that accepts HTTPS requests on port 443 and sends the requests to the instances on port 80 using HTTP:
 
    ```
    aws elb create-load-balancer-listeners --load-balancer-name my-load-balancer --listeners Protocol=HTTPS,LoadBalancerPort=443,InstanceProtocol=HTTP,InstancePort=80,SSLCertificateId=ARN
@@ -86,7 +86,7 @@ You can add an HTTPS listener to an existing load balancer\.
    aws elb create-load-balancer-listeners --load-balancer-name my-load-balancer --listeners Protocol=HTTPS,LoadBalancerPort=443,InstanceProtocol=HTTPS,InstancePort=443,SSLCertificateId=ARN
    ```
 
-1. \(Optional\) You can use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to view the updated details of your load balancer:
+1. \(Optional\) You can use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to view the updated details of your load balancer:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-load-balancer
@@ -128,6 +128,6 @@ You can add an HTTPS listener to an existing load balancer\.
    }
    ```
 
-1. \(Optional\) Your HTTPS listener was created using the default security policy\. If you want to specify a different predefined security policy or a custom security policy, use the [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) and [set\-load\-balancer\-policies\-of\-listener](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) commands\. For more information, see [Update the SSL Negotiation Configuration Using the AWS CLI](ssl-config-update.md#ssl-config-update-cli)\.
+1. \(Optional\) Your HTTPS listener was created using the default security policy\. If you want to specify a different predefined security policy or a custom security policy, use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) and [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) commands\. For more information, see [Update the SSL Negotiation Configuration Using the AWS CLI](ssl-config-update.md#ssl-config-update-cli)\.
 
-1. \(Optional\) To set up back\-end instance authentication, use the [set\-load\-balancer\-policies\-for\-backend\-server](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command\. For more information, see [Configure Back\-end Instance Authentication](elb-create-https-ssl-load-balancer.md#configure_backendauth_clt)\.
+1. \(Optional\) To set up back\-end instance authentication, use the [set\-load\-balancer\-policies\-for\-backend\-server](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command\. For more information, see [Configure Back\-end Instance Authentication](elb-create-https-ssl-load-balancer.md#configure_backendauth_clt)\.

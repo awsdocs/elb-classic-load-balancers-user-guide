@@ -55,9 +55,9 @@ If you are using an HTTP/HTTPS connection and getting a non\-200 response, see [
 **Cause 2**: The instance is under significant load and is taking longer than your configured response timeout period to respond\.
 
 **Solution 2**:
-+ Check the monitoring graph for over\-utilization of CPU\. For information, see [Get Statistics for a Specific EC2 Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/US_SingleMetricPerInstance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
++ Check the monitoring graph for over\-utilization of CPU\. For information, see [Get Statistics for a Specific EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/US_SingleMetricPerInstance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 + Check the utilization of other application resources, such as memory or limits, by connecting to your EC2 instances\.
-+ If necessary, add more instances or enable Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](http://docs.aws.amazon.com/autoscaling/latest/userguide/)\.
++ If necessary, add more instances or enable Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/latest/userguide/)\.
 
 **Cause 3**: If you are using an HTTP or an HTTPS connection and the health check is being performed on a target page specified in the ping path field \(for example, `HTTP:80/index.html`\), the target page might be taking longer to respond than your configured timeout\.
 
@@ -115,4 +115,4 @@ netstat –ant
 
 An instance might fail the ELB health check because an application running on the instance has issues that cause the load balancer to consider the instance out of service\. This instance might pass the Auto Scaling health check; it would not be replaced by the Auto Scaling policy because it is considered healthy based on the EC2 status check\.
 
-**Solution**: Use the ELB health check for your Auto Scaling group\. When you use the ELB health check, Auto Scaling determines the health status of your instances by checking the results of both the instance status check and the ELB health check\. For more information, see [Adding Health Checks to your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-elb-healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.
+**Solution**: Use the ELB health check for your Auto Scaling group\. When you use the ELB health check, Auto Scaling determines the health status of your instances by checking the results of both the instance status check and the ELB health check\. For more information, see [Adding Health Checks to your Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-elb-healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.

@@ -46,7 +46,7 @@ You can expand the availability of your load balancer to an additional subnet\. 
 1. Choose **Save**\.
 
 **To add a subnet to your load balancer using the CLI**  
-Use the following [attach\-load\-balancer\-to\-subnets](http://docs.aws.amazon.com/cli/latest/reference/elb/attach-load-balancer-to-subnets.html) command to add two subnets to your load balancer:
+Use the following [attach\-load\-balancer\-to\-subnets](https://docs.aws.amazon.com/cli/latest/reference/elb/attach-load-balancer-to-subnets.html) command to add two subnets to your load balancer:
 
 ```
 aws elb attach-load-balancer-to-subnets --load-balancer-name my-load-balancer --subnets subnet-dea770a9 subnet-fb14f6a2
@@ -85,7 +85,7 @@ You can remove a subnet from your load balancer\. Note that after you remove a s
 1. Choose **Save**\.
 
 **To remove a subnet using the AWS CLI**  
-Use the following [detach\-load\-balancer\-from\-subnets](http://docs.aws.amazon.com/cli/latest/reference/elb/detach-load-balancer-from-subnets.html) command to remove the specified subnets from the specified load balancer:
+Use the following [detach\-load\-balancer\-from\-subnets](https://docs.aws.amazon.com/cli/latest/reference/elb/detach-load-balancer-from-subnets.html) command to remove the specified subnets from the specified load balancer:
 
 ```
 aws elb detach-load-balancer-from-subnets --load-balancer-name my-loadbalancer --subnets subnet-450f5127

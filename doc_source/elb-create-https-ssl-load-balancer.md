@@ -203,7 +203,7 @@ As soon as your load balancer becomes available, you are billed for each hour or
 
 1. When prompted for confirmation, choose **Yes, Delete**\.
 
-1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and Start Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and Start Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Create an HTTPS/SSL Load Balancer Using the AWS CLI<a name="create-https-lb-clt"></a>
 
@@ -242,7 +242,7 @@ Because the second listener uses HTTPS for the front\-end connection, you must d
    arn:aws:iam::123456789012:server-certificate/my-server-certificate
    ```
 
-1. Use the following [create\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer.html) command to configure the load balancer with the two listeners:
+1. Use the following [create\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer.html) command to configure the load balancer with the two listeners:
 
    ```
    aws elb create-load-balancer --load-balancer-name my-load-balancer --listeners "Protocol=http,LoadBalancerPort=80,InstanceProtocol=http,InstancePort=80" "Protocol=https,LoadBalancerPort=443,InstanceProtocol=http,InstancePort=80,SSLCertificateId="ARN" --availability-zones us-west-2a
@@ -256,7 +256,7 @@ Because the second listener uses HTTPS for the front\-end connection, you must d
    }
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to view the details of your load balancer:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to view the details of your load balancer:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-load-balancer
@@ -267,7 +267,7 @@ Because the second listener uses HTTPS for the front\-end connection, you must d
 You can select one of the predefined security policies, or you can create your own custom security policy\. Otherwise, Elastic Load Balancing configures your load balancer with the default predefined security policy, `ELBSecurityPolicy-2016-08`\. We recommend that you use the default security policy\. For more information about security policies, see [SSL Negotiation Configurations for Classic Load Balancers](elb-ssl-security-policy.md)\.
 
 **To verify that your load balancer is associated with the default security policy**  
-Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command:
+Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command:
 
 ```
 aws elb describe-load-balancers --load-balancer-name my-loadbalancer
@@ -313,7 +313,7 @@ If you prefer, you can configure the SSL security policy for your load balancer 
 
 **\(Optional\) To use a predefined SSL security policy**
 
-1. Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the names of the predefined security policies:
+1. Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the names of the predefined security policies:
 
    ```
    aws elb describe-load-balancer-policies
@@ -321,7 +321,7 @@ If you prefer, you can configure the SSL security policy for your load balancer 
 
    For information about the configuration for the predefined security policies, see [Predefined SSL Security Policies](elb-security-policy-table.md)\.
 
-1. Use the following [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using one of the predefined security policies that you described in the previous step:
+1. Use the following [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using one of the predefined security policies that you described in the previous step:
 
    ```
    aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer
@@ -329,7 +329,7 @@ If you prefer, you can configure the SSL security policy for your load balancer 
    --policy-attributes AttributeName=Reference-Security-Policy,AttributeValue=predefined-policy
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
+1. \(Optional\) Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
 
    ```
    aws elb describe-load-balancer-policies --load-balancer-name my-loadbalancer --policy-name my-SSLNegotiation-policy
@@ -337,7 +337,7 @@ If you prefer, you can configure the SSL security policy for your load balancer 
 
    The response includes the description of the policy\.
 
-1. Use the following [set\-load\-balancer\-policies\-of\-listener](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
+1. Use the following [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
 
    ```
    aws elb set-load-balancer-policies-of-listener --load-balancer-name my-loadbalancer --load-balancer-port 443 --policy-names my-SSLNegotiation-policy
@@ -345,7 +345,7 @@ If you prefer, you can configure the SSL security policy for your load balancer 
 **Note**  
 The `set-load-balancer-policies-of-listener` command replaces the current set of policies for the specified load balancer port with the specified set of policies\. The `--policy-names` list must include all policies to be enabled\. If you omit a policy that is currently enabled, it is disabled\.
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is enabled:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is enabled:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer
@@ -391,7 +391,7 @@ When you create a custom security policy, you must enable at least one protocol 
 
 **\(Optional\) To use a custom SSL security policy**
 
-1. Use the [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using a custom security policy\. For example:
+1. Use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using a custom security policy\. For example:
 
    ```
    aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer 
@@ -402,7 +402,7 @@ When you create a custom security policy, you must enable at least one protocol 
     AttributeName=Server-Defined-Cipher-Order,AttributeValue=true
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
+1. \(Optional\) Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to verify that the policy is created:
 
    ```
    aws elb describe-load-balancer-policies --load-balancer-name my-loadbalancer --policy-name my-SSLNegotiation-policy
@@ -410,7 +410,7 @@ When you create a custom security policy, you must enable at least one protocol 
 
    The response includes the description of the policy\.
 
-1. Use the following [set\-load\-balancer\-policies\-of\-listener](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
+1. Use the following [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) command to enable the policy on load balancer port 443:
 
    ```
    aws elb set-load-balancer-policies-of-listener --load-balancer-name my-loadbalancer --load-balancer-port 443 --policy-names my-SSLNegotiation-policy
@@ -418,7 +418,7 @@ When you create a custom security policy, you must enable at least one protocol 
 **Note**  
 The `set-load-balancer-policies-of-listener` command replaces the current set of policies for the specified load balancer port with the specified set of policies\. The `--policy-names` list must include all policies to be enabled\. If you omit a policy that is currently enabled, it is disabled\.
 
-1. \(Optional\) Use the following [describe\-load\-balancers](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is enabled:
+1. \(Optional\) Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to verify that the policy is enabled:
 
    ```
    aws elb describe-load-balancers --load-balancer-name my-loadbalancer
@@ -476,7 +476,7 @@ The load balancer communicates with an instance only if the public key that the 
    openssl x509 -in your X509 certificate PublicKey -pubkey -noout
    ```
 
-1. Use the following [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create a public key policy:
+1. Use the following [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create a public key policy:
 
    ```
    aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer --policy-name my-PublicKey-policy \
@@ -499,7 +499,7 @@ The load balancer communicates with an instance only if the public key that the 
 **Note**  
 To specify a public key value for `--policy-attributes`, remove the first and last lines of the public key \(the line containing "`-----BEGIN PUBLIC KEY-----`" and the line containing "`-----END PUBLIC KEY-----`"\)\. The AWS CLI does not accept white space characters in `--policy-attributes`\.
 
-1. Use the following [create\-load\-balancer\-policy](http://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create a back\-end instance authentication policy using `my-PublicKey-policy`\.
+1. Use the following [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create a back\-end instance authentication policy using `my-PublicKey-policy`\.
 
    ```
    aws elb create-load-balancer-policy --load-balancer-name my-loadbalancer --policy-name my-authentication-policy --policy-type-name BackendServerAuthenticationPolicyType --policy-attributes AttributeName=PublicKeyPolicyName,AttributeValue=my-PublicKey-policy
@@ -507,19 +507,19 @@ To specify a public key value for `--policy-attributes`, remove the first and la
 
    You can optionally use multiple public key policies\. The load balancer tries all the keys, one at a time\. If the public key presented by an instance matches one of these public keys, the instance is authenticated\.
 
-1. Use the following [set\-load\-balancer\-policies\-for\-backend\-server](http://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command to set `my-authentication-policy` to the instance port for HTTPS\. In this example, the instance port is port 443\.
+1. Use the following [set\-load\-balancer\-policies\-for\-backend\-server](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command to set `my-authentication-policy` to the instance port for HTTPS\. In this example, the instance port is port 443\.
 
    ```
    aws elb set-load-balancer-policies-for-backend-server --load-balancer-name my-loadbalancer --instance-port 443 --policy-names my-authentication-policy
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list all the policies for your load balancer:
+1. \(Optional\) Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list all the policies for your load balancer:
 
    ```
    aws elb describe-load-balancer-policies --load-balancer-name my-loadbalancer
    ```
 
-1. \(Optional\) Use the following [describe\-load\-balancer\-policies](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to view details of the policy:
+1. \(Optional\) Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to view details of the policy:
 
    ```
    aws elb describe-load-balancer-policies --load-balancer-name my-loadbalancer --policy-names my-authentication-policy
@@ -532,7 +532,7 @@ Elastic Load Balancing regularly checks the health of each registered EC2 instan
 When you create your load balancer, Elastic Load Balancing uses default settings for the health checks\. If you prefer, you can change the health check configuration for your load balancer instead of using the default settings\.
 
 **To configure the health checks for your instances**  
-Use the following [configure\-health\-check](http://docs.aws.amazon.com/cli/latest/reference/elb/configure-health-check.html) command:
+Use the following [configure\-health\-check](https://docs.aws.amazon.com/cli/latest/reference/elb/configure-health-check.html) command:
 
 ```
 aws elb configure-health-check --load-balancer-name my-loadbalancer --health-check Target=HTTP:80/ping,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
@@ -556,7 +556,7 @@ The following is an example response:
 
 After you create your load balancer, you must register your EC2 instances with the load balancer\. You can select EC2 instances from a single Availability Zone or multiple Availability Zones within the same region as the load balancer\. For more information, see [Registered Instances for Your Classic Load Balancer](elb-backend-instances.md)\.
 
-Use the [register\-instances\-with\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/register-instances-with-load-balancer.html) command as follows:
+Use the [register\-instances\-with\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/register-instances-with-load-balancer.html) command as follows:
 
 ```
 aws elb register-instances-with-load-balancer --load-balancer-name my-loadbalancer --instances i-4f8cf126 i-0bb7ca62
@@ -581,7 +581,7 @@ The following is an example response:
 
 Your load balancer is usable as soon as any one of your registered instances is in the `InService` state\.
 
-To check the state of your newly registered EC2 instances, use the following [describe\-instance\-health](http://docs.aws.amazon.com/cli/latest/reference/elb/describe-instance-health.html) command:
+To check the state of your newly registered EC2 instances, use the following [describe\-instance\-health](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-instance-health.html) command:
 
 ```
 aws elb describe-instance-health  --load-balancer-name my-loadbalancer --instances i-4f8cf126 i-0bb7ca62
@@ -616,10 +616,10 @@ After the state of at least one of your instances is `InService`, you can test y
 
 Deleting a the load balancer automatically de\-registers its associated EC2 instances\. As soon as the load balancer is deleted, you stop incurring charges for that load balancer\. However, the EC2 instances continue run and you continue to incur charges\.
 
-To delete your load balancer, use the following [delete\-load\-balancer](http://docs.aws.amazon.com/cli/latest/reference/elb/delete-load-balancer.html) command:
+To delete your load balancer, use the following [delete\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/delete-load-balancer.html) command:
 
 ```
 aws elb delete-load-balancer --load-balancer-name my-loadbalancer
 ```
 
-To stop your EC2 instances, use the [stop\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) command\. To terminate your EC2 instances, use the [terminate\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) command\.
+To stop your EC2 instances, use the [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) command\. To terminate your EC2 instances, use the [terminate\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) command\.
