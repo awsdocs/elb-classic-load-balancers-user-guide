@@ -58,7 +58,7 @@ If you will use the console to enable access logs, you can skip this step and ha
    1. For **Principal**, type the account ID for Elastic Load Balancing to grant Elastic Load Balancing access to the S3 bucket\. Use the account ID that corresponds to the region for your load balancer and bucket\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html)
 
-      \* This region requires a separate account\. For more information, see [AWS GovCloud \(US\)](https://aws.amazon.com/govcloud-us/)\.
+      \* This region requires a separate account\. For more information, see [AWS GovCloud \(US\-West\)](https://aws.amazon.com/govcloud-us/)\.
 
       \*\* This region requires a separate account\. For more information, see [China \(Beijing\)](http://www.amazonaws.cn/en/)\.
 

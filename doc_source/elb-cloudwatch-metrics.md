@@ -52,8 +52,8 @@ To filter the metrics for your Classic Load Balancer, use the following dimensio
 
 |  Dimension  |  Description  | 
 | --- | --- | 
-|  AvailabilityZone  |  Filter the metric data by the specified Availability Zone\.  | 
-|  LoadBalancerName  |  Filter the metric data by the specified load balancer\.  | 
+|  AvailabilityZone  |  Filters the metric data by the specified Availability Zone\.  | 
+|  LoadBalancerName  |  Filters the metric data by the specified load balancer\.  | 
 
 ## Statistics for Classic Load Balancer Metrics<a name="measure-stats"></a>
 
