@@ -4,6 +4,8 @@ Elastic Load Balancing provides access logs that capture detailed information ab
 
 Access logging is an optional feature of Elastic Load Balancing that is disabled by default\. After you enable access logging for your load balancer, Elastic Load Balancing captures the logs and stores them in the Amazon S3 bucket that you specify\. You can disable access logging at any time\.
 
+If you enable server\-side encryption with Amazon S3\-managed encryption keys \(SSE\-S3\) for your S3 bucket, each access log file is automatically encrypted before it is stored in your S3 bucket and decrypted when you access it\. You do not need to take any action as there is no difference in the way you access encrypted or unencrypted log files\. Each log file is encrypted with a unique key, which is itself encrypted with a master key that is regularly rotated\. For more information, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the *Amazon Simple Storage Service Developer Guide*\.
+
 There is no additional charge for access logs\. You will be charged storage costs for Amazon S3, but will not be charged for the bandwidth used by Elastic Load Balancing to send log files to Amazon S3\. For more information about storage costs, see [Amazon S3 Pricing](https://aws.amazon.com/s3/pricing/)\.
 
 **Topics**
@@ -91,7 +93,7 @@ The following table describes the fields of an access log entry\.
 | backend\_status\_code | \[HTTP listener\] The status code of the response from the registered instance\. | 
 | received\_bytes |  The size of the request, in bytes, received from the client \(requester\)\. \[HTTP listener\] The value includes the request body but not the headers\. \[TCP listener\] The value includes the request body and the headers\.  | 
 | sent\_bytes |  The size of the response, in bytes, sent to the client \(requester\)\. \[HTTP listener\] The value includes the response body but not the headers\. \[TCP listener\] The value includes the request body and the headers\. | 
-| request |  The request line from the client enclosed in double quotes and logged in the following format: HTTP Method \+ Protocol://Host header:port \+ Path \+ HTTP version\. \[TCP listener\] The URL is three dashes, each separated by a space, and ending with a space \("\- \- \- "\)\.  | 
+| request |  The request line from the client enclosed in double quotes and logged in the following format: HTTP Method \+ Protocol://Host header:port \+ Path \+ HTTP version\. The load balancer preserves the URL sent by the client, as is, when recording the request URI\. It does not set the content type for the access log file\. When you process this field, consider how the client sent the URL\. \[TCP listener\] The URL is three dashes, each separated by a space, and ending with a space \("\- \- \- "\)\.  | 
 | user\_agent |  \[HTTP/HTTPS listener\] A User\-Agent string that identifies the client that originated the request\. The string consists of one or more product identifiers, product\[/version\]\. If the string is longer than 8 KB, it is truncated\.  | 
 | ssl\_cipher |  \[HTTPS/SSL listener\] The SSL cipher\. This value is recorded only if the incoming SSL/TLS connection was established after a successful negotiation\. Otherwise, the value is set to `-`\.  | 
 | ssl\_protocol |  \[HTTPS/SSL listener\] The SSL protocol\. This value is recorded only if the incoming SSL/TLS connection was established after a successful negotiation\. Otherwise, the value is set to `-`\.  | 
@@ -131,5 +133,5 @@ The following is an example log entry for an SSL listener \(port 8443 to port 80
 If there is a lot of demand on your website, your load balancer can generate log files with gigabytes of data\. You might not be able to process such a large amount of data using line\-by\-line processing\. Therefore, you might have to use analytical tools that provide parallel processing solutions\. For example, you can use the following analytical tools to analyze and process access logs:
 + Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL\. For more information, see [Querying Classic Load Balancer Logs](https://docs.aws.amazon.com/athena/latest/ug/elasticloadbalancer-classic-logs.html) in the *Amazon Athena User Guide*\.
 + [Loggly](https://www.loggly.com/docs/s3-ingestion-auto/)
-+ [Splunk](http://apps.splunk.com/app/1731/)
-+ [Sumo Logic](http://sumologic.com/applications/aws-elastic-load-balancing/)
++ [Splunk](https://splunkbase.splunk.com/app/1274/)
++ [Sumo Logic](https://www.sumologic.com/application/elb/)

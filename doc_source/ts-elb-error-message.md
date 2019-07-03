@@ -22,9 +22,11 @@ The following are error messages returned by your load balancer, the potential c
 
 **Description**: Indicates that the client sent a bad request\.
 
-**Cause**: The client sent a malformed request that does not meet HTTP specifications\. For example, a request can't have spaces in the URL\.
+**Cause 1**: The client sent a malformed request that does not meet HTTP specifications\. For example, a request can't have spaces in the URL\.
 
-**Solution**: Connect directly to your instance and capture the details of the client request\. Review the headers and the URL for malformed requests\. Verify that the request meets HTTP specifications\.
+**Cause 2**: The client used the HTTP CONNECT method, which is not supported by Elastic Load Balancing\.
+
+**Solution**: Connect directly to your instance and capture the details of the client request\. Review the headers and the URL for malformed requests\. Verify that the request meets HTTP specifications\. Verify that HTTP CONNECT is not used\.
 
 ## HTTP 405: METHOD\_NOT\_ALLOWED<a name="ts-elb-errorcodes-http405"></a>
 
@@ -62,13 +64,17 @@ The following are error messages returned by your load balancer, the potential c
 
 **Solution 1**: This should be a transient issue and should not last more than a few minutes\. If it persists, go to the [AWS Support Center](https://console.aws.amazon.com/support/home#/) for assistance\.
 
-**Cause 2**: No registered instances\.
+**Cause 2**: There are no registered instances\.
 
 **Solution 2**: Register at least one instance in every Availability Zone that your load balancer is configured to respond in\. Verify this by looking at the `HealthyHostCount` metrics in CloudWatch\. If you can't ensure that an instance is registered in each Availability Zone, we recommend enabling cross\-zone load balancing\. For more information, see [Configure Cross\-Zone Load Balancing for Your Classic Load Balancer](enable-disable-crosszone-lb.md)\.
 
-**Cause 3**: No healthy instances\.
+**Cause 3**: There are no healthy instances\.
 
-**Solution 3**: Ensure that you have healthy instances in every Availability Zone that your load balancer is configured to respond in\. Verify this by looking at the `HealthyHostCount` in CloudWatch\.
+**Solution 3**: Ensure that you have healthy instances in every Availability Zone that your load balancer is configured to respond in\. Verify this by looking at the `HealthyHostCount` metric\.
+
+**Cause 4**: The surge queue is full\.
+
+**Solution 4**: Ensure that your instances have sufficient capacity to handle the request rate\. Verify this by looking at the `SpilloverCount` metric\.
 
 ## HTTP 504: Gateway Timeout<a name="ts-elb-errorcodes-http504"></a>
 

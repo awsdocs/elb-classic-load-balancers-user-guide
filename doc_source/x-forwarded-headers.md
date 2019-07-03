@@ -55,4 +55,4 @@ X-Forwarded-Proto: https
 
 ## X\-Forwarded\-Port<a name="x-forwarded-port"></a>
 
-The `X-Forwarded-Port` request header helps you identify the port that the client used to connect to the load balancer\.
+The `X-Forwarded-Port` request header helps you identify the destination port that the client used to connect to the load balancer\.
