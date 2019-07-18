@@ -4,7 +4,9 @@ To view the current limits for your Classic Load Balancers, use the **Limits** p
 
 Your AWS account has the following limits related to Classic Load Balancers\.
 + Load balancers per region: 20
-+ Listeners per load balancer: 100
++ Listeners per load balancer: 100 **†**
 + Security groups per load balancer: 5
 + Registered instances per load balancer: 1,000
-+ Subnets per Availability Zone per load balancer: 1
++ Subnets per Availability Zone per load balancer: 1 **†**
+
+**†** These limits cannot be increased\.
