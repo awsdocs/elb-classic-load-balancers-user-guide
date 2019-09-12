@@ -3,7 +3,7 @@
 To enable access logs for your load balancer, you must specify the name of the Amazon S3 bucket where the load balancer will store the logs\. You must also attach a bucket policy to this bucket that grants Elastic Load Balancing permission to write to the bucket\.
 
 **Important**  
-The bucket and your load balancer must be in the same region\. The bucket can be owned by a different account than the account that owns the load balancer\.
+The bucket and your load balancer must be in the same Region\. The bucket can be owned by a different account than the account that owns the load balancer\.
 
 **Topics**
 + [Step 1: Create an S3 Bucket](#create-s3-bucket)
@@ -18,17 +18,17 @@ You can create an S3 bucket using the Amazon S3 console\. If you already have a 
 **Tip**  
 If you will use the console to enable access logs, you can skip this step and have Elastic Load Balancing create a bucket with the required permissions for you\. If you will use the AWS CLI to enable access logs, you must create the bucket and grant the required permissions yourself\.
 
-**To create an Amazon S3 bucket**
+**To create an S3 bucket using the Amazon S3 console**
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
-1. Choose **Create Bucket**\.
+1. Choose **Create bucket**\.
 
-1. On the **Create a Bucket** page, do the following:
+1. On the **Create bucket** page, do the following:
 
-   1. For **Bucket Name**, type a name for your bucket \(for example, `my-loadbalancer-logs`\)\. This name must be unique across all existing bucket names in Amazon S3\. In some regions, there might be additional restrictions on bucket names\. For more information, see [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+   1. For **Bucket Name**, enter a name for your bucket\. This name must be unique across all existing bucket names in Amazon S3\. In some Regions, there might be additional restrictions on bucket names\. For more information, see [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-   1. For **Region**, select the region where you created your load balancer\.
+   1. For **Region**, select the Region where you created your load balancer\.
 
    1. Choose **Create**\.
 
@@ -45,68 +45,30 @@ If you will use the console to enable access logs, you can skip this step and ha
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
-1. Select the bucket, and then choose **Permissions**\.
+1. Select the bucket\. Choose **Permissions** and then choose **Bucket Policy**\.
 
-1. Choose **Bucket Policy**\. If your bucket already has an attached policy, you can add the required statement to the existing policy\.
+1. If you are creating a new bucket policy, copy this entire policy document to the policy editor, then replace the placeholders with the bucket name and prefix for your bucket and the AWS account ID that corresponds to the Region for your load balancer\. If you are editing an existing bucket policy, copy only the new statement from the policy document \(the text between the \[ and \] of the `Statement` element\)\.
 
-1. Choose **Policy generator**\. On the **AWS Policy Generator** page, do the following:
+   ```
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::aws-account-id:root"
+         },
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::bucket-name/prefix/*"
+       }
+     ]
+   }
+   ```
 
-   1. For **Select Type of Policy**, select **S3 Bucket Policy**\.
-
-   1. For **Effect**, select **Allow** to allow access to the S3 bucket\.
-
-   1. For **Principal**, type the account ID for Elastic Load Balancing to grant Elastic Load Balancing access to the S3 bucket\. Use the account ID that corresponds to the region for your load balancer and bucket\.    
+   The following table contains the account IDs to use in your bucket policy\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html)
 
-      \* This region requires a separate account\. For more information, see [AWS GovCloud \(US\-West\)](https://aws.amazon.com/govcloud-us/)\.
-
-      \*\* This region requires a separate account\. For more information, see [China \(Beijing\)](http://www.amazonaws.cn/en/)\.
-
-   1. For **Actions**, select `PutObject` to allow Elastic Load Balancing to store objects in the S3 bucket\.
-
-   1. For **Amazon Resource Name \(ARN\)**, type the ARN of the S3 bucket in the following format:
-
-      ```
-      arn:aws:s3:::bucket/prefix/AWSLogs/aws-account-id/*
-      ```
-
-      You must specify the ID of the AWS account that owns the load balancer, and you should not include the hyphens\. For example:
-
-      ```
-      arn:aws:s3:::my-loadbalancer-logs/my-app/AWSLogs/123456789012/*
-      ```
-
-      Note that if you are using `us-gov-west-1` region, use `arn:aws-us-gov:` instead of `arn:aws:` in the ARN\.
-
-   1. Choose **Add Statement**, **Generate Policy**\. The policy document should be similar to the following:
-
-      ```
-      {
-        "Id": "Policy1429136655940",
-        "Version": "2012-10-17",
-        "Statement": [
-          {
-            "Sid": "Stmt1429136633762",
-            "Action": [
-              "s3:PutObject"
-            ],
-            "Effect": "Allow",
-            "Resource": "arn:aws:s3:::my-loadbalancer-logs/my-app/AWSLogs/123456789012/*",
-            "Principal": {
-              "AWS": [
-                "797873946194"
-              ]
-            }
-          }
-        ]
-      }
-      ```
-
-   1. If you are creating a new bucket policy, copy the entire policy document, and then choose **Close**\.
-
-      If you are editing an existing bucket policy, copy the new statement from the policy document \(the text between the \[ and \] of the `Statement` element\), and then choose **Close**\.
-
-1. Go back to the Amazon S3 console and paste the policy into the text area as appropriate\.
+   \* These Regions requires a separate account\. For more information, see [AWS GovCloud \(US\-West\)](https://aws.amazon.com/govcloud-us/) and [China \(Beijing\)](http://www.amazonaws.cn/en/)\.
 
 1. Choose **Save**\.
 
@@ -184,7 +146,7 @@ After the access log is enabled for your load balancer, Elastic Load Balancing v
 
 1. Select your S3 bucket\.
 
-1. Navigate to the test log file\. The path should be as follows:
+1. Navigate to the bucket that you specified for access logging and look for `ELBAccessLogTestFile`\. For example, if you used the console to create the bucket and bucket policy, the path is as follows:
 
    ```
    my-bucket/prefix/AWSLogs/123456789012/ELBAccessLogTestFile

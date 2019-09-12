@@ -37,7 +37,7 @@ The prefix \(logical hierarchy\) in the bucket\. If you don't specify a prefix, 
 The AWS account ID of the owner\.
 
 *region*  
-The region for your load balancer and S3 bucket\.
+The Region for your load balancer and S3 bucket\.
 
 *yyyy*/*mm*/*dd*  
 The date that the log was delivered\.
