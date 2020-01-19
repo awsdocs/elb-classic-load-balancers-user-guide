@@ -6,7 +6,7 @@ Elastic Load Balancing uses Secure Sockets Layer \(SSL\) negotiation configurati
 
 Elastic Load Balancing does not support Server Name Indication \(SNI\) on your load balancer\. You can use one of the following alternatives instead:
 + Deploy one certificate on the load balancer, and add a Subject Alternative Name \(SAN\) for each additional website\. SANs enable you to protect multiple host names using a single certificate\. Check with your certificate provider for more information about the number of SANs they support per certificate and how to add and remove SANs\.
-+ Use TCP listeners on port 443 for the front\-end and back\-end connections\. The load balancer passes the request through, with the SNI certificate as is\. You can handle the HTTPS termination from the EC2 instance\.
++ Use TCP listeners on port 443 for the front\-end and back\-end connections\. The load balancer passes the request through as is, so you can handle HTTPS termination from the EC2 instance\.
 
 **Topics**
 + [SSL/TLS Certificates for Classic Load Balancers](ssl-server-cert.md)

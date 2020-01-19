@@ -1,12 +1,12 @@
 # Configure Health Checks for Your Classic Load Balancer<a name="elb-healthchecks"></a>
 
-To discover the availability of your EC2 instances, a load balancer periodically sends pings, attempts connections, or sends requests to test the EC2 instances\. These tests are called *health checks*\. The status of the instances that are healthy at the time of the health check is `InService`\. The status of any instances that are unhealthy at the time of the health check is `OutOfService`\. The load balancer performs health checks on all registered instances, whether the instance is in a healthy state or an unhealthy state\.
+Your Classic Load Balancer periodically sends requests to its registered instances to test their status\. These tests are called *health checks*\. The status of the instances that are healthy at the time of the health check is `InService`\. The status of any instances that are unhealthy at the time of the health check is `OutOfService`\. The load balancer performs health checks on all registered instances, whether the instance is in a healthy state or an unhealthy state\.
 
 The load balancer routes requests only to the healthy instances\. When the load balancer determines that an instance is unhealthy, it stops routing requests to that instance\. The load balancer resumes routing requests to the instance when it has been restored to a healthy state\.
 
 The load balancer checks the health of the registered instances using either the default health check configuration provided by Elastic Load Balancing or a health check configuration that you configure\.
 
-If you have associated your Auto Scaling group with a Classic load balancer, you can use the load balancer health check to determine the health state of instances in your Auto Scaling group\. By default, an Auto Scaling group periodically determines the health state of each instance\. For more information, see [Add an Elastic Load Balancing Health Check to Your Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/latest/userguide/as-add-elb-healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.
+If you have associated your Auto Scaling group with a Classic Load Balancer, you can use the load balancer health check to determine the health state of instances in your Auto Scaling group\. By default an Auto Scaling group periodically determines the health state of each instance\. For more information, see [Add Elastic Load Balancing Health Checks to Your Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/latest/userguide/as-add-elb-healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 **Topics**
 + [Health Check Configuration](#health-check-configuration)
