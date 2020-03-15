@@ -1,7 +1,7 @@
 # Elastic Load Balancing Classic Load Balancers
 
 -----
-*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -57,5 +57,5 @@ Amazon's trademarks and trade dress may not be used in
    + [Troubleshoot a Classic Load Balancer: Health Checks](ts-elb-healthcheck.md)
    + [Troubleshoot a Classic Load Balancer: Client Connectivity](ts-elb-connection-failed.md)
    + [Troubleshoot a Classic Load Balancer: Instance Registration](ts-elb-register-instance.md)
-+ [Limits for Your Classic Load Balancer](elb-limits.md)
++ [Quotas for Your Classic Load Balancer](elb-limits.md)
 + [Document History](DocumentHistory.md)

@@ -21,7 +21,9 @@ Elastic Load Balancing creates a cookie, named AWSELB, that is used to map the s
 
 ## Duration\-Based Session Stickiness<a name="enable-sticky-sessions-duration"></a>
 
-The load balancer uses a special cookie to track the instance for each request to each listener\. When the load balancer receives a request, it first checks to see if this cookie is present in the request\. If so, the request is sent to the instance specified in the cookie\. If there is no cookie, the load balancer chooses an instance based on the existing load balancing algorithm\. A cookie is inserted into the response for binding subsequent requests from the same user to that instance\. The stickiness policy configuration defines a cookie expiration, which establishes the duration of validity for each cookie\. The load balancer does not refresh the expiry time of the cookie and does not check whether the cookie is expired before using it\. After a cookie expires, the session is no longer sticky\. The client should remove the cookie from its cookie store upon expiry\.
+The load balancer uses a special cookie, AWSELB, to track the instance for each request to each listener\. When the load balancer receives a request, it first checks to see if this cookie is present in the request\. If so, the request is sent to the instance specified in the cookie\. If there is no cookie, the load balancer chooses an instance based on the existing load balancing algorithm\. A cookie is inserted into the response for binding subsequent requests from the same user to that instance\. The stickiness policy configuration defines a cookie expiration, which establishes the duration of validity for each cookie\. The load balancer does not refresh the expiry time of the cookie and does not check whether the cookie is expired before using it\. After a cookie expires, the session is no longer sticky\. The client should remove the cookie from its cookie store upon expiry\.
+
+With CORS \(cross\-origin resource sharing\) requests, some browsers require `SameSite=None; Secure` to enable stickiness\. In this case, Elastic Load Balancing creates a second stickiness cookie, AWSELBCORS, which includes the same information as the original stickiness cookie plus this `SameSite` attribute\. Clients receive both cookies\.
 
 If an instance fails or becomes unhealthy, the load balancer stops routing requests to that instance, and chooses a new healthy instance based on the existing load balancing algorithm\. The request is routed to the new instance as if there is no cookie and the session is no longer sticky\.
 
@@ -111,6 +113,8 @@ The `set-load-balancer-policies-of-listener` command replaces the current set of
 ## Application\-Controlled Session Stickiness<a name="enable-sticky-sessions-application"></a>
 
 The load balancer uses a special cookie to associate the session with the instance that handled the initial request, but follows the lifetime of the application cookie specified in the policy configuration\. The load balancer only inserts a new stickiness cookie if the application response includes a new application cookie\. The load balancer stickiness cookie does not update with each request\. If the application cookie is explicitly removed or expires, the session stops being sticky until a new application cookie is issued\.
+
+The following attributes set by back\-end instances are sent to clients in the cookie: `path`, `port`, `domain`, `secure`, `httponly`, `discard`, `max-age`, `expires`, `version`, `comment`, `commenturl`, and `samesite`\.
 
 If an instance fails or becomes unhealthy, the load balancer stops routing requests to that instance, and chooses a new healthy instance based on the existing load balancing algorithm\. The load balancer treats the session as now "stuck" to the new healthy instance, and continues routing requests to that instance even if the failed instance comes back\.
 

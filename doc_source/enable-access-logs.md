@@ -18,6 +18,10 @@ You can create an S3 bucket using the Amazon S3 console\. If you already have a 
 **Tip**  
 If you will use the console to enable access logs, you can skip this step and have Elastic Load Balancing create a bucket with the required permissions for you\. If you will use the AWS CLI to enable access logs, you must create the bucket and grant the required permissions yourself\.
 
+**Requirements**
++ The bucket must be located in the same Region as the load balancer\.
++ Amazon S3\-Managed Encryption Keys \(SSE\-S3\) is required\. No other encryption options are supported\.
+
 **To create an S3 bucket using the Amazon S3 console**
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
