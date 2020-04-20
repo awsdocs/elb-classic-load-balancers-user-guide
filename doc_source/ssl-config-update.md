@@ -50,7 +50,7 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
 1. Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the predefined security policies provided by Elastic Load Balancing:
 
    ```
-   aws elb describe-load-balancer-policies --query "PolicyDescriptions[?PolicyTypeName==`SSLNegotiationPolicyType`].{PolicyName:PolicyName}" --output table
+   aws elb describe-load-balancer-policies --query "PolicyDescriptions[?PolicyTypeName=='SSLNegotiationPolicyType'].{PolicyName:PolicyName}" --output table
    ```
 
    The following is example output:
