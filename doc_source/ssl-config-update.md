@@ -47,10 +47,18 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
 
 **To use a predefined SSL security policy**
 
-1. Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the predefined security policies provided by Elastic Load Balancing:
+1. Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the predefined security policies provided by Elastic Load Balancing\. The syntax that you use depends on the operating system and shell that you are using\.
+
+   **Linux**
 
    ```
-   aws elb describe-load-balancer-policies --query "PolicyDescriptions[?PolicyTypeName==`SSLNegotiationPolicyType`].{PolicyName:PolicyName}" --output table
+   aws elb describe-load-balancer-policies --query 'PolicyDescriptions[?PolicyTypeName=='SSLNegotiationPolicyType'].{PolicyName:PolicyName}' --output table
+   ```
+
+   **Windows**
+
+   ```
+   aws elb describe-load-balancer-policies --query "PolicyDescriptions[?PolicyTypeName=='SSLNegotiationPolicyType'].{PolicyName:PolicyName}" --output table
    ```
 
    The following is example output:
