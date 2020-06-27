@@ -1,23 +1,23 @@
-# Configure an HTTPS Listener for Your Classic Load Balancer<a name="elb-add-or-delete-listeners"></a>
+# Configure an HTTPS listener for your Classic Load Balancer<a name="elb-add-or-delete-listeners"></a>
 
-A *listener* is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections and a protocol and a port for back\-end \(load balancer to instance\) connections\. For information about the ports, protocols, and listener configurations supported by Elastic Load Balancing, see [Listeners for Your Classic Load Balancer](elb-listener-config.md)\.
+A *listener* is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections and a protocol and a port for back\-end \(load balancer to instance\) connections\. For information about the ports, protocols, and listener configurations supported by Elastic Load Balancing, see [Listeners for your Classic Load Balancer](elb-listener-config.md)\.
 
 If you have a load balancer with a listener that accepts HTTP requests on port 80, you can add a listener that accepts HTTPS requests on port 443\. If you specify that the HTTPS listener sends requests to the instances on port 80, the load balancer terminates the SSL requests and communication from the load balancer to the instances is not encrypted\. If the HTTPS listener sends requests to the instances on port 443, communication from the load balancer to the instances is encrypted\.
 
 If your load balancer uses an encrypted connection to communicate with instances, you can optionally enable authentication of the instances\. This ensures that the load balancer communicates with an instance only if its public key matches the key that you specified to the load balancer for this purpose\.
 
-For information about creating a new HTTPS listener, see [Create a Classic Load Balancer with an HTTPS Listener](elb-create-https-ssl-load-balancer.md)\.
+For information about creating a new HTTPS listener, see [Create a Classic Load Balancer with an HTTPS listener](elb-create-https-ssl-load-balancer.md)\.
 
 **Topics**
 + [Prerequisites](#add-listener-prerequisites)
-+ [Add an HTTPS Listener Using the Console](#add-listener-console)
-+ [Add an HTTPS Listener Using the AWS CLI](#add-listener-cli)
++ [Add an HTTPS listener using the console](#add-listener-console)
++ [Add an HTTPS listener using the AWS CLI](#add-listener-cli)
 
 ## Prerequisites<a name="add-listener-prerequisites"></a>
 
-To enable HTTPS support for an HTTPS listener, you must deploy an SSL server certificate on your load balancer\. The load balancer uses the certificate to terminate and then decrypt requests before sending them to the instances\. If you do not have an SSL certificate, you can create one\. For more information, see [SSL/TLS Certificates for Classic Load Balancers](ssl-server-cert.md)\.
+To enable HTTPS support for an HTTPS listener, you must deploy an SSL server certificate on your load balancer\. The load balancer uses the certificate to terminate and then decrypt requests before sending them to the instances\. If you do not have an SSL certificate, you can create one\. For more information, see [SSL/TLS certificates for Classic Load Balancers](ssl-server-cert.md)\.
 
-## Add an HTTPS Listener Using the Console<a name="add-listener-console"></a>
+## Add an HTTPS listener using the console<a name="add-listener-console"></a>
 
 You can add an HTTPS listener to an existing load balancer\.
 
@@ -44,9 +44,9 @@ By default, the instance protocol is HTTP\. If you want to set up back\-end inst
    For **SSL Certificate**, choose **Change**, and then do one of the following:
    + If you create or imported a certificate using AWS Certificate Manager, select **Choose an existing certificate from AWS Certificate Manager \(ACM\)**, select the certificate from **Certificate**, and then choose **Save**\.
 **Note**  
-This option is available only in regions that support AWS Certificate Manager\.
+This option is available only in Regions that support AWS Certificate Manager\.
    + If you imported a certificate using IAM, select **Choose an existing certificate from AWS Identity and Access Management \(IAM\)**, select the certificate from **Certificate**, and then choose **Save**\.
-   + If you have an SSL certificate to import but ACM is not supported in this region, select **Upload a new SSL Certificate to AWS Identity and Access Management \(IAM\)**\. Type the name of the certificate\. In **Private Key**, copy and paste the contents of the private key file \(PEM\-encoded\)\. In **Public Key Certificate**, copy and paste the contents of the public key certificate file \(PEM\-encoded\)\. In **Certificate Chain**, copy and paste the contents of the certificate chain file \(PEM\-encoded\), unless you are using a self\-signed certificate and it's not important that browsers implicitly accept the certificate\.
+   + If you have an SSL certificate to import but ACM is not supported in this Region, select **Upload a new SSL Certificate to AWS Identity and Access Management \(IAM\)**\. Type the name of the certificate\. In **Private Key**, copy and paste the contents of the private key file \(PEM\-encoded\)\. In **Public Key Certificate**, copy and paste the contents of the public key certificate file \(PEM\-encoded\)\. In **Certificate Chain**, copy and paste the contents of the certificate chain file \(PEM\-encoded\), unless you are using a self\-signed certificate and it's not important that browsers implicitly accept the certificate\.
 
 1. \(Optional\) Choose **Add** to add additional listeners\.
 
@@ -54,7 +54,7 @@ This option is available only in regions that support AWS Certificate Manager\.
 
 1. \(Optional\) To set up back\-end instance authentication for an existing load balancer, you must use the AWS CLI or an API, as this task is not supported using the console\. For more information, see [Configure Back\-end Instance Authentication](elb-create-https-ssl-load-balancer.md#configure_backendauth_clt)\.
 
-## Add an HTTPS Listener Using the AWS CLI<a name="add-listener-cli"></a>
+## Add an HTTPS listener using the AWS CLI<a name="add-listener-cli"></a>
 
 You can add an HTTPS listener to an existing load balancer\.
 
@@ -128,6 +128,6 @@ You can add an HTTPS listener to an existing load balancer\.
    }
    ```
 
-1. \(Optional\) Your HTTPS listener was created using the default security policy\. If you want to specify a different predefined security policy or a custom security policy, use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) and [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) commands\. For more information, see [Update the SSL Negotiation Configuration Using the AWS CLI](ssl-config-update.md#ssl-config-update-cli)\.
+1. \(Optional\) Your HTTPS listener was created using the default security policy\. If you want to specify a different predefined security policy or a custom security policy, use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) and [set\-load\-balancer\-policies\-of\-listener](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-of-listener.html) commands\. For more information, see [Update the SSL negotiation configuration using the AWS CLI](ssl-config-update.md#ssl-config-update-cli)\.
 
 1. \(Optional\) To set up back\-end instance authentication, use the [set\-load\-balancer\-policies\-for\-backend\-server](https://docs.aws.amazon.com/cli/latest/reference/elb/set-load-balancer-policies-for-backend-server.html) command\. For more information, see [Configure Back\-end Instance Authentication](elb-create-https-ssl-load-balancer.md#configure_backendauth_clt)\.

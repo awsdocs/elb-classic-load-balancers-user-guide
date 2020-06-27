@@ -1,21 +1,21 @@
-# Access Logs for Your Classic Load Balancer<a name="access-log-collection"></a>
+# Access logs for your Classic Load Balancer<a name="access-log-collection"></a>
 
 Elastic Load Balancing provides access logs that capture detailed information about requests sent to your load balancer\. Each log contains information such as the time the request was received, the client's IP address, latencies, request paths, and server responses\. You can use these access logs to analyze traffic patterns and to troubleshoot issues\.
 
 Access logging is an optional feature of Elastic Load Balancing that is disabled by default\. After you enable access logging for your load balancer, Elastic Load Balancing captures the logs and stores them in the Amazon S3 bucket that you specify\. You can disable access logging at any time\.
 
-Each access log file is automatically encrypted using SSE\-S3 before it is stored in your S3 bucket and decrypted when you access it\. You do not need to take any action; the encryption and decryption is performed transparently\. Each log file is encrypted with a unique key, which is itself encrypted with a master key that is regularly rotated\. For more information, see [Protecting Data Using Server\-Side Encryption with Amazon S3\-Managed Encryption Keys \(SSE\-S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the *Amazon Simple Storage Service Developer Guide*\.
+Each access log file is automatically encrypted using SSE\-S3 before it is stored in your S3 bucket and decrypted when you access it\. You do not need to take any action; the encryption and decryption is performed transparently\. Each log file is encrypted with a unique key, which is itself encrypted with a master key that is regularly rotated\. For more information, see [Protecting data using server\-side encryption with Amazon S3\-managed encryption keys \(SSE\-S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 There is no additional charge for access logs\. You will be charged storage costs for Amazon S3, but will not be charged for the bandwidth used by Elastic Load Balancing to send log files to Amazon S3\. For more information about storage costs, see [Amazon S3 Pricing](https://aws.amazon.com/s3/pricing/)\.
 
 **Topics**
-+ [Access Log Files](#access-log-file-format)
-+ [Access Log Entries](#access-log-entry-format)
-+ [Processing Access Logs](#log-processing-tools)
-+ [Enable Access Logs for Your Classic Load Balancer](enable-access-logs.md)
-+ [Disable Access Logs for Your Classic Load Balancer](disable-access-logs.md)
++ [Access log files](#access-log-file-format)
++ [Access log entries](#access-log-entry-format)
++ [Processing access logs](#log-processing-tools)
++ [Enable access logs for your Classic Load Balancer](enable-access-logs.md)
++ [Disable access logs for your Classic Load Balancer](disable-access-logs.md)
 
-## Access Log Files<a name="access-log-file-format"></a>
+## Access log files<a name="access-log-file-format"></a>
 
 Elastic Load Balancing publishes a log file for each load balancer node at the interval you specify\. You can specify a publishing interval of either 5 minutes or 60 minutes when you enable the access log for your load balancer\. By default, Elastic Load Balancing publishes logs at a 60\-minute interval\. If the interval is set for 5 minutes, the logs are published at 1:05, 1:10, 1:15, and so on\. The start of log delivery is delayed up to 5 minutes if the interval is set to 5 minutes, and up to 15 minutes if the interval is set to 60 minutes\. You can modify the publishing interval at any time\.
 
@@ -60,9 +60,9 @@ The following is an example log file name:
 s3://my-loadbalancer-logs/my-app/AWSLogs/123456789012/elasticloadbalancing/us-west-2/2014/02/15/123456789012_elasticloadbalancing_us-west-2_my-loadbalancer_20140215T2340Z_172.160.001.192_20sg8hgm.log
 ```
 
-You can store your log files in your bucket for as long as you want, but you can also define Amazon S3 lifecycle rules to archive or delete log files automatically\. For more information, see [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) in the *Amazon Simple Storage Service Developer Guide*\.
+You can store your log files in your bucket for as long as you want, but you can also define Amazon S3 lifecycle rules to archive or delete log files automatically\. For more information, see [Object lifecycle management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-## Access Log Entries<a name="access-log-entry-format"></a>
+## Access log entries<a name="access-log-entry-format"></a>
 
 Elastic Load Balancing logs requests sent to the load balancer, including requests that never made it to the back\-end instances\. For example, if a client sends a malformed request, or there are no healthy instances to respond, the requests are still logged\.
 
@@ -82,7 +82,7 @@ The following table describes the fields of an access log entry\.
 
 | Field | Description | 
 | --- | --- | 
-| timestamp | The time when the load balancer received the request from the client, in ISO 8601 format\. | 
+| time | The time when the load balancer received the request from the client, in ISO 8601 format\. | 
 | elb | The name of the load balancer | 
 | client:port | The IP address and port of the requesting client\. | 
 | backend:port |  The IP address and port of the registered instance that processed this request\. If the load balancer can't send the request to a registered instance, or if the instance closes the connection before a response can be sent, this value is set to `-`\. This value can also be set to `-` if the registered instance does not respond before the idle timeout\.  | 
@@ -100,38 +100,38 @@ The following table describes the fields of an access log entry\.
 
 ### Examples<a name="access-log-entry-examples"></a>
 
-**Example HTTP Entry**  
+**Example HTTP entry**  
 The following is an example log entry for an HTTP listener \(port 80 to port 80\):
 
 ```
 2015-05-13T23:39:43.945958Z my-loadbalancer 192.168.131.39:2817 10.0.0.1:80 0.000073 0.001048 0.000057 200 200 0 29 "GET http://www.example.com:80/ HTTP/1.1" "curl/7.38.0" - -
 ```
 
-**Example HTTPS Entry**  
+**Example HTTPS entry**  
 The following is an example log entry for an HTTPS listener \(port 443 to port 80\):
 
 ```
 2015-05-13T23:39:43.945958Z my-loadbalancer 192.168.131.39:2817 10.0.0.1:80 0.000086 0.001048 0.001337 200 200 0 57 "GET https://www.example.com:443/ HTTP/1.1" "curl/7.38.0" DHE-RSA-AES128-SHA TLSv1.2
 ```
 
-**Example TCP Entry**  
+**Example TCP entry**  
 The following is an example log entry for an TCP listener \(port 8080 to port 80\):
 
 ```
 2015-05-13T23:39:43.945958Z my-loadbalancer 192.168.131.39:2817 10.0.0.1:80 0.001069 0.000028 0.000041 - - 82 305 "- - - " "-" - -
 ```
 
-**Example SSL Entry**  
+**Example SSL entry**  
 The following is an example log entry for an SSL listener \(port 8443 to port 80\):
 
 ```
 2015-05-13T23:39:43.945958Z my-loadbalancer 192.168.131.39:2817 10.0.0.1:80 0.001065 0.000015 0.000023 - - 57 502 "- - - " "-" ECDHE-ECDSA-AES128-GCM-SHA256 TLSv1.2
 ```
 
-## Processing Access Logs<a name="log-processing-tools"></a>
+## Processing access logs<a name="log-processing-tools"></a>
 
 If there is a lot of demand on your website, your load balancer can generate log files with gigabytes of data\. You might not be able to process such a large amount of data using line\-by\-line processing\. Therefore, you might have to use analytical tools that provide parallel processing solutions\. For example, you can use the following analytical tools to analyze and process access logs:
-+ Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL\. For more information, see [Querying Classic Load Balancer Logs](https://docs.aws.amazon.com/athena/latest/ug/elasticloadbalancer-classic-logs.html) in the *Amazon Athena User Guide*\.
++ Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL\. For more information, see [Querying Classic Load Balancer logs](https://docs.aws.amazon.com/athena/latest/ug/elasticloadbalancer-classic-logs.html) in the *Amazon Athena User Guide*\.
 + [Loggly](https://www.loggly.com/docs/s3-ingestion-auto/)
 + [Splunk](https://splunkbase.splunk.com/app/1274/)
 + [Sumo Logic](https://www.sumologic.com/application/elb/)

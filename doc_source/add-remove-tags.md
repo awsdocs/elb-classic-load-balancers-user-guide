@@ -1,4 +1,4 @@
-# Tag Your Classic Load Balancer<a name="add-remove-tags"></a>
+# Tag your Classic Load Balancer<a name="add-remove-tags"></a>
 
 Tags help you to categorize your load balancers in different ways, for example, by purpose, owner, or environment\.
 
@@ -7,11 +7,11 @@ You can add multiple tags to each Classic Load Balancer\. Tag keys must be uniqu
 When you are finished with a tag, you can remove it from your load balancer\.
 
 **Topics**
-+ [Tag Restrictions](#tag-restrictions)
-+ [Add a Tag](#add-tags)
-+ [Remove a Tag](#remove-tags)
++ [Tag restrictions](#tag-restrictions)
++ [Add a tag](#add-tags)
++ [Remove a tag](#remove-tags)
 
-## Tag Restrictions<a name="tag-restrictions"></a>
+## Tag restrictions<a name="tag-restrictions"></a>
 
 The following basic restrictions apply to tags:
 + Maximum number of tags per resource—50
@@ -20,7 +20,7 @@ The following basic restrictions apply to tags:
 + Tag keys and values are case sensitive\. Allowed characters are letters, spaces, and numbers representable in UTF\-8, plus the following special characters: \+ \- = \. \_ : / @\. Do not use leading or trailing spaces\.
 + Do not use the `aws:` prefix in your tag names or values because it is reserved for AWS use\. You can't edit or delete tag names or values with this prefix\. Tags with this prefix do not count against your tags per resource limit\. 
 
-## Add a Tag<a name="add-tags"></a>
+## Add a tag<a name="add-tags"></a>
 
 You can add tags to your load balancer at any time\.
 
@@ -46,7 +46,7 @@ Use the following [add\-tags](https://docs.aws.amazon.com/cli/latest/reference/e
 aws elb add-tags --load-balancer-name my-loadbalancer --tag "Key=project,Value=lima"
 ```
 
-## Remove a Tag<a name="remove-tags"></a>
+## Remove a tag<a name="remove-tags"></a>
 
 You can remove tags from your load balancer whenever you are finished with them\.
 

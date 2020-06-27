@@ -1,4 +1,4 @@
-# Enable Access Logs for Your Classic Load Balancer<a name="enable-access-logs"></a>
+# Enable access logs for your Classic Load Balancer<a name="enable-access-logs"></a>
 
 To enable access logs for your load balancer, you must specify the name of the Amazon S3 bucket where the load balancer will store the logs\. You must also attach a bucket policy to this bucket that grants Elastic Load Balancing permission to write to the bucket\.
 
@@ -6,14 +6,14 @@ To enable access logs for your load balancer, you must specify the name of the A
 The bucket and your load balancer must be in the same Region\. The bucket can be owned by a different account than the account that owns the load balancer\.
 
 **Topics**
-+ [Step 1: Create an S3 Bucket](#create-s3-bucket)
-+ [Step 2: Attach a Policy to Your S3 Bucket](#attach-bucket-policy)
-+ [Step 3: Enable Access Logs](#enable-access-logs-console)
-+ [Step 4: Verify that the Load Balancer Created a Test File in the S3 Bucket](#verify-access-logs)
++ [Step 1: Create an S3 bucket](#create-s3-bucket)
++ [Step 2: Attach a policy to your S3 bucket](#attach-bucket-policy)
++ [Step 3: Enable access logs](#enable-access-logs-console)
++ [Step 4: Verify that the load balancer created a test file in the S3 bucket](#verify-access-logs)
 
-## Step 1: Create an S3 Bucket<a name="create-s3-bucket"></a>
+## Step 1: Create an S3 bucket<a name="create-s3-bucket"></a>
 
-You can create an S3 bucket using the Amazon S3 console\. If you already have a bucket and want to use it to store the access logs, skip this step and go to [Step 2: Attach a Policy to Your S3 Bucket](#attach-bucket-policy) to grant Elastic Load Balancing permission to write logs to your bucket\.
+You can create an S3 bucket using the Amazon S3 console\. If you already have a bucket and want to use it to store the access logs, skip this step and go to [Step 2: Attach a policy to your S3 bucket](#attach-bucket-policy) to grant Elastic Load Balancing permission to write logs to your bucket\.
 
 **Tip**  
 If you will use the console to enable access logs, you can skip this step and have Elastic Load Balancing create a bucket with the required permissions for you\. If you will use the AWS CLI to enable access logs, you must create the bucket and grant the required permissions yourself\.
@@ -30,13 +30,13 @@ If you will use the console to enable access logs, you can skip this step and ha
 
 1. On the **Create bucket** page, do the following:
 
-   1. For **Bucket Name**, enter a name for your bucket\. This name must be unique across all existing bucket names in Amazon S3\. In some Regions, there might be additional restrictions on bucket names\. For more information, see [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+   1. For **Bucket Name**, enter a name for your bucket\. This name must be unique across all existing bucket names in Amazon S3\. In some Regions, there might be additional restrictions on bucket names\. For more information, see [Bucket restrictions and limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
    1. For **Region**, select the Region where you created your load balancer\.
 
    1. Choose **Create**\.
 
-## Step 2: Attach a Policy to Your S3 Bucket<a name="attach-bucket-policy"></a>
+## Step 2: Attach a policy to your S3 bucket<a name="attach-bucket-policy"></a>
 
 After you've created or identified your S3 bucket, you must attach a policy to the bucket\. Bucket policies are a collection of JSON statements written in the access policy language to define access permissions for your bucket\. Each statement includes information about a single permission and contains a series of elements\.
 
@@ -51,7 +51,7 @@ If you will use the console to enable access logs, you can skip this step and ha
 
 1. Select the bucket\. Choose **Permissions** and then choose **Bucket Policy**\.
 
-1. If you are creating a new bucket policy, copy this entire policy document to the policy editor, then replace the placeholders with the bucket name and prefix for your bucket and the AWS account ID that corresponds to the Region for your load balancer\. If you are editing an existing bucket policy, copy only the new statement from the policy document \(the text between the \[ and \] of the `Statement` element\)\.
+1. If you are creating a new bucket policy, copy this entire policy document to the policy editor, then replace the placeholders with the bucket name and prefix for your bucket, the ID of the AWS account for Elastic Load Balancing \(based on the Region for your load balancer\), and the ID of your own AWS account\. If you are editing an existing bucket policy, copy only the new statement from the policy document \(the text between the \[ and \] of the `Statement` element\)\.
 
    ```
    {
@@ -60,10 +60,31 @@ If you will use the console to enable access logs, you can skip this step and ha
        {
          "Effect": "Allow",
          "Principal": {
-           "AWS": "arn:aws:iam::aws-account-id:root"
+           "AWS": "arn:aws:iam::elb-account-id:root"
          },
          "Action": "s3:PutObject",
-         "Resource": "arn:aws:s3:::bucket-name/prefix/*"
+         "Resource": "arn:aws:s3:::bucket-name/prefix/AWSLogs/your-aws-account-id/*"
+       },
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Service": "delivery.logs.amazonaws.com"
+         },
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::bucket-name/prefix/AWSLogs/your-aws-account-id/*",
+         "Condition": {
+           "StringEquals": {
+             "s3:x-amz-acl": "bucket-owner-full-control"
+           }
+         }
+       },
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Service": "delivery.logs.amazonaws.com"
+         },
+         "Action": "s3:GetBucketAcl",
+         "Resource": "arn:aws:s3:::bucket-name"
        }
      ]
    }
@@ -76,7 +97,7 @@ If you will use the console to enable access logs, you can skip this step and ha
 
 1. Choose **Save**\.
 
-## Step 3: Enable Access Logs<a name="enable-access-logs-console"></a>
+## Step 3: Enable access logs<a name="enable-access-logs-console"></a>
 
 You can enable access logs using the AWS Management Console or the AWS CLI\. Note that when you enable access logs using the console, you can have Elastic Load Balancing create the bucket for you with necessary permissions for the load balancer to write to your bucket\.
 
@@ -100,7 +121,7 @@ Use the following example to capture and deliver logs to your S3 bucket every 60
 
    1. For **S3 location**, type the name of your S3 bucket, including the prefix \(for example, `my-loadbalancer-logs/my-app`\)\. You can specify the name of an existing bucket or a name for a new bucket\.
 
-   1. \(Optional\) If the bucket does not exist, choose **Create this location for me**\. You must specify a name that is unique across all existing bucket names in Amazon S3 and follows the DNS naming conventions\. For more information, see [Rules for Bucket Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
+   1. \(Optional\) If the bucket does not exist, choose **Create this location for me**\. You must specify a name that is unique across all existing bucket names in Amazon S3 and follows the DNS naming conventions\. For more information, see [Rules for bucket naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
 
    1. Choose **Save**\.
 
@@ -140,7 +161,7 @@ The following is an example response:
 }
 ```
 
-## Step 4: Verify that the Load Balancer Created a Test File in the S3 Bucket<a name="verify-access-logs"></a>
+## Step 4: Verify that the load balancer created a test file in the S3 bucket<a name="verify-access-logs"></a>
 
 After the access log is enabled for your load balancer, Elastic Load Balancing validates the S3 bucket and creates a test file\. You can use the S3 console to verify that the test file was created\.
 

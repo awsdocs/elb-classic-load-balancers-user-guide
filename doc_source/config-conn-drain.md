@@ -1,4 +1,4 @@
-# Configure Connection Draining for Your Classic Load Balancer<a name="config-conn-drain"></a>
+# Configure connection draining for your Classic Load Balancer<a name="config-conn-drain"></a>
 
 To ensure that a Classic Load Balancer stops sending requests to instances that are de\-registering or unhealthy, while keeping the existing connections open, use *connection draining*\. This enables the load balancer to complete in\-flight requests made to instances that are de\-registering or unhealthy\.
 
@@ -13,10 +13,10 @@ If your instances are part of an Auto Scaling group and connection draining is e
 You can disable connection draining if you want your load balancer to immediately close connections to the instances that are de\-registering or have become unhealthy\. When connection draining is disabled, any in\-flight requests made to instances that are de\-registering or unhealthy are not completed\.
 
 **Topics**
-+ [Enable Connection Draining](#enable-conn-drain)
-+ [Disable Connection Draining](#disable-conn-drain)
++ [Enable connection draining](#enable-conn-drain)
++ [Disable connection draining](#disable-conn-drain)
 
-## Enable Connection Draining<a name="enable-conn-drain"></a>
+## Enable connection draining<a name="enable-conn-drain"></a>
 
 You can enable connection draining for your load balancer at any time\.
 
@@ -57,7 +57,7 @@ The following is an example response:
 }
 ```
 
-## Disable Connection Draining<a name="disable-conn-drain"></a>
+## Disable connection draining<a name="disable-conn-drain"></a>
 
 You can disable connection draining for your load balancer at any time\.
 

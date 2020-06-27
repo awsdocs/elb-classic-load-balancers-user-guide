@@ -1,17 +1,17 @@
-# Create an Internal Classic Load Balancer<a name="elb-create-internal-load-balancer"></a>
+# Create an internal Classic Load Balancer<a name="elb-create-internal-load-balancer"></a>
 
 You can create an internal load balancer to distribute traffic to your EC2 instances from clients with access to the VPC for the load balancer\.
 
 **Topics**
 + [Prerequisites](#create-internal-lb-prereq)
-+ [Create an Internal Load Balancer Using the Console](#create-internal-lb)
-+ [Create an Internal Load Balancer Using the AWS CLI](#create-internal-lb-cli)
++ [Create an internal load balancer using the console](#create-internal-lb)
++ [Create an internal load balancer using the AWS CLI](#create-internal-lb-cli)
 
 ## Prerequisites<a name="create-internal-lb-prereq"></a>
-+ If you have not yet created a VPC for your load balancer, you must create it before you get started\. For more information, see [Prepare Your VPC and EC2 Instances](elb-backend-instances.md#set-up-ec2)\.
++ If you have not yet created a VPC for your load balancer, you must create it before you get started\. For more information, see [Prepare your VPC and EC2 instances](elb-backend-instances.md#set-up-ec2)\.
 + Launch the EC2 instances that you plan to register with your internal load balancer\. Ensure that you launch them in private subnets in the VPC intended for the load balancer\.
 
-## Create an Internal Load Balancer Using the Console<a name="create-internal-lb"></a>
+## Create an internal load balancer using the console<a name="create-internal-lb"></a>
 
 By default, Elastic Load Balancing creates an Internet\-facing load balancer\. Use the following procedure to create an internal load balancer and register your EC2 instances with the newly created internal load balancer\.
 
@@ -50,7 +50,7 @@ If you selected a default VPC as your network, but did not select **Enable advan
 
 1. On the **Assign Security Groups** page, choose **Create a new security group**\. Enter a name and description for your security group, or leave the default name and description\. This new security group contains a rule that allows traffic to the port that you configured your load balancer to use\. If you will use a different port for the health checks, you must choose **Add Rule** to add a rule that allows inbound traffic to that port as well\. Choose **Next: Configure Security Settings**\.
 
-1. On the **Configure Security Settings** page, choose **Next: Configure Health Check** to continue to the next step\. If you prefer to create a HTTPS load balancer, see [HTTPS Listeners for Your Classic Load Balancer](elb-https-load-balancers.md)\.
+1. On the **Configure Security Settings** page, choose **Next: Configure Health Check** to continue to the next step\. If you prefer to create a HTTPS load balancer, see [HTTPS listeners for your Classic Load Balancer](elb-https-load-balancers.md)\.
 
 1. On the **Configure Health Check** page, configure the health check settings that your application requires, and then choose **Next: Add EC2 Instances**\.
 
@@ -68,9 +68,9 @@ When you register an instance with an elastic network interface \(ENI\) attached
 
 1. On the **Description** tab, note that **DNS name** and **Scheme** indicate that the load balancer is internal\.
 
-   Check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance Registration](ts-elb-register-instance.md)\.
+   Check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance registration](ts-elb-register-instance.md)\.
 
-## Create an Internal Load Balancer Using the AWS CLI<a name="create-internal-lb-cli"></a>
+## Create an internal load balancer using the AWS CLI<a name="create-internal-lb-cli"></a>
 
 By default, Elastic Load Balancing creates an Internet\-facing load balancer\. Use the following procedure to create an internal load balancer and register your EC2 instances with the newly created internal load balancer\.
 

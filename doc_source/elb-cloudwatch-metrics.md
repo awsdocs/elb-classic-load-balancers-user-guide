@@ -1,4 +1,4 @@
-# CloudWatch Metrics for Your Classic Load Balancer<a name="elb-cloudwatch-metrics"></a>
+# CloudWatch metrics for your Classic Load Balancer<a name="elb-cloudwatch-metrics"></a>
 
 Elastic Load Balancing publishes data points to Amazon CloudWatch for your load balancers and your back\-end instances\. CloudWatch enables you to retrieve statistics about those data points as an ordered set of time\-series data, known as *metrics*\. Think of a metric as a variable to monitor, and the data points as the values of that variable over time\. For example, you can monitor the total number of healthy EC2 instances for a load balancer over a specified time period\. Each data point has an associated time stamp and an optional unit of measurement\.
 
@@ -9,13 +9,13 @@ Elastic Load Balancing reports metrics to CloudWatch only when requests are flow
 For more information about Amazon CloudWatch, see the *[Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)*\.
 
 **Topics**
-+ [Classic Load Balancer Metrics](#loadbalancing-metrics-clb)
-+ [Metric Dimensions for Classic Load Balancers](#load-balancer-metric-dimensions-clb)
-+ [Statistics for Classic Load Balancer Metrics](#measure-stats)
-+ [View CloudWatch Metrics for Your Load Balancer](#ViewingDataUsingCloudWatch)
-+ [Create CloudWatch Alarms for Your Load Balancer](#create_cw_alarms)
++ [Classic Load Balancer metrics](#loadbalancing-metrics-clb)
++ [Metric dimensions for Classic Load Balancers](#load-balancer-metric-dimensions-clb)
++ [Statistics for Classic Load Balancer metrics](#measure-stats)
++ [View CloudWatch metrics for your load balancer](#ViewingDataUsingCloudWatch)
++ [Create CloudWatch alarms for your load balancer](#create_cw_alarms)
 
-## Classic Load Balancer Metrics<a name="loadbalancing-metrics-clb"></a>
+## Classic Load Balancer metrics<a name="loadbalancing-metrics-clb"></a>
 
 The `AWS/ELB` namespace includes the following metrics\.
 
@@ -45,7 +45,7 @@ These estimates are based on a load balancer with one default rule and a certifi
 | EstimatedALBNewConnectionCount |  The estimated number of new TCP connections established from clients to the load balancer and from the load balancer to targets\.  | 
 | EstimatedProcessedBytes |  The estimated number of bytes processed by an Application Load Balancer\.  | 
 
-## Metric Dimensions for Classic Load Balancers<a name="load-balancer-metric-dimensions-clb"></a>
+## Metric dimensions for Classic Load Balancers<a name="load-balancer-metric-dimensions-clb"></a>
 
 To filter the metrics for your Classic Load Balancer, use the following dimensions\.
 
@@ -55,7 +55,7 @@ To filter the metrics for your Classic Load Balancer, use the following dimensio
 |  AvailabilityZone  |  Filters the metric data by the specified Availability Zone\.  | 
 |  LoadBalancerName  |  Filters the metric data by the specified load balancer\.  | 
 
-## Statistics for Classic Load Balancer Metrics<a name="measure-stats"></a>
+## Statistics for Classic Load Balancer metrics<a name="measure-stats"></a>
 
 CloudWatch provides statistics based on the metric data points published by Elastic Load Balancing\. Statistics are metric data aggregations over specified period of time\. When you request statistics, the returned data stream is identified by the metric name and dimension\. A dimension is a name/value pair that uniquely identifies a metric\. For example, you can request statistics for all the healthy EC2 instances behind a load balancer launched in a specific Availability Zone\.
 
@@ -67,7 +67,7 @@ The `SampleCount` statistic is the number of samples measured\. Because metrics 
 
 A percentile indicates the relative standing of a value in a data set\. You can specify any percentile, using up to two decimal places \(for example, p95\.45\)\. For example, the 95th percentile means that 95 percent of the data is below this value and 5 percent is above\. Percentiles are often used to isolate anomalies\. For example, suppose that an application serves the majority of requests from a cache in 1\-2 ms, but in 100\-200 ms if the cache is empty\. The maximum reflects the slowest case, around 200 ms\. The average doesn't indicate the distribution of the data\. Percentiles provide a more meaningful view of the application's performance\. By using the 99th percentile as an Auto Scaling trigger or a CloudWatch alarm, you can target that no more than 1 percent of requests take longer than 2 ms to process\.
 
-## View CloudWatch Metrics for Your Load Balancer<a name="ViewingDataUsingCloudWatch"></a>
+## View CloudWatch metrics for your load balancer<a name="ViewingDataUsingCloudWatch"></a>
 
 You can view the CloudWatch metrics for your load balancers using the Amazon EC2 console\. These metrics are displayed as monitoring graphs\. The monitoring graphs show data points if the load balancer is active and receiving requests\.
 
@@ -113,9 +113,9 @@ Alternatively, you can view metrics for your load balancer using the CloudWatch 
    + To view the metrics for a single load balancer, type its name in the search field\.
    + To view the metrics for a single Availability Zone, type its name in the search field\.
 
-## Create CloudWatch Alarms for Your Load Balancer<a name="create_cw_alarms"></a>
+## Create CloudWatch alarms for your load balancer<a name="create_cw_alarms"></a>
 
-An alarm watches a single metric over the time period that you specify\. Depending on the value of the metric relative to a threshold that you define, the alarm can send one or more notifications using Amazon SNS, a service that enables applications, end users, and devices to instantly send and receive notifications\. For more information, see [Get Started with Amazon SNS](https://docs.aws.amazon.com/sns/latest/gsg/Welcome.html)\.
+An alarm watches a single metric over the time period that you specify\. Depending on the value of the metric relative to a threshold that you define, the alarm can send one or more notifications using Amazon SNS, a service that enables applications, end users, and devices to instantly send and receive notifications\. For more information, see [Get started with Amazon SNS](https://docs.aws.amazon.com/sns/latest/gsg/Welcome.html)\.
 
 An alarm sends notifications to Amazon SNS when the specified metric reaches the defined range and remains in that range for a specified period of time\. An alarm has three possible states:
 + `OK`—The value of the metric is within the range you've specified\.
@@ -127,7 +127,7 @@ Whenever the state of an alarm changes, CloudWatch uses Amazon SNS to send a not
 Use the following procedure to create an alarm for your load balancer using the Amazon EC2 console\. The alarm sends notifications to an SNS topic whenever the load balancer's latency is above 120 seconds for 1 consecutive period of 5 minutes\. Note that a short period creates a more sensitive alarm, while a longer period can mitigate brief spikes in a metric\.
 
 **Note**  
-Alternately, you can create an alarm for your load balancer using the CloudWatch console\. For more information, see [Send Email Based on Load Balancer Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_AlarmAtThresholdELB.html) in the *Amazon CloudWatch User Guide*\.
+Alternately, you can create an alarm for your load balancer using the CloudWatch console\. For more information, see [Send email based on load balancer alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_AlarmAtThresholdELB.html) in the *Amazon CloudWatch User Guide*\.
 
 **To create an alarm for your load balancer**
 

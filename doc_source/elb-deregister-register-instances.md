@@ -1,10 +1,10 @@
-# Register or Deregister EC2 Instances for Your Classic Load Balancer<a name="elb-deregister-register-instances"></a>
+# Register or deregister EC2 instances for your Classic Load Balancer<a name="elb-deregister-register-instances"></a>
 
 Registering an EC2 instance adds it to your load balancer\. The load balancer continuously monitors the health of registered instances in its enabled Availability Zones, and routes requests to the instances that are healthy\. If demand on your instances increases, you can register additional instances with the load balancer to handle the demand\.
 
 Deregistering an EC2 instance removes it from your load balancer\. The load balancer stops routing requests to an instance as soon as it is deregistered\. If demand decreases, or you need to service your instances, you can deregister instances from the load balancer\. An instance that is deregistered remains running, but no longer receives traffic from the load balancer, and you can register it with the load balancer again when you are ready\.
 
-When you deregister an instance, Elastic Load Balancing waits until in\-flight requests have completed if connection draining is enabled\. For more information, see [Configure Connection Draining for Your Classic Load Balancer](config-conn-drain.md)\.
+When you deregister an instance, Elastic Load Balancing waits until in\-flight requests have completed if connection draining is enabled\. For more information, see [Configure connection draining for your Classic Load Balancer](config-conn-drain.md)\.
 
 If your load balancer is attached to an Auto Scaling group, instances in the group are automatically registered with the load balancer\. If you detach a load balancer from your Auto Scaling group, the instances in the group are deregistered\.
 
@@ -14,14 +14,14 @@ Elastic Load Balancing registers your EC2 instance with your load balancer using
 
 **Topics**
 + [Prerequisites](#elb-register-instances-prereq)
-+ [Register an Instance](#elb-register-instances)
-+ [Deregister an Instance](#elb-deregister-instances)
++ [Register an instance](#elb-register-instances)
++ [Deregister an instance](#elb-deregister-instances)
 
 ## Prerequisites<a name="elb-register-instances-prereq"></a>
 
 The instance must be a running instance in the same network as the load balancer \(EC2\-Classic or the same VPC\)\. If you have EC2\-Classic instances and a load balancer in a VPC with ClassicLink enabled, you can link the EC2\-Classic instances to that VPC and then register them with a load balancer in the VPC\.
 
-## Register an Instance<a name="elb-register-instances"></a>
+## Register an instance<a name="elb-register-instances"></a>
 
 When you are ready, register your instance with your load balancer\. If the instance is an in Availability Zone that is enabled for the load balancer, the instance is ready to receive traffic from the load balancer as soon as it passes the required number of health checks\.
 
@@ -63,11 +63,11 @@ The following is an example response that lists the instances registered with th
 }
 ```
 
-## Deregister an Instance<a name="elb-deregister-instances"></a>
+## Deregister an instance<a name="elb-deregister-instances"></a>
 
 You can deregister an instance from your load balancer if you no longer need the capacity or if you need to service the instance\.
 
-If your load balancer is attached to an Auto Scaling group, detaching the instance from the group also deregisters it from the load balancer\. For more information, see [Detach EC2 Instances From Your Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
+If your load balancer is attached to an Auto Scaling group, detaching the instance from the group also deregisters it from the load balancer\. For more information, see [Detach EC2 instances from your Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 **To deregister your instances using the console**
 

@@ -1,6 +1,6 @@
-# Troubleshoot a Classic Load Balancer: Health Checks<a name="ts-elb-healthcheck"></a>
+# Troubleshoot a Classic Load Balancer: Health checks<a name="ts-elb-healthcheck"></a>
 
-Your load balancer checks the health of its registered instances using either the default health check configuration provided by Elastic Load Balancing or a custom health check configuration that you specify\. The health check configuration contains information such as the protocol, ping port, ping path, response timeout, and health check interval\. An instance is considered healthy if it returns a 200 response code within the health check interval\. For more information, see [Configure Health Checks for Your Classic Load Balancer](elb-healthchecks.md)\.
+Your load balancer checks the health of its registered instances using either the default health check configuration provided by Elastic Load Balancing or a custom health check configuration that you specify\. The health check configuration contains information such as the protocol, ping port, ping path, response timeout, and health check interval\. An instance is considered healthy if it returns a 200 response code within the health check interval\. For more information, see [Configure health checks for your Classic Load Balancer](elb-healthchecks.md)\.
 
 If the current state of some or all your instances is `OutOfService` and the description field displays the message that the `Instance has failed at least the Unhealthy Threshold number of health checks consecutively`, the instances have failed the load balancer health check\. The following are the issues to look for, the potential causes, and the steps you can take to resolve the issues\.
 
@@ -55,9 +55,9 @@ If you are using an HTTP/HTTPS connection and getting a non\-200 response, see [
 **Cause 2**: The instance is under significant load and is taking longer than your configured response timeout period to respond\.
 
 **Solution 2**:
-+ Check the monitoring graph for over\-utilization of CPU\. For information, see [Get Statistics for a Specific EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/US_SingleMetricPerInstance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
++ Check the monitoring graph for over\-utilization of CPU\. For information, see [Get statistics for a specific EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/US_SingleMetricPerInstance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 + Check the utilization of other application resources, such as memory or limits, by connecting to your EC2 instances\.
-+ If necessary, add more instances or enable Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/latest/userguide/)\.
++ If necessary, add more instances or enable Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/)\.
 
 **Cause 3**: If you are using an HTTP or an HTTPS connection and the health check is being performed on a target page specified in the ping path field \(for example, `HTTP:80/index.html`\), the target page might be taking longer to respond than your configured timeout\.
 
@@ -67,9 +67,9 @@ If you are using an HTTP/HTTPS connection and getting a non\-200 response, see [
 
 **Problem**: A load balancer configured to use the HTTPS or SSL protocol with back\-end authentication enabled fails public key authentication\.
 
-**Cause**: The public key on the SSL certificate does not match the public key configured on the load balancer\. Use the `s_client` command to see the list of server certificates in the certificate chain\. For more information, see [s\_client](https://www.openssl.org/docs/manmaster/man1/s_client.html) in the OpenSSL documentation\.
+**Cause**: The public key on the SSL certificate does not match the public key configured on the load balancer\. Use the `s_client` command to see the list of server certificates in the certificate chain\. For more information, see [s\_client](https://www.openssl.org/docs/man1.1.1/man1/openssl-s_client.html) in the OpenSSL documentation\.
 
-**Solution**: Your might need to update your SSL certificate\. If your SSL certificate is current, try re\-installing it on your load balancer\. For more information, see [Replace the SSL Certificate for Your Classic Load Balancer](elb-update-ssl-cert.md)\.
+**Solution**: Your might need to update your SSL certificate\. If your SSL certificate is current, try re\-installing it on your load balancer\. For more information, see [Replace the SSL certificate for your Classic Load Balancer](elb-update-ssl-cert.md)\.
 
 ## Instance is not receiving traffic from the load balancer<a name="ts-elb-healthcheck-securitygroup"></a>
 
@@ -89,9 +89,9 @@ Do a packet capture on the instance to verify the issue\. Use the following comm
 
 **Solution 2**: Edit the security group of your load balancer to allow traffic to the subnets and the EC2 instances\.
 
-For information about managing security groups for EC2\-Classic, see [Security Groups for Instances in EC2\-Classic](elb-security-groups.md#elb-classic-security-groups)\.
+For information about managing security groups for EC2\-Classic, see [Security groups for instances in EC2\-Classic](elb-security-groups.md#elb-classic-security-groups)\.
 
-For information about managing security groups for a VPC, see [Security Groups for Load Balancers in a VPC](elb-security-groups.md#elb-vpc-security-groups)\.
+For information about managing security groups for a VPC, see [Security groups for load balancers in a VPC](elb-security-groups.md#elb-vpc-security-groups)\.
 
 ## Ports on instance are not open<a name="ts-elb-healthcheck-ports"></a>
 
@@ -115,4 +115,4 @@ netstat –ant
 
 An instance might fail the ELB health check because an application running on the instance has issues that cause the load balancer to consider the instance out of service\. This instance might pass the Auto Scaling health check; it would not be replaced by the Auto Scaling policy because it is considered healthy based on the EC2 status check\.
 
-**Solution**: Use the ELB health check for your Auto Scaling group\. When you use the ELB health check, Auto Scaling determines the health status of your instances by checking the results of both the instance status check and the ELB health check\. For more information, see [Adding Health Checks to your Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-elb-healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.
+**Solution**: Use the ELB health check for your Auto Scaling group\. When you use the ELB health check, Auto Scaling determines the health status of your instances by checking the results of both the instance status check and the ELB health check\. For more information, see [Adding health checks to your Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-elb-healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.

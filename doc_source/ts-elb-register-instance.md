@@ -1,4 +1,4 @@
-# Troubleshoot a Classic Load Balancer: Instance Registration<a name="ts-elb-register-instance"></a>
+# Troubleshoot a Classic Load Balancer: Instance registration<a name="ts-elb-register-instance"></a>
 
 When you register an instance with your load balancer, there are a number of steps that are taken before the load balancer can begin to send requests to your instance\.
 

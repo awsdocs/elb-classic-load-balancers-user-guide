@@ -1,31 +1,31 @@
-# Troubleshoot Your Classic Load Balancer<a name="elb-troubleshooting"></a>
+# Troubleshoot your Classic Load Balancer<a name="elb-troubleshooting"></a>
 
 The following tables list the troubleshooting resources that you'll find useful as you work with a Classic Load Balancer\.
 
 
-**API Errors**  
+**API errors**  
 
 | Error | 
 | --- | 
-| [CertificateNotFound: undefined](ts-elb-error-api-response.md#ts-elb-error-message-certificate) | 
-| [OutofService: A Transient Error Occurred](ts-elb-error-api-response.md#ts-elb-error-message-service) | 
+| [CertificateNotFound: Undefined](ts-elb-error-api-response.md#ts-elb-error-message-certificate) | 
+| [OutofService: A transient error occurred](ts-elb-error-api-response.md#ts-elb-error-message-service) | 
 
 
-**HTTP Errors**  
+**HTTP errors**  
 
 | Error | 
 | --- | 
 | [HTTP 400: BAD\_REQUEST](ts-elb-error-message.md#ts-elb-errorcodes-http400) | 
 | [HTTP 405: METHOD\_NOT\_ALLOWED](ts-elb-error-message.md#ts-elb-errorcodes-http405) | 
-| [HTTP 408: Request Timeout](ts-elb-error-message.md#ts-elb-errorcodes-http408) | 
-| [HTTP 502: Bad Gateway](ts-elb-error-message.md#ts-elb-errorcodes-http502) | 
-| [HTTP 503: Service Unavailable](ts-elb-error-message.md#ts-elb-errorcodes-http503) | 
-| [HTTP 504: Gateway Timeout](ts-elb-error-message.md#ts-elb-errorcodes-http504) | 
+| [HTTP 408: Request timeout](ts-elb-error-message.md#ts-elb-errorcodes-http408) | 
+| [HTTP 502: Bad gateway](ts-elb-error-message.md#ts-elb-errorcodes-http502) | 
+| [HTTP 503: Service unavailable](ts-elb-error-message.md#ts-elb-errorcodes-http503) | 
+| [HTTP 504: Gateway timeout](ts-elb-error-message.md#ts-elb-errorcodes-http504) | 
 
 
-**Response Code Metrics**  
+**Response code metrics**  
 
-| Response Code Metric | 
+| Response code metric | 
 | --- | 
 | [HTTPCode\_ELB\_4XX](ts-elb-http-errors.md#ts-elb-error-metrics-ELB_4XX) | 
 | [HTTPCode\_ELB\_5XX](ts-elb-http-errors.md#ts-elb-error-metrics-ELB_5XX) | 
@@ -35,7 +35,7 @@ The following tables list the troubleshooting resources that you'll find useful 
 | [HTTPCode\_Backend\_5XX](ts-elb-http-errors.md#ts-elb-error-metrics-Backend_5XX) | 
 
 
-**Health Check Issues**  
+**Health check issues**  
 
 | Issue | 
 | --- | 
@@ -47,14 +47,14 @@ The following tables list the troubleshooting resources that you'll find useful 
 | [Instances in an Auto Scaling group are failing the ELB health check](ts-elb-healthcheck.md#ts-elb-healthcheck-autoscaling) | 
 
 
-**Connectivity Issues**  
+**Connectivity issues**  
 
 | Issue | 
 | --- | 
 | [Clients cannot connect to the load balancer](ts-elb-connection-failed.md) | 
 
 
-**Instance Registration Issues**  
+**Instance registration issues**  
 
 | Issue | 
 | --- | 

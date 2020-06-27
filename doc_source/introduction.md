@@ -1,8 +1,8 @@
-# What Is a Classic Load Balancer?<a name="introduction"></a>
+# What is a Classic Load Balancer?<a name="introduction"></a>
 
-Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. This guide discusses Classic Load Balancers\. For more information about Application Load Balancers, see the [User Guide for Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/)\. For more information about Network Load Balancers, see the [User Guide for Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/)\.
+Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. This guide discusses Classic Load Balancers\. For more information about Application Load Balancers, see the [User Guide for Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/)\. For more information about Network Load Balancers, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/)\.
 
-## Classic Load Balancer Overview<a name="classic-load-balancer-overview"></a>
+## Classic Load Balancer overview<a name="classic-load-balancer-overview"></a>
 
 A load balancer distributes incoming application traffic across multiple EC2 instances in multiple Availability Zones\. This increases the fault tolerance of your applications\. Elastic Load Balancing detects unhealthy instances and routes traffic only to healthy instances\.
 
@@ -18,7 +18,7 @@ To ensure that your registered instances are able to handle the request load in 
 
 By default, the load balancer distributes traffic evenly across the Availability Zones that you enable for your load balancer\. To distribute traffic evenly across all registered instances in all enabled Availability Zones, enable *cross\-zone load balancing* on your load balancer\. However, we still recommend that you maintain approximately equivalent numbers of instances in each Availability Zone for better fault tolerance\.
 
-For more information, see [How Elastic Load Balancing Works](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html) in the *Elastic Load Balancing User Guide*\.
+For more information, see [How Elastic Load Balancing works](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html) in the *Elastic Load Balancing User Guide*\.
 
 ## Benefits<a name="classic-load-balancer-benefits"></a>
 
@@ -27,12 +27,12 @@ Using a Classic Load Balancer instead of an Application Load Balancer has the fo
 + Support for TCP and SSL listeners
 + Support for sticky sessions using application\-generated cookies
 
-For more information about the features supported by each load balancer type, see [Comparison of Elastic Load Balancing Products](https://aws.amazon.com/elasticloadbalancing/details/#compare)\.
+For more information about the features supported by each load balancer type, see [Product comparison](https://aws.amazon.com/elasticloadbalancing/details/#compare) for Elastic Load Balancing\.
 
-## How to Get Started<a name="classic-load-balancer-getting-started"></a>
+## How to get started<a name="classic-load-balancer-getting-started"></a>
 + To learn how to create a Classic Load Balancer and register EC2 instances with it, see [Tutorial: Create a Classic Load Balancer](elb-getting-started.md)\.
-+ To learn how to create an HTTPS load balancer and register EC2 instances with it, see [Create a Classic Load Balancer with an HTTPS Listener](elb-create-https-ssl-load-balancer.md)\.
-+ To learn how to use the various features supported by Elastic Load Balancing, see [Configure Your Classic Load Balancer](elb-configure-load-balancer.md)\.
++ To learn how to create an HTTPS load balancer and register EC2 instances with it, see [Create a Classic Load Balancer with an HTTPS listener](elb-create-https-ssl-load-balancer.md)\.
++ To learn how to use the various features supported by Elastic Load Balancing, see [Configure your Classic Load Balancer](elb-configure-load-balancer.md)\.
 
 ## Pricing<a name="classic-load-balancer-pricing"></a>
 

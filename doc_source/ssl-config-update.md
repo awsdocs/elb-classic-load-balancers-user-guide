@@ -1,8 +1,8 @@
-# Update the SSL Negotiation Configuration of Your Classic Load Balancer<a name="ssl-config-update"></a>
+# Update the SSL negotiation configuration of your Classic Load Balancer<a name="ssl-config-update"></a>
 
 Elastic Load Balancing provides security policies that have predefined SSL negotiation configurations to use to negotiate SSL connections between clients and your load balancer\. If you are using the HTTPS/SSL protocol for your listener, you can use one of the predefined security policies, or use your own custom security policy\.
 
-For more information about the security policies, see [SSL Negotiation Configurations for Classic Load Balancers](elb-ssl-security-policy.md)\. For information about the configurations of the security policies provided by Elastic Load Balancing, see [Predefined SSL Security Policies](elb-security-policy-table.md)\.
+For more information about the security policies, see [SSL negotiation configurations for Classic Load Balancers](elb-ssl-security-policy.md)\. For information about the configurations of the security policies provided by Elastic Load Balancing, see [Predefined SSL security policies](elb-security-policy-table.md)\.
 
 If you create an HTTPS/SSL listener without associating a security policy, Elastic Load Balancing associates the default predefined security policy, `ELBSecurityPolicy-2016-08`, with your load balancer\.
 
@@ -11,10 +11,10 @@ If you have an existing load balancer with an SSL negotiation configuration that
 The following examples show you how to update the SSL negotiation configuration for an HTTPS/SSL listener\. Note that the change does not affect requests that were received by a load balancer node and are pending routing to a healthy instance, but the updated configuration will be used with new requests that are received\.
 
 **Topics**
-+ [Update the SSL Negotiation Configuration Using the Console](#ssl-config-update-console)
-+ [Update the SSL Negotiation Configuration Using the AWS CLI](#ssl-config-update-cli)
++ [Update the SSL negotiation configuration using the console](#ssl-config-update-console)
++ [Update the SSL negotiation configuration using the AWS CLI](#ssl-config-update-cli)
 
-## Update the SSL Negotiation Configuration Using the Console<a name="ssl-config-update-console"></a>
+## Update the SSL negotiation configuration using the console<a name="ssl-config-update-console"></a>
 
 By default, Elastic Load Balancing associates the latest predefined policy with your load balancer\. When a new predefined policy is added, we recommend that you update your load balancer to use the new predefined policy\. Alternatively, you can select a different predefined security policy or create a custom policy\.
 
@@ -35,13 +35,13 @@ By default, Elastic Load Balancing associates the latest predefined policy with 
 
      1. For **SSL Protocols**, select one or more protocols to enable\.
 
-     1. For **SSL Options**, select **Server Order Preference** to use the order listed in the [Predefined SSL Security Policies](elb-security-policy-table.md) for SSL negotiation\.
+     1. For **SSL Options**, select **Server Order Preference** to use the order listed in the [Predefined SSL security policies](elb-security-policy-table.md) for SSL negotiation\.
 
      1. For **SSL Ciphers**, select one or more ciphers to enable\. If you already have an SSL certificate, you must enable the cipher that was used to create the certificate, because DSA and RSA ciphers are specific to the signing algorithm\.
 
      1. Choose **Save**\.
 
-## Update the SSL Negotiation Configuration Using the AWS CLI<a name="ssl-config-update-cli"></a>
+## Update the SSL negotiation configuration using the AWS CLI<a name="ssl-config-update-cli"></a>
 
 You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`, a different predefined security policy, or a custom security policy\.
 
@@ -52,13 +52,13 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
    **Linux**
 
    ```
-   aws elb describe-load-balancer-policies --query 'PolicyDescriptions[?PolicyTypeName=='SSLNegotiationPolicyType'].{PolicyName:PolicyName}' --output table
+   aws elb describe-load-balancer-policies --query 'PolicyDescriptions[?PolicyTypeName==`SSLNegotiationPolicyType`].{PolicyName:PolicyName}' --output table
    ```
 
    **Windows**
 
    ```
-   aws elb describe-load-balancer-policies --query "PolicyDescriptions[?PolicyTypeName=='SSLNegotiationPolicyType'].{PolicyName:PolicyName}" --output table
+   aws elb describe-load-balancer-policies --query "PolicyDescriptions[?PolicyTypeName==`SSLNegotiationPolicyType`].{PolicyName:PolicyName}" --output table
    ```
 
    The following is example output:
@@ -89,7 +89,7 @@ You can use the default predefined security policy, `ELBSecurityPolicy-2016-08`,
    aws elb describe-load-balancer-policies --policy-names ELBSecurityPolicy-2016-08 --output table
    ```
 
-   For information about the configuration for the predefined security policies, see [Predefined SSL Security Policies](elb-security-policy-table.md)\.
+   For information about the configuration for the predefined security policies, see [Predefined SSL security policies](elb-security-policy-table.md)\.
 
 1. Use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using one of the predefined security policies that you described in the previous step\. For example, the following command uses the default predefined security policy:
 

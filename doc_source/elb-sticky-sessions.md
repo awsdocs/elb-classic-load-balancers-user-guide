@@ -1,4 +1,4 @@
-# Configure Sticky Sessions for Your Classic Load Balancer<a name="elb-sticky-sessions"></a>
+# Configure sticky sessions for your Classic Load Balancer<a name="elb-sticky-sessions"></a>
 
 By default, a Classic Load Balancer routes each request independently to the registered instance with the smallest load\. However, you can use the *sticky session* feature \(also known as *session affinity*\), which enables the load balancer to bind a user's session to a specific instance\. This ensures that all requests from the user during the session are sent to the same instance\.
 
@@ -16,10 +16,10 @@ Elastic Load Balancing creates a cookie, named AWSELB, that is used to map the s
 + If you have a trailing semicolon in the `Set-Cookie` field of an application cookie, the load balancer ignores the cookie\.
 
 **Topics**
-+ [Duration\-Based Session Stickiness](#enable-sticky-sessions-duration)
-+ [Application\-Controlled Session Stickiness](#enable-sticky-sessions-application)
++ [Duration\-based session stickiness](#enable-sticky-sessions-duration)
++ [Application\-controlled session stickiness](#enable-sticky-sessions-application)
 
-## Duration\-Based Session Stickiness<a name="enable-sticky-sessions-duration"></a>
+## Duration\-based session stickiness<a name="enable-sticky-sessions-duration"></a>
 
 The load balancer uses a special cookie, AWSELB, to track the instance for each request to each listener\. When the load balancer receives a request, it first checks to see if this cookie is present in the request\. If so, the request is sent to the instance specified in the cookie\. If there is no cookie, the load balancer chooses an instance based on the existing load balancing algorithm\. A cookie is inserted into the response for binding subsequent requests from the same user to that instance\. The stickiness policy configuration defines a cookie expiration, which establishes the duration of validity for each cookie\. The load balancer does not refresh the expiry time of the cookie and does not check whether the cookie is expired before using it\. After a cookie expires, the session is no longer sticky\. The client should remove the cookie from its cookie store upon expiry\.
 
@@ -110,7 +110,7 @@ The `set-load-balancer-policies-of-listener` command replaces the current set of
    }
    ```
 
-## Application\-Controlled Session Stickiness<a name="enable-sticky-sessions-application"></a>
+## Application\-controlled session stickiness<a name="enable-sticky-sessions-application"></a>
 
 The load balancer uses a special cookie to associate the session with the instance that handled the initial request, but follows the lifetime of the application cookie specified in the policy configuration\. The load balancer only inserts a new stickiness cookie if the application response includes a new application cookie\. The load balancer stickiness cookie does not update with each request\. If the application cookie is explicitly removed or expires, the session stops being sticky until a new application cookie is issued\.
 

@@ -1,19 +1,19 @@
-# Add or Remove Subnets for Your Classic Load Balancer in a VPC<a name="elb-manage-subnets"></a>
+# Add or remove subnets for your Classic Load Balancer in a VPC<a name="elb-manage-subnets"></a>
 
 When you add a subnet to your load balancer, Elastic Load Balancing creates a load balancer node in the Availability Zone\. Load balancer nodes accept traffic from clients and forward requests to the healthy registered instances in one or more Availability Zones\. For load balancers in a VPC, we recommend that you add one subnet per Availability Zone for at least two Availability Zones\. This improves the availability of your load balancer\. Note that you can modify the subnets for your load balancer at any time\.
 
-Select subnets from the same Availability Zones as your instances\. If your load balancer is an Internet\-facing load balancer, you must select public subnets in order for your back\-end instances to receive traffic from the load balancer \(even if the back\-end instances are in private subnets\)\. If your load balancer is an internal load balancer, we recommend that you select private subnets\. For more information about subnets for your load balancer, see [Prepare Your VPC and EC2 Instances](elb-backend-instances.md#set-up-ec2)\.
+Select subnets from the same Availability Zones as your instances\. If your load balancer is an Internet\-facing load balancer, you must select public subnets in order for your back\-end instances to receive traffic from the load balancer \(even if the back\-end instances are in private subnets\)\. If your load balancer is an internal load balancer, we recommend that you select private subnets\. For more information about subnets for your load balancer, see [Prepare your VPC and EC2 instances](elb-backend-instances.md#set-up-ec2)\.
 
-After you add a subnet, the load balancer starts routing requests to the registered instances in the corresponding Availability Zone\. By default, the load balancer routes requests evenly across the Availability Zones for its subnets\. To route requests evenly across the registered instances in the Availability Zones for its subnets, enable cross\-zone load balancing\. For more information, see [Configure Cross\-Zone Load Balancing for Your Classic Load Balancer](enable-disable-crosszone-lb.md)\.
+After you add a subnet, the load balancer starts routing requests to the registered instances in the corresponding Availability Zone\. By default, the load balancer routes requests evenly across the Availability Zones for its subnets\. To route requests evenly across the registered instances in the Availability Zones for its subnets, enable cross\-zone load balancing\. For more information, see [Configure cross\-zone load balancing for your Classic Load Balancer](enable-disable-crosszone-lb.md)\.
 
 You might want to remove a subnet from your load balancer temporarily when its Availability Zone has no healthy registered instances, or when you want to troubleshoot or update the registered instances\. After you've removed a subnet, the load balancer stops routing requests to the registered instances in its Availability Zone, but continues to route requests to the registered instances in the Availability Zones for the remaining subnets\.
 
-If your load balancer is in EC2\-Classic, see [Add or Remove Availability Zones for Your Load Balancer in EC2\-Classic](enable-disable-az.md)\.
+If your load balancer is in EC2\-Classic, see [Add or remove Availability Zones for your load balancer in EC2\-Classic](enable-disable-az.md)\.
 
 **Topics**
 + [Requirements](#elb-subnet-requirements)
-+ [Add a Subnet](#attach-subnet)
-+ [Remove a Subnet](#remove-subnet)
++ [Add a subnet](#attach-subnet)
++ [Remove a subnet](#remove-subnet)
 
 ## Requirements<a name="elb-subnet-requirements"></a>
 
@@ -24,9 +24,9 @@ When you update the subnets for your load balancer, you must meet the following 
 
 Because there are separate APIs to add and remove subnets from a load balancer, you must consider the order of operations carefully when swapping the current subnets for new subnets in order to meet these requirements\. Also, you must temporarily add a subnet from another Availability Zone if you need to swap all subnets for your load balancer\. For example, if your load balancer has a single Availability Zone and you need to swap its subnet for another subnet, you must first add a subnet from a second Availability Zone\. Then you can remove the subnet from the original Availability Zone \(without going below one subnet\), add a new subnet from the original Availability Zone \(without exceeding one subnet per Availability Zone\), and then remove the subnet from the second Availability Zone \(if it is only needed to perform the swap\)\.
 
-## Add a Subnet<a name="attach-subnet"></a>
+## Add a subnet<a name="attach-subnet"></a>
 
-You can expand the availability of your load balancer to an additional subnet\. Register the instances in this subnet with the load balancer, then attach a subnet to the load balancer that is from the same Availability Zone as the instances\. For more information, see [Register or Deregister EC2 Instances for Your Classic Load Balancer](elb-deregister-register-instances.md)\.
+You can expand the availability of your load balancer to an additional subnet\. Register the instances in this subnet with the load balancer, then attach a subnet to the load balancer that is from the same Availability Zone as the instances\. For more information, see [Register or deregister EC2 instances for your Classic Load Balancer](elb-deregister-register-instances.md)\.
 
 **To add a subnet to your load balancer using the console**
 
@@ -65,9 +65,9 @@ The response lists all subnets for the load balancer\. For example:
 }
 ```
 
-## Remove a Subnet<a name="remove-subnet"></a>
+## Remove a subnet<a name="remove-subnet"></a>
 
-You can remove a subnet from your load balancer\. Note that after you remove a subnet, the instances in that subnet remain registered with the load balancer\. For more information, see [Register or Deregister EC2 Instances for Your Classic Load Balancer](elb-deregister-register-instances.md)\.
+You can remove a subnet from your load balancer\. Note that after you remove a subnet, the instances in that subnet remain registered with the load balancer\. For more information, see [Register or deregister EC2 instances for your Classic Load Balancer](elb-deregister-register-instances.md)\.
 
 **To remove a subnet using the console**
 

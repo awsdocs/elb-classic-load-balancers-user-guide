@@ -1,18 +1,18 @@
-# Configure Security Groups for Your Classic Load Balancer<a name="elb-security-groups"></a>
+# Configure security groups for your Classic Load Balancer<a name="elb-security-groups"></a>
 
-A *security group* acts as a firewall that controls the traffic allowed to and from one or more instances\. When you launch an EC2 instance, you can associate one or more security groups with the instance\. For each security group, you add one or more rules to allow traffic\. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances associated with the security group\. For more information, see [Amazon EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+A *security group* acts as a firewall that controls the traffic allowed to and from one or more instances\. When you launch an EC2 instance, you can associate one or more security groups with the instance\. For each security group, you add one or more rules to allow traffic\. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances associated with the security group\. For more information, see [Amazon EC2 security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 There is a significant difference between the way Classic Load Balancers support security groups in EC2\-Classic and in a VPC\. In EC2\-Classic, the load balancer provides a special source security group that you can use to ensure that instances receive traffic only from your load balancer\. You can't modify this source security group\. In a VPC, you provide the security group for your load balancer, which enables you to choose the ports and protocols to allow\. For example, you can open Internet Control Message Protocol \(ICMP\) connections for the load balancer to respond to ping requests \(however, ping requests are not forwarded to any instances\)\.
 
 In both EC2\-Classic and in a VPC, you must ensure that the security groups for your instances allow the load balancer to communicate with your instances on both the listener port and the health check port\. In a VPC, your security groups and network access control lists \(ACL\) must allow traffic in both directions on these ports\.
 
 **Topics**
-+ [Security Groups for Load Balancers in a VPC](#elb-vpc-security-groups)
-+ [Security Groups for Instances in a VPC](#elb-vpc-instance-security-groups)
-+ [Network ACLs for Load Balancers in a VPC](#elb-vpc-nacl)
-+ [Security Groups for Instances in EC2\-Classic](#elb-classic-security-groups)
++ [Security groups for load balancers in a VPC](#elb-vpc-security-groups)
++ [Security groups for instances in a VPC](#elb-vpc-instance-security-groups)
++ [Network ACLs for load balancers in a VPC](#elb-vpc-nacl)
++ [Security groups for instances in EC2\-Classic](#elb-classic-security-groups)
 
-## Security Groups for Load Balancers in a VPC<a name="elb-vpc-security-groups"></a>
+## Security groups for load balancers in a VPC<a name="elb-vpc-security-groups"></a>
 
 When you use the AWS Management Console to create a load balancer in a VPC, you can choose an existing security group for the VPC or create a new security group for the VPC\. If you choose an existing security group, it must allow traffic in both directions to the listener and health check ports for the load balancer\. If you choose to create a security group, the console automatically adds rules to allow all traffic on these ports\.
 
@@ -23,43 +23,47 @@ When you use the AWS Management Console to create a load balancer in a VPC, you 
 If you add a listener to an existing load balancer, you must review your security groups to ensure they allow traffic on the new listener port in both directions\.
 
 **Topics**
-+ [Recommended Rules for Load Balancer Security Groups](#recommended-sg-rules)
-+ [Manage Security Groups Using the Console](#assign-sg-console)
-+ [Manage Security Groups Using the AWS CLI](#assign-sg-cli)
++ [Recommended rules for load balancer security groups](#recommended-sg-rules)
++ [Manage security groups using the console](#assign-sg-console)
++ [Manage security groups using the AWS CLI](#assign-sg-cli)
 
-### Recommended Rules for Load Balancer Security Groups<a name="recommended-sg-rules"></a>
+### Recommended rules for load balancer security groups<a name="recommended-sg-rules"></a>
 
 The security groups for your load balancers must allow them to communicate with your instances\. The recommended rules depend on the type of load balancer \(Internet\-facing or internal\)\.
 
 
-**Internet\-facing Load Balancer: Recommended Rules**  
+**Internet\-facing load balancer: Recommended rules**  
 
-|  | 
-| --- |
+| 
+| 
 | Inbound | 
+| --- |
 |  Source  |  Protocol  |  Port Range  |  Comment  | 
 | 0\.0\.0\.0/0 | TCP | *listener* | Allow all inbound traffic on the load balancer listener port | 
 |   Outbound   | 
+| --- |
 |  Destination  |  Protocol  |  Port Range  |  Comment  | 
 | *instance security group* | TCP | *instance listener* | Allow outbound traffic to instances on the instance listener port | 
 | *instance security group* | TCP | *health check* | Allow outbound traffic to instances on the health check port | 
 
 
-**Internal Load Balancer: Recommended Rules**  
+**Internal load balancer: Recommended rules**  
 
-|  | 
-| --- |
+| 
+| 
 | Inbound | 
+| --- |
 |  Source  |  Protocol  |  Port Range  |  Comment  | 
 | *VPC CIDR* | TCP | *listener* | Allow inbound traffic from the VPC CIDR on the load balancer listener port | 
 |   Outbound   | 
+| --- |
 |  Destination  |  Protocol  |  Port Range  |  Comment  | 
 | *instance security group* | TCP | *instance listener* | Allow outbound traffic to instances on the instance listener port | 
 | *instance security group* | TCP | *health check* | Allow outbound traffic to instances on the health check port | 
 
 We also recommend that you allow inbound ICMP traffic to support Path MTU Discovery\. For more information, see [Path MTU Discovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-### Manage Security Groups Using the Console<a name="assign-sg-console"></a>
+### Manage security groups using the console<a name="assign-sg-console"></a>
 
 Use the following procedure to change the security groups associated with your load balancer in a VPC\.
 
@@ -77,7 +81,7 @@ Use the following procedure to change the security groups associated with your l
 
 1. When you are finished, choose **Save**\.
 
-### Manage Security Groups Using the AWS CLI<a name="assign-sg-cli"></a>
+### Manage security groups using the AWS CLI<a name="assign-sg-cli"></a>
 
 Use the following [apply\-security\-groups\-to\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/apply-security-groups-to-load-balancer.html) command to associate a security group with a load balancer in a VPC\. The specified security groups override the previously associated security groups\.
 
@@ -95,53 +99,58 @@ The following is an example response:
 }
 ```
 
-## Security Groups for Instances in a VPC<a name="elb-vpc-instance-security-groups"></a>
+## Security groups for instances in a VPC<a name="elb-vpc-instance-security-groups"></a>
 
 The security groups for your instances must allow them to communicate with the load balancer\.
 
 
-**Instances: Recommended Rules**  
+**Instances: Recommended rules**  
 
-|  | 
-| --- |
+| 
+| 
 | Inbound | 
+| --- |
 |  Source  |  Protocol  |  Port Range  |  Comment  | 
 | *load balancer security group* | TCP | *instance listener* | Allow traffic from the load balancer on the instance listener port | 
 | *load balancer security group* | TCP | *health check* | Allow traffic from the load balancer on the health check port | 
 
 We also recommend that you allow inbound ICMP traffic to support Path MTU Discovery\. For more information, see [Path MTU Discovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Network ACLs for Load Balancers in a VPC<a name="elb-vpc-nacl"></a>
+## Network ACLs for load balancers in a VPC<a name="elb-vpc-nacl"></a>
 
 The default network access control list \(ACL\) for the VPC allows all inbound and outbound traffic\. If you create custom network ACLs, you must add rules that allow the load balancer and instances to communicate\.
 
 The recommended rules for the subnet for your load balancer depend on the type of load balancer \(Internet\-facing or internal\)\.
 
 
-**Internet\-Facing Load Balancer: Recommended Rules**  
+**Internet\-facing load balancer: Recommended rules**  
 
-|  | 
-| --- |
+| 
+| 
 |  Inbound  | 
+| --- |
 | Source | Protocol | Port | Comment | 
 |  0\.0\.0\.0/0  |  TCP  |  *listener*  |  Allow all inbound traffic on the load balancer listener port  | 
 |  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow inbound traffic from the VPC CIDR on the ephemeral ports  | 
 |   Outbound   | 
+| --- |
 | Destination | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  *instance listener*  |  Allow all outbound traffic on the instance listener port  | 
 |  *VPC CIDR*  |  TCP  |  *health check*  |  Allow all outbound traffic on the health check port  | 
 |  0\.0\.0\.0/0  |  TCP  |  1024\-65535  |  Allow all outbound traffic on the ephemeral ports  | 
 
 
-**Internal Load Balancer: Recommended Rules**  
+**Internal load balancer: Recommended rules**  
 
-|  | 
-| --- |
+| 
+| 
 |  Inbound  | 
+| --- |
 | Source | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  *listener*  |  Allow inbound traffic from the VPC CIDR on the load balancer listener port  | 
 |  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow inbound traffic from the VPC CIDR on the ephemeral ports  | 
 |   Outbound   | 
+| --- |
 | Destination | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  *instance listener*  |  Allow outbound traffic to the VPC CIDR on the instance listener port  | 
 |  *VPC CIDR*  |  TCP  |  *health check*  |  Allow outbound traffic to the VPC CIDR on the health check port  | 
@@ -150,19 +159,21 @@ The recommended rules for the subnet for your load balancer depend on the type o
 The recommended rules for the subnet for your instances depend on whether the subnet is private or public\. The following rules are for a private subnet\. If your instances are in a public subnet, change the source and destination from the CIDR of the VPC to `0.0.0.0/0`\.
 
 
-**Instances: Recommended Rules**  
+**Instances: Recommended rules**  
 
-|  | 
-| --- |
+| 
+| 
 |  Inbound  | 
+| --- |
 | Source | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  *instance listener*  |  Allow inbound traffic from the VPC CIDR on the instance listener port  | 
 |  *VPC CIDR*  |  TCP  |  *health check*  |  Allow inbound traffic from the VPC CIDR on the health check port  | 
 |   Outbound   | 
+| --- |
 | Destination | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow outbound traffic to the VPC CIDR on the ephemeral ports  | 
 
-## Security Groups for Instances in EC2\-Classic<a name="elb-classic-security-groups"></a>
+## Security groups for instances in EC2\-Classic<a name="elb-classic-security-groups"></a>
 
 To allow communication between your load balancer and your instances launched in EC2\-Classic, create an inbound rule for the security group for your instances that allows inbound traffic from either all IP addresses \(using the `0.0.0.0/0` CIDR block\) or only from the load balancer \(using the source security group provided by Elastic Load Balancing\)\.
 

@@ -1,4 +1,4 @@
-# Create a Classic Load Balancer with an HTTPS Listener<a name="elb-create-https-ssl-load-balancer"></a>
+# Create a Classic Load Balancer with an HTTPS listener<a name="elb-create-https-ssl-load-balancer"></a>
 
 A load balancer takes requests from clients and distributes them across the EC2 instances that are registered with the load balancer\.
 
@@ -6,41 +6,41 @@ You can create a load balancer that listens on both the HTTP \(80\) and HTTPS \(
 
 If your load balancer uses an encrypted connection to communicate with the instances, you can optionally enable authentication of the instances\. This ensures that the load balancer communicates with an instance only if its public key matches the key that you specified to the load balancer for this purpose\.
 
-For information about adding an HTTPS listener to an existing load balancer, see [Configure an HTTPS Listener for Your Classic Load Balancer](elb-add-or-delete-listeners.md)\.
+For information about adding an HTTPS listener to an existing load balancer, see [Configure an HTTPS listener for your Classic Load Balancer](elb-add-or-delete-listeners.md)\.
 
 **Topics**
 + [Prerequisites](#elb-https-ssl-prerequisites)
-+ [Create an HTTPS/SSL Load Balancer Using the Console](#create-https-lb-console)
-+ [Create an HTTPS/SSL Load Balancer Using the AWS CLI](#create-https-lb-clt)
++ [Create an HTTPS/SSL load balancer using the console](#create-https-lb-console)
++ [Create an HTTPS/SSL load balancer using the AWS CLI](#create-https-lb-clt)
 
 ## Prerequisites<a name="elb-https-ssl-prerequisites"></a>
 
 Before you get started, be sure that you've met the following prerequisites:
-+ Complete the steps in [Prepare Your VPC and EC2 Instances](elb-backend-instances.md#set-up-ec2)\.
++ Complete the steps in [Prepare your VPC and EC2 instances](elb-backend-instances.md#set-up-ec2)\.
 + Launch the EC2 instances that you plan to register with your load balancer\. The security groups for these instances must allow traffic from the load balancer\.
-+ The EC2 instances must respond to the target of the health check with an HTTP status code 200\. For more information, see [Configure Health Checks for Your Classic Load Balancer](elb-healthchecks.md)\.
-+ If you plan to enable the keep\-alive option on your EC2 instances, we recommend that you set the keep\-alive settings to at least the idle timeout settings of your load balancer\. If you want to ensure that the load balancer is responsible for closing the connections to your instance, make sure that the value set on your instance for the keep\-alive time is greater than the idle timeout setting on your load balancer\. For more information, see [Configure the Idle Connection Timeout for Your Classic Load Balancer](config-idle-timeout.md)\.
-+ If you create a secure listener, you must deploy an SSL server certificate on your load balancer\. The load balancer uses the certificate to terminate and then decrypt requests before sending them to the instances\. If you don't have an SSL certificate, you can create one\. For more information, see [SSL/TLS Certificates for Classic Load Balancers](ssl-server-cert.md)\.
++ The EC2 instances must respond to the target of the health check with an HTTP status code 200\. For more information, see [Configure health checks for your Classic Load Balancer](elb-healthchecks.md)\.
++ If you plan to enable the keep\-alive option on your EC2 instances, we recommend that you set the keep\-alive settings to at least the idle timeout settings of your load balancer\. If you want to ensure that the load balancer is responsible for closing the connections to your instance, make sure that the value set on your instance for the keep\-alive time is greater than the idle timeout setting on your load balancer\. For more information, see [Configure the idle connection timeout for your Classic Load Balancer](config-idle-timeout.md)\.
++ If you create a secure listener, you must deploy an SSL server certificate on your load balancer\. The load balancer uses the certificate to terminate and then decrypt requests before sending them to the instances\. If you don't have an SSL certificate, you can create one\. For more information, see [SSL/TLS certificates for Classic Load Balancers](ssl-server-cert.md)\.
 
-## Create an HTTPS/SSL Load Balancer Using the Console<a name="create-https-lb-console"></a>
+## Create an HTTPS/SSL load balancer using the console<a name="create-https-lb-console"></a>
 
 To create an HTTPS/SSL load balancer, complete the following tasks\.
 
 **Topics**
-+ [Step 1: Define Your Load Balancer](#configure-https-listener)
-+ [Step 2: Assign Security Groups to Your Load Balancer in a VPC](#assign-security-group)
-+ [Step 3: Configure Security Settings](#config-backend-auth)
-+ [Step 4: Configure Health Checks](#configure-healthcheck)
-+ [Step 5: Register EC2 Instances with Your Load Balancer](#add-ec2instances)
-+ [Step 6: Tag Your Load Balancer \(Optional\)](#tag-elb)
-+ [Step 7: Create and Verify Your Load Balancer](#verify-loadbalancer)
-+ [Step 8: Delete Your Load Balancer \(Optional\)](#delete-loadbalancer)
++ [Step 1: Define your load balancer](#configure-https-listener)
++ [Step 2: Assign security groups to your load balancer in a VPC](#assign-security-group)
++ [Step 3: Configure security settings](#config-backend-auth)
++ [Step 4: Configure health checks](#configure-healthcheck)
++ [Step 5: Register EC2 instances with your load balancer](#add-ec2instances)
++ [Step 6: Tag your load balancer \(optional\)](#tag-elb)
++ [Step 7: Create and verify your load balancer](#verify-loadbalancer)
++ [Step 8: Delete your load balancer \(optional\)](#delete-loadbalancer)
 
-### Step 1: Define Your Load Balancer<a name="configure-https-listener"></a>
+### Step 1: Define your load balancer<a name="configure-https-listener"></a>
 
 First, provide some basic configuration information for your load balancer, such as a name, a network, and one or more listeners\.
 
-A *listener* is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections and a protocol and a port for back\-end \(load balancer to instance\) connections\. For information about the ports, protocols, and listener configurations supported by Elastic Load Balancing, see [Listeners for Your Classic Load Balancer](elb-listener-config.md)\.
+A *listener* is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections and a protocol and a port for back\-end \(load balancer to instance\) connections\. For information about the ports, protocols, and listener configurations supported by Elastic Load Balancing, see [Listeners for your Classic Load Balancer](elb-listener-config.md)\.
 
 In this example, you configure two listeners for your load balancer\. The first listener accepts HTTP requests on port 80 and sends them to the instances on port 80 using HTTP\. The second listener accepts HTTPS requests on port 443 and sends them to the instances using HTTP on port 80 \(or using HTTPS on port 443 if you want to configure back\-end instance authentication\)\.
 
@@ -67,7 +67,7 @@ In this example, you configure two listeners for your load balancer\. The first 
    By default, **Instance Protocol** is HTTP and **Instance Port** is 80\.  
 ![\[Define a load balancer with an HTTPS listener\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/DefineLB_Protocols.png)
 
-   If you want to set up back\-end instance authentication \(later, in [Step 3: Configure Security Settings](#config-backend-auth)\), change the instance protocol to **HTTPS \(Secure HTTP\)**\. This also updates **Instance Port**\.  
+   If you want to set up back\-end instance authentication \(later, in [Step 3: Configure security settings](#config-backend-auth)\), change the instance protocol to **HTTPS \(Secure HTTP\)**\. This also updates **Instance Port**\.  
 ![\[Define a load balancer with an HTTPS listener for back-end instance authentication\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/DefineLB_Protocols_Backend_Auth.png)
 
 1. \[EC2\-VPC\] For **Available subnets**, select at least one available subnet using its add icon\. The subnets are moved under **Selected subnets**\. To improve the availability of your load balancer, select subnets from more than one Availability Zone\.
@@ -79,7 +79,7 @@ If you selected EC2\-Classic as your network, or you have a default VPC but did 
 
 1. Choose **Next: Assign Security Groups**\.
 
-### Step 2: Assign Security Groups to Your Load Balancer in a VPC<a name="assign-security-group"></a>
+### Step 2: Assign security groups to your load balancer in a VPC<a name="assign-security-group"></a>
 
 If you selected a VPC as your network, you must assign your load balancer a security group that allows inbound traffic to the ports that you specified for your load balancer and the health checks for your load balancer\.
 
@@ -95,7 +95,7 @@ If you selected EC2\-Classic as your network, you can continue to the next step\
 
 1. Choose **Next: Configure Security Settings**\.
 
-### Step 3: Configure Security Settings<a name="config-backend-auth"></a>
+### Step 3: Configure security settings<a name="config-backend-auth"></a>
 
 When you use HTTPS or SSL for your front\-end listener, you must deploy an SSL certificate on your load balancer\. The load balancer uses the certificate to terminate the connection and then decrypt requests from clients before sending them to the instances\.
 
@@ -108,7 +108,7 @@ If you configured HTTPS/SSL on the back\-end connection, you can enable authenti
 1. For **Select Certificate**, do one of the following:
    + If you created or imported a certificate using AWS Certificate Manager, select **Choose an existing certificate from AWS Certificate Manager \(ACM\)**, and then select the certificate from **Certificate**\.
    + If you imported a certificate using IAM, select **Choose an existing certificate from AWS Identity and Access Management \(IAM\)**, and then select your certificate from **Certificate**\.
-   + If you have a certificate to import but ACM is not available in your region, select **Upload a new SSL Certificate to AWS Identity and Access Management \(IAM\)**\. Type the name of the certificate\. In **Private Key**, copy and paste the contents of the private key file \(PEM\-encoded\)\. In **Public Key Certificate**, copy and paste the contents of the public key certificate file \(PEM\-encoded\)\. In **Certificate Chain**, copy and paste the contents of the certificate chain file \(PEM\-encoded\), unless you are using a self\-signed certificate and it's not important that browsers implicitly accept the certificate\.
+   + If you have a certificate to import but ACM is not available in your Region, select **Upload a new SSL Certificate to AWS Identity and Access Management \(IAM\)**\. Type the name of the certificate\. In **Private Key**, copy and paste the contents of the private key file \(PEM\-encoded\)\. In **Public Key Certificate**, copy and paste the contents of the public key certificate file \(PEM\-encoded\)\. In **Certificate Chain**, copy and paste the contents of the certificate chain file \(PEM\-encoded\), unless you are using a self\-signed certificate and it's not important that browsers implicitly accept the certificate\.
 
 1. For **Select a Cipher**, verify that **Predefined Security Policy** is selected and set to **ELBSecurityPolicy\-2016\-08**\. We recommend that you always use the latest predefined security policy\. If you need to use a different predefined security policy or create a custom policy, see [Update the SSL Negotiation Configuration](ssl-config-update.md#ssl-config-update-console)\.
 
@@ -127,9 +127,9 @@ If you do not see the **Backend Certificate** section, go back to **Listener Con
 
 1. Choose **Next: Configure Health Check**\.
 
-### Step 4: Configure Health Checks<a name="configure-healthcheck"></a>
+### Step 4: Configure health checks<a name="configure-healthcheck"></a>
 
-Elastic Load Balancing automatically checks the health of the registered EC2 instances for your load balancer\. If Elastic Load Balancing finds an unhealthy instance, it stops sending traffic to the instance and reroutes traffic to the healthy instances\. For more information about configuring health checks, see [Configure Health Checks for Your Classic Load Balancer](elb-healthchecks.md)\.
+Elastic Load Balancing automatically checks the health of the registered EC2 instances for your load balancer\. If Elastic Load Balancing finds an unhealthy instance, it stops sending traffic to the instance and reroutes traffic to the healthy instances\. For more information about configuring health checks, see [Configure health checks for your Classic Load Balancer](elb-healthchecks.md)\.
 
 **To configure health checks for your instances**
 
@@ -142,9 +142,9 @@ Elastic Load Balancing automatically checks the health of the registered EC2 ins
 
 1. Choose **Next: Add EC2 Instances**\.
 
-### Step 5: Register EC2 Instances with Your Load Balancer<a name="add-ec2instances"></a>
+### Step 5: Register EC2 instances with your load balancer<a name="add-ec2instances"></a>
 
-Your load balancer distributes traffic between the instances that are registered to it\. You can select EC2 instances in a single Availability Zone or multiple Availability Zones within the same region as the load balancer\. For more information, see [Registered Instances for Your Classic Load Balancer](elb-backend-instances.md)\.
+Your load balancer distributes traffic between the instances that are registered to it\. You can select EC2 instances in a single Availability Zone or multiple Availability Zones within the same Region as the load balancer\. For more information, see [Registered instances for your Classic Load Balancer](elb-backend-instances.md)\.
 
 **Note**  
 When you register an instance with an elastic network interface \(ENI\) attached, the load balancer routes traffic to the primary IP address of the primary interface \(eth0\) of the instance\.
@@ -157,7 +157,7 @@ When you register an instance with an elastic network interface \(ENI\) attached
 
 1. Choose **Next: Add Tags**\.
 
-### Step 6: Tag Your Load Balancer \(Optional\)<a name="tag-elb"></a>
+### Step 6: Tag your load balancer \(optional\)<a name="tag-elb"></a>
 
 You can tag your load balancer, or continue to the next step\.
 
@@ -169,7 +169,7 @@ You can tag your load balancer, or continue to the next step\.
 
 1. After you are finished adding tags, choose **Review and Create**\.
 
-### Step 7: Create and Verify Your Load Balancer<a name="verify-loadbalancer"></a>
+### Step 7: Create and verify your load balancer<a name="verify-loadbalancer"></a>
 
 Before you create the load balancer, review the settings that you selected\. After creating the load balancer, you can verify that it's sending traffic to your EC2 instances\.
 
@@ -183,11 +183,11 @@ Before you create the load balancer, review the settings that you selected\. Aft
 
 1. Select your new load balancer\.
 
-1. On the **Description** tab, check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance Registration](ts-elb-register-instance.md)\.
+1. On the **Description** tab, check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance registration](ts-elb-register-instance.md)\.
 
 1. \(Optional\) After at least one of your EC2 instances is in service, you can test your load balancer\. Copy the string from **DNS name** \(for example, `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com`\) and paste it into the address field of an Internet\-connected web browser\. If your load balancer is working, you see the default page of your server\.
 
-### Step 8: Delete Your Load Balancer \(Optional\)<a name="delete-loadbalancer"></a>
+### Step 8: Delete your load balancer \(optional\)<a name="delete-loadbalancer"></a>
 
 As soon as your load balancer becomes available, you are billed for each hour or partial hour that you keep it running\. When you no longer need a load balancer, you can delete it\. As soon as the load balancer is deleted, you stop incurring charges for it\.
 
@@ -203,24 +203,24 @@ As soon as your load balancer becomes available, you are billed for each hour or
 
 1. When prompted for confirmation, choose **Yes, Delete**\.
 
-1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and Start Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and start your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Create an HTTPS/SSL Load Balancer Using the AWS CLI<a name="create-https-lb-clt"></a>
+## Create an HTTPS/SSL load balancer using the AWS CLI<a name="create-https-lb-clt"></a>
 
 Use the following instructions to create an HTTPS/SSL load balancer using the AWS CLI\.
 
 **Topics**
-+ [Step 1: Configure Listeners](#configuring_listener_clt)
-+ [Step 2: Configure the SSL Security Policy](#configure_ciphers_clt)
-+ [Step 3: Configure Back\-end Instance Authentication \(Optional\)](#configure_backendauth_clt)
-+ [Step 4: Configure Health Checks \(Optional\)](#configure_healthcheck_clt)
-+ [Step 5: Register EC2 Instances](#add_ec2instances_clt)
-+ [Step 6: Verify the Instances](#verify-ec2instances-clt)
-+ [Step 7: Delete Your Load Balancer \(Optional\)](#us-tearing-lb-cli)
++ [Step 1: Configure listeners](#configuring_listener_clt)
++ [Step 2: Configure the SSL security policy](#configure_ciphers_clt)
++ [Step 3: Configure back\-end instance authentication \(optional\)](#configure_backendauth_clt)
++ [Step 4: Configure health checks \(optional\)](#configure_healthcheck_clt)
++ [Step 5: Register EC2 instances](#add_ec2instances_clt)
++ [Step 6: Verify the instances](#verify-ec2instances-clt)
++ [Step 7: Delete your load balancer \(optional\)](#us-tearing-lb-cli)
 
-### Step 1: Configure Listeners<a name="configuring_listener_clt"></a>
+### Step 1: Configure listeners<a name="configuring_listener_clt"></a>
 
-A *listener* is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections and a protocol and port for back\-end \(load balancer to instance\) connections\. For information about the ports, protocols, and listener configurations supported by Elastic Load Balancing, see [Listeners for Your Classic Load Balancer](elb-listener-config.md)\.
+A *listener* is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections and a protocol and port for back\-end \(load balancer to instance\) connections\. For information about the ports, protocols, and listener configurations supported by Elastic Load Balancing, see [Listeners for your Classic Load Balancer](elb-listener-config.md)\.
 
 In this example, you configure two listeners for your load balancer by specifying the ports and protocols to use for front\-end and back\-end connections\. The first listener accepts HTTP requests on port 80 and sends the requests to the instances on port 80 using HTTP\. The second listener accepts HTTPS requests on port 443 and sends requests to instances using HTTP on port 80\.
 
@@ -262,9 +262,9 @@ Because the second listener uses HTTPS for the front\-end connection, you must d
    aws elb describe-load-balancers --load-balancer-name my-load-balancer
    ```
 
-### Step 2: Configure the SSL Security Policy<a name="configure_ciphers_clt"></a>
+### Step 2: Configure the SSL security policy<a name="configure_ciphers_clt"></a>
 
-You can select one of the predefined security policies, or you can create your own custom security policy\. Otherwise, Elastic Load Balancing configures your load balancer with the default predefined security policy, `ELBSecurityPolicy-2016-08`\. We recommend that you use the default security policy\. For more information about security policies, see [SSL Negotiation Configurations for Classic Load Balancers](elb-ssl-security-policy.md)\.
+You can select one of the predefined security policies, or you can create your own custom security policy\. Otherwise, Elastic Load Balancing configures your load balancer with the default predefined security policy, `ELBSecurityPolicy-2016-08`\. We recommend that you use the default security policy\. For more information about security policies, see [SSL negotiation configurations for Classic Load Balancers](elb-ssl-security-policy.md)\.
 
 **To verify that your load balancer is associated with the default security policy**  
 Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command:
@@ -311,7 +311,7 @@ The following is an example response\. Note that `ELBSecurityPolicy-2016-08` is 
 
 If you prefer, you can configure the SSL security policy for your load balancer instead of using the default security policy\.
 
-**\(Optional\) To use a predefined SSL security policy**
+**\(Optional\) to use a predefined SSL security policy**
 
 1. Use the following [describe\-load\-balancer\-policies](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancer-policies.html) command to list the names of the predefined security policies:
 
@@ -319,7 +319,7 @@ If you prefer, you can configure the SSL security policy for your load balancer 
    aws elb describe-load-balancer-policies
    ```
 
-   For information about the configuration for the predefined security policies, see [Predefined SSL Security Policies](elb-security-policy-table.md)\.
+   For information about the configuration for the predefined security policies, see [Predefined SSL security policies](elb-security-policy-table.md)\.
 
 1. Use the following [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using one of the predefined security policies that you described in the previous step:
 
@@ -389,7 +389,7 @@ The `set-load-balancer-policies-of-listener` command replaces the current set of
 
 When you create a custom security policy, you must enable at least one protocol and one cipher\. The DSA and RSA ciphers are specific to the signing algorithm and are used to create the SSL certificate\. If you already have your SSL certificate, make sure to enable the cipher that was used to create your certificate\. The name of your custom policy must not begin with `ELBSecurityPolicy-` or `ELBSample-`, as these prefixes are reserved for the names of the predefined security policies\.
 
-**\(Optional\) To use a custom SSL security policy**
+**\(Optional\) to use a custom SSL security policy**
 
 1. Use the [create\-load\-balancer\-policy](https://docs.aws.amazon.com/cli/latest/reference/elb/create-load-balancer-policy.html) command to create an SSL negotiation policy using a custom security policy\. For example:
 
@@ -460,7 +460,7 @@ The `set-load-balancer-policies-of-listener` command replaces the current set of
    }
    ```
 
-### Step 3: Configure Back\-end Instance Authentication \(Optional\)<a name="configure_backendauth_clt"></a>
+### Step 3: Configure back\-end instance authentication \(optional\)<a name="configure_backendauth_clt"></a>
 
 If you set up HTTPS/SSL on the back\-end connection, you can optionally set up authentication of your instances\.
 
@@ -525,9 +525,9 @@ To specify a public key value for `--policy-attributes`, remove the first and la
    aws elb describe-load-balancer-policies --load-balancer-name my-loadbalancer --policy-names my-authentication-policy
    ```
 
-### Step 4: Configure Health Checks \(Optional\)<a name="configure_healthcheck_clt"></a>
+### Step 4: Configure health checks \(optional\)<a name="configure_healthcheck_clt"></a>
 
-Elastic Load Balancing regularly checks the health of each registered EC2 instance based on the health checks that you configured\. If Elastic Load Balancing finds an unhealthy instance, it stops sending traffic to the instance and routes traffic to the healthy instances\. For more information, see [Configure Health Checks for Your Classic Load Balancer](elb-healthchecks.md)\.
+Elastic Load Balancing regularly checks the health of each registered EC2 instance based on the health checks that you configured\. If Elastic Load Balancing finds an unhealthy instance, it stops sending traffic to the instance and routes traffic to the healthy instances\. For more information, see [Configure health checks for your Classic Load Balancer](elb-healthchecks.md)\.
 
 When you create your load balancer, Elastic Load Balancing uses default settings for the health checks\. If you prefer, you can change the health check configuration for your load balancer instead of using the default settings\.
 
@@ -552,9 +552,9 @@ The following is an example response:
 }
 ```
 
-### Step 5: Register EC2 Instances<a name="add_ec2instances_clt"></a>
+### Step 5: Register EC2 instances<a name="add_ec2instances_clt"></a>
 
-After you create your load balancer, you must register your EC2 instances with the load balancer\. You can select EC2 instances from a single Availability Zone or multiple Availability Zones within the same region as the load balancer\. For more information, see [Registered Instances for Your Classic Load Balancer](elb-backend-instances.md)\.
+After you create your load balancer, you must register your EC2 instances with the load balancer\. You can select EC2 instances from a single Availability Zone or multiple Availability Zones within the same Region as the load balancer\. For more information, see [Registered instances for your Classic Load Balancer](elb-backend-instances.md)\.
 
 Use the [register\-instances\-with\-load\-balancer](https://docs.aws.amazon.com/cli/latest/reference/elb/register-instances-with-load-balancer.html) command as follows:
 
@@ -577,7 +577,7 @@ The following is an example response:
 }
 ```
 
-### Step 6: Verify the Instances<a name="verify-ec2instances-clt"></a>
+### Step 6: Verify the instances<a name="verify-ec2instances-clt"></a>
 
 Your load balancer is usable as soon as any one of your registered instances is in the `InService` state\.
 
@@ -608,11 +608,11 @@ The following is an example response:
 }
 ```
 
-If the `State` field for an instance is `OutOfService`, it's probably because your instances are still registering\. For more information, see [Troubleshoot a Classic Load Balancer: Instance Registration](ts-elb-register-instance.md)\.
+If the `State` field for an instance is `OutOfService`, it's probably because your instances are still registering\. For more information, see [Troubleshoot a Classic Load Balancer: Instance registration](ts-elb-register-instance.md)\.
 
 After the state of at least one of your instances is `InService`, you can test your load balancer\. To test your load balancer, copy the DNS name of the load balancer and paste it into the address field of an Internet\-connected web browser\. If your load balancer is working, you see the default page of your HTTP server\.
 
-### Step 7: Delete Your Load Balancer \(Optional\)<a name="us-tearing-lb-cli"></a>
+### Step 7: Delete your load balancer \(optional\)<a name="us-tearing-lb-cli"></a>
 
 Deleting a the load balancer automatically de\-registers its associated EC2 instances\. As soon as the load balancer is deleted, you stop incurring charges for that load balancer\. However, the EC2 instances continue run and you continue to incur charges\.
 

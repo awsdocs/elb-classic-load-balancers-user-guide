@@ -1,37 +1,37 @@
-# SSL Negotiation Configurations for Classic Load Balancers<a name="elb-ssl-security-policy"></a>
+# SSL negotiation configurations for Classic Load Balancers<a name="elb-ssl-security-policy"></a>
 
-Elastic Load Balancing uses a Secure Socket Layer \(SSL\) negotiation configuration, known as a *security policy*, to negotiate SSL connections between a client and the load balancer\. A security policy is a combination of SSL protocols, SSL ciphers, and the Server Order Preference option\. For more information about configuring an SSL connection for your load balancer, see [Listeners for Your Classic Load Balancer](elb-listener-config.md)\.
+Elastic Load Balancing uses a Secure Socket Layer \(SSL\) negotiation configuration, known as a *security policy*, to negotiate SSL connections between a client and the load balancer\. A security policy is a combination of SSL protocols, SSL ciphers, and the Server Order Preference option\. For more information about configuring an SSL connection for your load balancer, see [Listeners for your Classic Load Balancer](elb-listener-config.md)\.
 
 **Topics**
-+ [Security Policies](#security-policy-types)
-+ [SSL Protocols](#ssl-protocols)
++ [Security policies](#security-policy-types)
++ [SSL protocols](#ssl-protocols)
 + [Server Order Preference](#server-order-preference)
-+ [SSL Ciphers](#ssl-ciphers)
-+ [Predefined SSL Security Policies for Classic Load Balancers](elb-security-policy-table.md)
++ [SSL ciphers](#ssl-ciphers)
++ [Predefined SSL security policies for Classic Load Balancers](elb-security-policy-table.md)
 
-## Security Policies<a name="security-policy-types"></a>
+## Security policies<a name="security-policy-types"></a>
 
 A security policy determines which ciphers and protocols are supported during SSL negotiations between a client and a load balancer\. You can configure your Classic Load Balancers to use either predefined or custom security policies\.
 
 Note that a certificate provided by AWS Certificate Manager \(ACM\) contains an RSA public key\. Therefore, you must include a cipher suite that uses RSA in your security policy if you use a certificate provided by ACM; otherwise, the TLS connection fails\.
 
-**Predefined Security Policies**  
+**Predefined security policies**  
 The names of the most recent predefined security policies includes version information based on the year and month that they were released\. For example, the default predefined security policy is `ELBSecurityPolicy-2016-08`\. Whenever a new predefined security policy is released, you can update your configuration to use it\.
 
-For information about the protocols and ciphers enabled for the predefined security policies, see [Predefined SSL Security Policies](elb-security-policy-table.md)\.
+For information about the protocols and ciphers enabled for the predefined security policies, see [Predefined SSL security policies](elb-security-policy-table.md)\.
 
-**Custom Security Policies**  
+**Custom security policies**  
 You can create a custom negotiation configuration with the ciphers and protocols that you need\. For example, some security compliance standards \(such as PCI and SOC\) might require a specific set of protocols and ciphers to ensure that the security standards are met\. In such cases, you can create a custom security policy to meet those standards\.
 
-For information about creating a custom security policy, see [Update the SSL Negotiation Configuration of Your Classic Load Balancer](ssl-config-update.md)\.
+For information about creating a custom security policy, see [Update the SSL negotiation configuration of your Classic Load Balancer](ssl-config-update.md)\.
 
-## SSL Protocols<a name="ssl-protocols"></a>
+## SSL protocols<a name="ssl-protocols"></a>
 
 The *SSL protocol* establishes a secure connection between a client and a server, and ensures that all the data passed between the client and your load balancer is private\.
 
 Secure Sockets Layer \(SSL\) and Transport Layer Security \(TLS\) are cryptographic protocols that are used to encrypt confidential data over insecure networks such as the Internet\. The TLS protocol is a newer version of the SSL protocol\. In the Elastic Load Balancing documentation, we refer to both SSL and TLS protocols as the SSL protocol\.
 
-**SSL Protocols**
+**SSL protocols**
 
 The following versions of the SSL protocol are supported:
 + TLS 1\.2
@@ -39,14 +39,14 @@ The following versions of the SSL protocol are supported:
 + TLS 1\.0
 + SSL 3\.0
 
-**Deprecated SSL Protocol**  
+**Deprecated SSL protocol**  
 If you previously enabled the SSL 2\.0 protocol in a custom policy, we recommend that you update your security policy to the default predefined security policy\.
 
 ## Server Order Preference<a name="server-order-preference"></a>
 
 Elastic Load Balancing supports the *Server Order Preference* option for negotiating connections between a client and a load balancer\. During the SSL connection negotiation process, the client and the load balancer present a list of ciphers and protocols that they each support, in order of preference\. By default, the first cipher on the client's list that matches any one of the load balancer's ciphers is selected for the SSL connection\. If the load balancer is configured to support Server Order Preference, then the load balancer selects the first cipher in its list that is in the client's list of ciphers\. This ensures that the load balancer determines which cipher is used for SSL connection\. If you do not enable Server Order Preference, the order of ciphers presented by the client is used to negotiate connections between the client and the load balancer\.
 
-## SSL Ciphers<a name="ssl-ciphers"></a>
+## SSL ciphers<a name="ssl-ciphers"></a>
 
 An *SSL cipher* is an encryption algorithm that uses encryption keys to create a coded message\. SSL protocols use several SSL ciphers to encrypt data over the Internet\.
 

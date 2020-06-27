@@ -5,30 +5,30 @@ This tutorial provides a hands\-on introduction to Classic Load Balancers throug
 Note that you can create your load balancer for use with EC2\-Classic or a VPC\. Some of the tasks described in this tutorial apply only to load balancers in a VPC\.
 
 **Topics**
-+ [Before You Begin](#getting-started-prerequisites)
-+ [Step 1: Select a Load Balancer Type](#select-load-balancer-type)
-+ [Step 2: Define Your Load Balancer](#define-load-balancer)
-+ [Step 3: Assign Security Groups to Your Load Balancer in a VPC](#select-vpc-security-group)
-+ [Step 4: Configure Health Checks for Your EC2 Instances](#configure-health-check)
-+ [Step 5: Register EC2 Instances with Your Load Balancer](#register-ec2instances)
-+ [Step 6: Tag Your Load Balancer \(Optional\)](#create-tags)
-+ [Step 7: Create and Verify Your Load Balancer](#create-load-balancer)
-+ [Step 8: Delete Your Load Balancer \(Optional\)](#delete-load-balancer)
++ [Before you begin](#getting-started-prerequisites)
++ [Step 1: Select a load balancer type](#select-load-balancer-type)
++ [Step 2: Define your load balancer](#define-load-balancer)
++ [Step 3: Assign security groups to your load balancer in a VPC](#select-vpc-security-group)
++ [Step 4: Configure health checks for your EC2 instances](#configure-health-check)
++ [Step 5: Register EC2 instances with your load balancer](#register-ec2instances)
++ [Step 6: Tag your load balancer \(optional\)](#create-tags)
++ [Step 7: Create and verify your load balancer](#create-load-balancer)
++ [Step 8: Delete your load balancer \(optional\)](#delete-load-balancer)
 
-## Before You Begin<a name="getting-started-prerequisites"></a>
-+ Complete the steps in [Prepare Your VPC and EC2 Instances](elb-backend-instances.md#set-up-ec2)\.
+## Before you begin<a name="getting-started-prerequisites"></a>
++ Complete the steps in [Prepare your VPC and EC2 instances](elb-backend-instances.md#set-up-ec2)\.
 + Launch the EC2 instances that you plan to register with your load balancer\. Ensure that the security groups for these instances allow HTTP access on port 80\.
 + Install a web server, such as Apache or Internet Information Services \(IIS\), on each instance, enter its DNS name into the address field of an Internet\-connected web browser, and verify that the browser displays the default page of the server\.
 
-## Step 1: Select a Load Balancer Type<a name="select-load-balancer-type"></a>
+## Step 1: Select a load balancer type<a name="select-load-balancer-type"></a>
 
-Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. For this tutorial, you create a Classic Load Balancer\. Alternatively, to create an Application Load Balancer, see [Getting Started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html) in the *User Guide for Application Load Balancers*\. To create a Network Load Balancer, see [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html) in the *User Guide for Network Load Balancers*\.
+Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. For this tutorial, you create a Classic Load Balancer\. Alternatively, to create an Application Load Balancer, see [Getting started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html) in the *User Guide for Application Load Balancers*\. To create a Network Load Balancer, see [Getting started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html) in the *User Guide for Network Load Balancers*\.
 
 **To create a Classic Load Balancer**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation bar, choose a region for your load balancer\. Be sure to select the same region that you selected for your EC2 instances\.
+1. On the navigation bar, choose a Region for your load balancer\. Be sure to select the same Region that you selected for your EC2 instances\.
 
 1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
 
@@ -36,7 +36,7 @@ Elastic Load Balancing supports three types of load balancers: Application Load 
 
 1. For **Classic Load Balancer**, choose **Create**\.
 
-## Step 2: Define Your Load Balancer<a name="define-load-balancer"></a>
+## Step 2: Define your load balancer<a name="define-load-balancer"></a>
 
 You must provide a basic configuration for your load balancer, such as a name, a network, and a listener\.
 
@@ -64,7 +64,7 @@ If you selected EC2\-Classic as your network, or you have a default VPC but did 
 
 1. Choose **Next: Assign Security Groups**\.
 
-## Step 3: Assign Security Groups to Your Load Balancer in a VPC<a name="select-vpc-security-group"></a>
+## Step 3: Assign security groups to your load balancer in a VPC<a name="select-vpc-security-group"></a>
 
 If you selected a VPC as your network, you must assign your load balancer a security group that allows inbound traffic to the ports that you specified for your load balancer and the health checks for your load balancer\.
 
@@ -82,7 +82,7 @@ If you selected EC2\-Classic as your network, you can continue to the next step\
 
 1. For this tutorial, you are not using a secure listener\. Choose **Next: Configure Health Check** to continue to the next step\.
 
-## Step 4: Configure Health Checks for Your EC2 Instances<a name="configure-health-check"></a>
+## Step 4: Configure health checks for your EC2 instances<a name="configure-health-check"></a>
 
 Elastic Load Balancing automatically checks the health of the EC2 instances for your load balancer\. If Elastic Load Balancing finds an unhealthy instance, it stops sending traffic to the instance and reroutes traffic to healthy instances\. In this step, you customize the health checks for your load balancer\.
 
@@ -97,7 +97,7 @@ Elastic Load Balancing automatically checks the health of the EC2 instances for 
 
 1. Choose **Next: Add EC2 Instances**\.
 
-## Step 5: Register EC2 Instances with Your Load Balancer<a name="register-ec2instances"></a>
+## Step 5: Register EC2 instances with your load balancer<a name="register-ec2instances"></a>
 
 Your load balancer distributes traffic between the instances that are registered to it\.
 
@@ -114,11 +114,11 @@ When you register an instance with an elastic network interface \(ENI\) attached
 
 Alternatively, you can register instances with your load balancer later on using the following options:
 + Select running instances after you create the load balancer\. For more information, see [Register Instances with Your Load Balancer](elb-deregister-register-instances.md)\.
-+ Set up Auto Scaling to register the instances automatically when it launches them\. For more information, see [Set Up a Scaled and Load\-Balanced Application](https://docs.aws.amazon.com/autoscaling/latest/userguide/as-register-lbs-with-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
++ Set up Auto Scaling to register the instances automatically when it launches them\. For more information, see [Set up a scaled and load\-balanced application](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-register-lbs-with-asg.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
-## Step 6: Tag Your Load Balancer \(Optional\)<a name="create-tags"></a>
+## Step 6: Tag your load balancer \(optional\)<a name="create-tags"></a>
 
-You can tag your load balancer, or continue to the next step\. Note that you can tag your load balancer later on; for more information, see [Tag Your Classic Load Balancer](add-remove-tags.md)\.
+You can tag your load balancer, or continue to the next step\. Note that you can tag your load balancer later on; for more information, see [Tag your Classic Load Balancer](add-remove-tags.md)\.
 
 **To add tags to your load balancer**
 
@@ -128,7 +128,7 @@ You can tag your load balancer, or continue to the next step\. Note that you can
 
 1. After you are finished adding tags, choose **Review and Create**\.
 
-## Step 7: Create and Verify Your Load Balancer<a name="create-load-balancer"></a>
+## Step 7: Create and verify your load balancer<a name="create-load-balancer"></a>
 
 Before you create the load balancer, review the settings that you selected\. After creating the load balancer, you can verify that it's sending traffic to your EC2 instances\.
 
@@ -140,11 +140,11 @@ Before you create the load balancer, review the settings that you selected\. Aft
 
 1. Select your new load balancer\.
 
-1. On the **Description** tab, check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance Registration](ts-elb-register-instance.md)\.
+1. On the **Description** tab, check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance registration](ts-elb-register-instance.md)\.
 
 1. After at least one of your EC2 instances is in service, you can test your load balancer\. Copy the string from **DNS name** \(for example, my\-load\-balancer\-1234567890\.us\-west\-2\.elb\.amazonaws\.com\) and paste it into the address field of an Internet\-connected web browser\. If your load balancer is working, you see the default page of your server\.
 
-## Step 8: Delete Your Load Balancer \(Optional\)<a name="delete-load-balancer"></a>
+## Step 8: Delete your load balancer \(optional\)<a name="delete-load-balancer"></a>
 
 As soon as your load balancer becomes available, you are billed for each hour or partial hour that you keep it running\. When you no longer need a load balancer, you can delete it\. As soon as the load balancer is deleted, you stop incurring charges for it\. Note that deleting a load balancer does not affect the instances registered with the load balancer\.
 
@@ -162,4 +162,4 @@ As soon as your load balancer becomes available, you are billed for each hour or
 
 1. When prompted for confirmation, choose **Yes, Delete**\.
 
-1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and Start Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. \(Optional\) After you delete a load balancer, the EC2 instances associated with the load balancer continue to run, and you are billed for each hour or partial hour that you keep them running\. For information about stopping or terminating your instances, see [Stop and start your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) or [Terminate your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.

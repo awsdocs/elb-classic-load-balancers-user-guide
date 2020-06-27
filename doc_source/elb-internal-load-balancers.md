@@ -2,7 +2,7 @@
 
 When you create a load balancer in a VPC, you must choose whether to make it an internal load balancer or an Internet\-facing load balancer\.
 
-The nodes of an Internet\-facing load balancer have public IP addresses\. The DNS name of an Internet\-facing load balancer is publicly resolvable to the public IP addresses of the nodes\. Therefore, Internet\-facing load balancers can route requests from clients over the Internet\. For more information, see [Internet\-Facing Classic Load Balancers](elb-internet-facing-load-balancers.md)\.
+The nodes of an Internet\-facing load balancer have public IP addresses\. The DNS name of an Internet\-facing load balancer is publicly resolvable to the public IP addresses of the nodes\. Therefore, Internet\-facing load balancers can route requests from clients over the Internet\. For more information, see [Internet\-facing Classic Load Balancers](elb-internet-facing-load-balancers.md)\.
 
 The nodes of an internal load balancer have only private IP addresses\. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes\. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer\.
 
@@ -11,10 +11,10 @@ If your application has multiple tiers, for example web servers that must be con
 ![\[An internal load balancer routes traffic to your EC2 instances in private subnets.\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/internal_load_balancer.png)
 
 **Topics**
-+ [Public DNS Name for Your Load Balancer](#internal-public-dns-name)
-+ [Create an Internal Classic Load Balancer](elb-create-internal-load-balancer.md)
++ [Public DNS name for your load balancer](#internal-public-dns-name)
++ [Create an internal Classic Load Balancer](elb-create-internal-load-balancer.md)
 
-## Public DNS Name for Your Load Balancer<a name="internal-public-dns-name"></a>
+## Public DNS name for your load balancer<a name="internal-public-dns-name"></a>
 
 When an internal load balancer is created, it receives a public DNS name with the following form:
 
