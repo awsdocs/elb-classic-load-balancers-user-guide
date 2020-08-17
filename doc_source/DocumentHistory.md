@@ -5,6 +5,7 @@ The following table describes the releases for Classic Load Balancers\.
 
 | Feature | Description | Release date | 
 | --- | --- | --- | 
+| Desync mitigation mode | Added support for desync mitigation mode\. For more information, see [Configure desync mitigation mode for your Classic Load Balancer](config-desync-mitigation-mode.md)\. | August 17, 2020 | 
 |  Classic Load Balancers  |  With the introduction of Application Load Balancers and Network Load Balancers, load balancers created with the 2016\-06\-01 API are now known as *Classic Load Balancers*\. For more information about the differences between these types of load balancers, see [What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html) in the *Elastic Load Balancing User Guide*\.  | August 11, 2016 | 
 |  Support for AWS Certificate Manager \(ACM\)  |  You can request an SSL/TLS certificate from ACM and deploy it to your load balancer\. For more information, see [SSL/TLS certificates for Classic Load Balancers](ssl-server-cert.md)\.  | January 21, 2016 | 
 |  Support for additional ports  |  Load balancers in a VPC can listen on any port in the range 1\-65535\. For more information, see [Listeners for your Classic Load Balancer](elb-listener-config.md)\.  | September 15, 2015 | 

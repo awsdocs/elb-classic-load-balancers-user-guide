@@ -6,5 +6,6 @@
 + [Configure connection draining](config-conn-drain.md)
 + [Configure proxy protocol](enable-proxy-protocol.md)
 + [Configure sticky sessions](elb-sticky-sessions.md)
++ [Configure desync mitigation mode](config-desync-mitigation-mode.md)
 + [Tag your load balancer](add-remove-tags.md)
 + [Configure the domain name](using-domain-names-with-elb.md)

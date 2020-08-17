@@ -42,6 +42,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Configure connection draining for your Classic Load Balancer](config-conn-drain.md)
    + [Configure proxy protocol support for your Classic Load Balancer](enable-proxy-protocol.md)
    + [Configure sticky sessions for your Classic Load Balancer](elb-sticky-sessions.md)
+   + [Configure desync mitigation mode for your Classic Load Balancer](config-desync-mitigation-mode.md)
    + [Tag your Classic Load Balancer](add-remove-tags.md)
    + [Configure a custom domain name for your Classic Load Balancer](using-domain-names-with-elb.md)
 + [Monitor your Classic Load Balancer](elb-monitor-logs.md)
