@@ -87,9 +87,11 @@ The following is the contents of `attribute.json`\.
 
 ```
 {
-    "AdditionalAttributes": {
-        "Key": "elb.http.desyncmitigationmode",
-        "Value": "strictest"
-    }
+    "AdditionalAttributes": [
+        {
+            "Key": "elb.http.desyncmitigationmode",
+            "Value": "strictest"
+        }
+    ]
 }
 ```
