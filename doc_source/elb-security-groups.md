@@ -29,10 +29,10 @@ If you add a listener to an existing load balancer, you must review your securit
 
 ### Recommended rules for load balancer security groups<a name="recommended-sg-rules"></a>
 
-The security groups for your load balancers must allow them to communicate with your instances\. The recommended rules depend on the type of load balancer \(Internet\-facing or internal\)\.
+The security groups for your load balancers must allow them to communicate with your instances\. The recommended rules depend on the type of load balancer \(internet\-facing or internal\)\.
 
+The following table shows the recommended rules for an internet\-facing load balancer\.
 
-**Internet\-facing load balancer: Recommended rules**  
 
 | 
 | 
@@ -46,8 +46,8 @@ The security groups for your load balancers must allow them to communicate with 
 | *instance security group* | TCP | *instance listener* | Allow outbound traffic to instances on the instance listener port | 
 | *instance security group* | TCP | *health check* | Allow outbound traffic to instances on the health check port | 
 
+The following table shows the recommended rules for an internal load balancer\.
 
-**Internal load balancer: Recommended rules**  
 
 | 
 | 
@@ -60,8 +60,6 @@ The security groups for your load balancers must allow them to communicate with 
 |  Destination  |  Protocol  |  Port Range  |  Comment  | 
 | *instance security group* | TCP | *instance listener* | Allow outbound traffic to instances on the instance listener port | 
 | *instance security group* | TCP | *health check* | Allow outbound traffic to instances on the health check port | 
-
-We also recommend that you allow inbound ICMP traffic to support Path MTU Discovery\. For more information, see [Path MTU Discovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html#path_mtu_discovery) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ### Manage security groups using the console<a name="assign-sg-console"></a>
 
@@ -101,10 +99,8 @@ The following is an example response:
 
 ## Security groups for instances in a VPC<a name="elb-vpc-instance-security-groups"></a>
 
-The security groups for your instances must allow them to communicate with the load balancer\.
+The security groups for your instances must allow them to communicate with the load balancer\. The following table shows the recommended rules\.
 
-
-**Instances: Recommended rules**  
 
 | 
 | 
@@ -120,10 +116,10 @@ We also recommend that you allow inbound ICMP traffic to support Path MTU Discov
 
 The default network access control list \(ACL\) for the VPC allows all inbound and outbound traffic\. If you create custom network ACLs, you must add rules that allow the load balancer and instances to communicate\.
 
-The recommended rules for the subnet for your load balancer depend on the type of load balancer \(Internet\-facing or internal\)\.
+The recommended rules for the subnet for your load balancer depend on the type of load balancer \(internet\-facing or internal\)\.
 
+The following are the recommended rules for an internet\-facing load balancer\.
 
-**Internet\-facing load balancer: Recommended rules**  
 
 | 
 | 
@@ -139,8 +135,8 @@ The recommended rules for the subnet for your load balancer depend on the type o
 |  *VPC CIDR*  |  TCP  |  *health check*  |  Allow all outbound traffic on the health check port  | 
 |  0\.0\.0\.0/0  |  TCP  |  1024\-65535  |  Allow all outbound traffic on the ephemeral ports  | 
 
+The following are the recommended rules for an internal load balancer\.
 
-**Internal load balancer: Recommended rules**  
 
 | 
 | 
@@ -158,8 +154,6 @@ The recommended rules for the subnet for your load balancer depend on the type o
 
 The recommended rules for the subnet for your instances depend on whether the subnet is private or public\. The following rules are for a private subnet\. If your instances are in a public subnet, change the source and destination from the CIDR of the VPC to `0.0.0.0/0`\.
 
-
-**Instances: Recommended rules**  
 
 | 
 | 

@@ -30,7 +30,7 @@ Communication for a typical web application goes through layers of hardware and 
 
 When you use Elastic Load Balancing, you need a basic understanding of layer 4 and layer 7\. Layer 4 is the transport layer that describes the Transmission Control Protocol \(TCP\) connection between the client and your back\-end instance, through the load balancer\. Layer 4 is the lowest level that is configurable for your load balancer\. Layer 7 is the application layer that describes the use of Hypertext Transfer Protocol \(HTTP\) and HTTPS \(secure HTTP\) connections from clients to the load balancer and from the load balancer to your back\-end instance\.
 
-The Secure Sockets Layer \(SSL\) protocol is primarily used to encrypt confidential data over insecure networks such as the Internet\. The SSL protocol establishes a secure connection between a client and the back\-end server, and ensures that all the data passed between your client and your server is private and integral\.
+The Secure Sockets Layer \(SSL\) protocol is primarily used to encrypt confidential data over insecure networks such as the internet\. The SSL protocol establishes a secure connection between a client and the back\-end server, and ensures that all the data passed between your client and your server is private and integral\.
 
 ### TCP/SSL protocol<a name="using-elb-tcp-layer4"></a>
 

@@ -13,7 +13,7 @@ You can create an internal load balancer to distribute traffic to your EC2 insta
 
 ## Create an internal load balancer using the console<a name="create-internal-lb"></a>
 
-By default, Elastic Load Balancing creates an Internet\-facing load balancer\. Use the following procedure to create an internal load balancer and register your EC2 instances with the newly created internal load balancer\.
+By default, Elastic Load Balancing creates an internet\-facing load balancer\. Use the following procedure to create an internal load balancer and register your EC2 instances with the newly created internal load balancer\.
 
 **To create an internal load balancer**
 
@@ -72,7 +72,7 @@ When you register an instance with an elastic network interface \(ENI\) attached
 
 ## Create an internal load balancer using the AWS CLI<a name="create-internal-lb-cli"></a>
 
-By default, Elastic Load Balancing creates an Internet\-facing load balancer\. Use the following procedure to create an internal load balancer and register your EC2 instances with the newly created internal load balancer\.
+By default, Elastic Load Balancing creates an internet\-facing load balancer\. Use the following procedure to create an internal load balancer and register your EC2 instances with the newly created internal load balancer\.
 
 **To create an internal load balancer**
 

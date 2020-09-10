@@ -26,7 +26,7 @@ Amazon Virtual Private Cloud \(Amazon VPC\) enables you to define a virtual netw
 **Subnets for your load balancer**  
 To ensure that your load balancer can scale properly, verify that each subnet for your load balancer has a CIDR block with at least a `/27` bitmask \(for example, `10.0.0.0/27`\) and has at least 8 free IP addresses\. Your load balancer uses these IP addresses to establish connections with the instances\.
 
-Create a subnet in each Availability Zone where you want to launch instances\. Depending on your application, you can launch your instances in public subnets, private subnets, or a combination of public and private subnets\. A public subnet has a route to an Internet gateway\. Note that default VPCs have one public subnet per Availability Zone by default\.
+Create a subnet in each Availability Zone where you want to launch instances\. Depending on your application, you can launch your instances in public subnets, private subnets, or a combination of public and private subnets\. A public subnet has a route to an internet gateway\. Note that default VPCs have one public subnet per Availability Zone by default\.
 
 When you create a load balancer, you must add one or more public subnets to the load balancer\. If your instances are in private subnets, create public subnets in the same Availability Zones as the subnets with your instances; you will add these public subnets to the load balancer\.
 

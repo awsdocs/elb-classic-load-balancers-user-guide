@@ -185,7 +185,7 @@ Before you create the load balancer, review the settings that you selected\. Aft
 
 1. On the **Description** tab, check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance registration](ts-elb-register-instance.md)\.
 
-1. \(Optional\) After at least one of your EC2 instances is in service, you can test your load balancer\. Copy the string from **DNS name** \(for example, `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com`\) and paste it into the address field of an Internet\-connected web browser\. If your load balancer is working, you see the default page of your server\.
+1. \(Optional\) After at least one of your EC2 instances is in service, you can test your load balancer\. Copy the string from **DNS name** \(for example, `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com`\) and paste it into the address field of an internet\-connected web browser\. If your load balancer is working, you see the default page of your server\.
 
 ### Step 8: Delete your load balancer \(optional\)<a name="delete-loadbalancer"></a>
 
@@ -610,7 +610,7 @@ The following is an example response:
 
 If the `State` field for an instance is `OutOfService`, it's probably because your instances are still registering\. For more information, see [Troubleshoot a Classic Load Balancer: Instance registration](ts-elb-register-instance.md)\.
 
-After the state of at least one of your instances is `InService`, you can test your load balancer\. To test your load balancer, copy the DNS name of the load balancer and paste it into the address field of an Internet\-connected web browser\. If your load balancer is working, you see the default page of your HTTP server\.
+After the state of at least one of your instances is `InService`, you can test your load balancer\. To test your load balancer, copy the DNS name of the load balancer and paste it into the address field of an internet\-connected web browser\. If your load balancer is working, you see the default page of your HTTP server\.
 
 ### Step 7: Delete your load balancer \(optional\)<a name="us-tearing-lb-cli"></a>
 

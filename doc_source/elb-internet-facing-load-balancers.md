@@ -1,8 +1,8 @@
 # Internet\-facing Classic Load Balancers<a name="elb-internet-facing-load-balancers"></a>
 
-An Internet\-facing load balancer has a publicly resolvable DNS name, so it can route requests from clients over the Internet to the EC2 instances that are registered with the load balancer\.
+An internet\-facing load balancer has a publicly resolvable DNS name, so it can route requests from clients over the internet to the EC2 instances that are registered with the load balancer\.
 
-![\[An Internet-facing load balancer routes traffic from the Internet to your EC2 instances.\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/internet_facing_load_balancer.png)
+![\[An internet-facing load balancer routes traffic from the internet to your EC2 instances.\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/internet_facing_load_balancer.png)
 
 If a load balancer is in a VPC with ClassicLink enabled, its instances can be linked EC2\-Classic instances\. If a load balancer is in EC2\-Classic, its instances must be in EC2\-Classic\.
 
@@ -36,10 +36,10 @@ Clients can connect to your load balancer in EC2\-Classic using either IPv4 or I
 
 ## Create an internet\-facing load balancer<a name="elb-create-internet-facing-load-balancer"></a>
 
-When you create a load balancer in a VPC, you can make it an internal load balancer or an Internet\-facing load balancer\. You create an Internet\-facing load balancer in a public subnet\. Load balancers in EC2\-Classic are always Internet\-facing load balancers\.
+When you create a load balancer in a VPC, you can make it an internal load balancer or an internet\-facing load balancer\. You create an internet\-facing load balancer in a public subnet\. Load balancers in EC2\-Classic are always internet\-facing load balancers\.
 
 When you create your load balancer, you configure listeners, configure health checks, and register back\-end instances\. You configure a listener by specifying a protocol and a port for front\-end \(client to load balancer\) connections, and a protocol and a port for back\-end \(load balancer to back\-end instances\) connections\. You can configure multiple listeners for your load balancer\.
 
-To create a basic Internet\-facing load balancer, see [Tutorial: Create a Classic Load Balancer](elb-getting-started.md)\.
+To create a basic internet\-facing load balancer, see [Tutorial: Create a Classic Load Balancer](elb-getting-started.md)\.
 
 To create a load balancer with an HTTPS listener, see [Create a Classic Load Balancer with an HTTPS listener](elb-create-https-ssl-load-balancer.md)\.

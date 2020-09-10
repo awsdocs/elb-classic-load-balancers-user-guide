@@ -18,7 +18,7 @@ Note that you can create your load balancer for use with EC2\-Classic or a VPC\.
 ## Before you begin<a name="getting-started-prerequisites"></a>
 + Complete the steps in [Prepare your VPC and EC2 instances](elb-backend-instances.md#set-up-ec2)\.
 + Launch the EC2 instances that you plan to register with your load balancer\. Ensure that the security groups for these instances allow HTTP access on port 80\.
-+ Install a web server, such as Apache or Internet Information Services \(IIS\), on each instance, enter its DNS name into the address field of an Internet\-connected web browser, and verify that the browser displays the default page of the server\.
++ Install a web server, such as Apache or Internet Information Services \(IIS\), on each instance, enter its DNS name into the address field of an internet\-connected web browser, and verify that the browser displays the default page of the server\.
 
 ## Step 1: Select a load balancer type<a name="select-load-balancer-type"></a>
 
@@ -142,7 +142,7 @@ Before you create the load balancer, review the settings that you selected\. Aft
 
 1. On the **Description** tab, check the **Status** row\. If it indicates that some of your instances are not in service, its probably because they are still in the registration process\. For more information, see [Troubleshoot a Classic Load Balancer: Instance registration](ts-elb-register-instance.md)\.
 
-1. After at least one of your EC2 instances is in service, you can test your load balancer\. Copy the string from **DNS name** \(for example, my\-load\-balancer\-1234567890\.us\-west\-2\.elb\.amazonaws\.com\) and paste it into the address field of an Internet\-connected web browser\. If your load balancer is working, you see the default page of your server\.
+1. After at least one of your EC2 instances is in service, you can test your load balancer\. Copy the string from **DNS name** \(for example, my\-load\-balancer\-1234567890\.us\-west\-2\.elb\.amazonaws\.com\) and paste it into the address field of an internet\-connected web browser\. If your load balancer is working, you see the default page of your server\.
 
 ## Step 8: Delete your load balancer \(optional\)<a name="delete-load-balancer"></a>
 

@@ -1,6 +1,6 @@
 # Configure proxy protocol support for your Classic Load Balancer<a name="enable-proxy-protocol"></a>
 
-Proxy protocol is an Internet protocol used to carry connection information from the source requesting the connection to the destination for which the connection was requested\. Elastic Load Balancing uses proxy protocol version 1, which uses a human\-readable header format\.
+Proxy protocol is an internet protocol used to carry connection information from the source requesting the connection to the destination for which the connection was requested\. Elastic Load Balancing uses proxy protocol version 1, which uses a human\-readable header format\.
 
 By default, when you use Transmission Control Protocol \(TCP\) for both front\-end and back\-end connections, your Classic Load Balancer forwards requests to the instances without modifying the request headers\. If you enable proxy protocol, a human\-readable header is added to the request header with connection information such as the source IP address, destination IP address, and port numbers\. The header is then sent to the instance as part of the request\.
 

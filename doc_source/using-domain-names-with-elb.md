@@ -11,96 +11,21 @@ If you'd prefer to use a friendly DNS name for your load balancer, such as `www.
 
 ## Associating your custom domain name with your load balancer name<a name="dns-associate-custom-elb"></a>
 
-First, if you haven't already done so, register your domain name\. The Internet Corporation for Assigned Names and Numbers \(ICANN\) manages domain names on the Internet\. You register a domain name using a *domain name registrar*, an ICANN\-accredited organization that manages the registry of domain names\. The website for your registrar will provide detailed instructions and pricing information for registering your domain name\. For more information, see the following resources:
+First, if you haven't already done so, register your domain name\. The Internet Corporation for Assigned Names and Numbers \(ICANN\) manages domain names on the internet\. You register a domain name using a *domain name registrar*, an ICANN\-accredited organization that manages the registry of domain names\. The website for your registrar will provide detailed instructions and pricing information for registering your domain name\. For more information, see the following resources:
 + To use Amazon Route 53 to register a domain name, see [Registering domain names using Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar.html) in the *Amazon Route 53 Developer Guide*\.
 + For a list of accredited registrars, see the [Accredited Registrar Directory](http://www.internic.net/regist.html)\.
 
 Next, use your DNS service, such as your domain registrar, to create a CNAME record to route queries to your load balancer\. For more information, see the documentation for your DNS service\.
 
-Alternatively, you can use Route 53 as your DNS service\. You create a *hosted zone*, which contains information about how to route traffic on the Internet for your domain, and an *alias resource record set*, which routes queries for your domain name to your load balancer\. Route 53 doesn't charge for DNS queries for alias record sets, and you can use alias record sets to route DNS queries to your load balancer for the zone apex of your domain \(for example, `example.com`\)\. For information about transferring DNS services for existing domains to Route 53, see [Configuring Route 53 as your DNS service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html) in the *Amazon Route 53 Developer Guide*\.
+Alternatively, you can use Route 53 as your DNS service\. You create a *hosted zone*, which contains information about how to route traffic on the internet for your domain, and an *alias resource record set*, which routes queries for your domain name to your load balancer\. Route 53 doesn't charge for DNS queries for alias record sets, and you can use alias record sets to route DNS queries to your load balancer for the zone apex of your domain \(for example, `example.com`\)\. For information about transferring DNS services for existing domains to Route 53, see [Configuring Route 53 as your DNS service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html) in the *Amazon Route 53 Developer Guide*\.
 
-**To create a hosted zone and an alias record set for your domain using Route 53**
-
-1. Open the Route 53 console at [https://console\.aws\.amazon\.com/route53/](https://console.aws.amazon.com/route53/)\.
-
-1. If you are new to Route 53, you see a welcome page; choose **Get Started Now** under **DNS Management**\. Otherwise, choose **Hosted Zones** in the navigation pane\.
-
-1. Choose **Create Hosted Zone**\.
-
-1. For **Create Hosted Zone**, do the following:
-
-   1. For **Domain Name**, type your domain name\.
-
-   1. Leave the default type, Public Hosted Zone, and optionally enter a comment\.
-
-   1. Choose **Create**\.
-
-1. Select the hosted zone that you just created for your domain\.
-
-1. Choose **Go to Record Sets**\.
-
-1. Choose **Create Record Set**\.
-
-1. For **Create Record Set**, do the following:
-
-   1. Leave the default name, which is the name of your domain\.
-
-   1. For **Type**, select **A — IPv4 address**\. 
-
-   1. For **Alias**, choose **Yes**\. An alias enables Route 53 to associate your domain name with an AWS resource, such as a load balancer\.
-
-   1. Choose **Alias Target**\. Select your load balancer from the list\. The console adds the `dualstack` prefix\.
-
-   1. For **Routing Policy**, select **Simple**\.
-
-   1. Leave **Evaluate Target Health** set to **No**\.
-
-   1. Choose **Create**\.
+Finally, create a hosted zone and an alias record set for your domain using Route 53\. For more information, see [Routing traffic to a load balancer](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html) in the *Amazon Route 53 Developer Guide*\.
 
 ## Configure DNS failover for your load balancer<a name="configure-dns-failover"></a>
 
 If you use Route 53 to route DNS queries to your load balancer, you can also configure DNS failover for your load balancer using Route 53\. In a failover configuration, Route 53 checks the health of the registered EC2 instances for the load balancer to determine whether they are available\. If there are no healthy EC2 instances registered with the load balancer, or if the load balancer itself is unhealthy, Route 53 routes traffic to another available resource, such as a healthy load balancer or a static website in Amazon S3\.
 
 For example, suppose that you have a web application for `www.example.com`, and you want redundant instances running behind two load balancers residing in different Regions\. You want the traffic to be primarily routed to the load balancer in one Region, and you want to use the load balancer in the other Region as a backup during failures\. If you configure DNS failover, you can specify your primary and secondary \(backup\) load balancers\. Route 53 directs traffic to the primary load balancer if it is available, or to the secondary load balancer otherwise\.
-
-**To configure DNS failover for two load balancers using Route 53**
-
-1. Open the Route 53 console at [https://console\.aws\.amazon\.com/route53/](https://console.aws.amazon.com/route53/)\.
-
-1. In the navigation pane, choose **Hosted Zones**\.
-
-1. Select your hosted zone\.
-
-1. Choose **Go to Record Sets**\.
-
-1. Choose **Create Record Set**\.
-
-1. For **Name**, the default value is the name of your domain \(for example, `example.com`\)\. To route DNS queries for a subdomain \(for example, `www.example.com`\) to your load balancer, type the name of the subdomain\.
-
-1. For **Type**, select **A \- IPv4 address**\.
-
-1. For **Alias**, select **Yes**
-
-1. For **Alias Target**, select your primary load balancer\. The console adds the `dualstack` prefix\.
-
-   Note that the value of **Alias Hosted Zone ID** is based on the load balancer that you selected\.
-
-1. For **Routing Policy**, select **Failover**\.
-
-1. For **Failover Record Type**, select **Primary**\.
-
-1. For **Set ID**, type an ID for the record set or use the default value\.
-
-1. For **Evaluate Target Health**, select **Yes**\.
-
-1. For **Associate with Health Check**, select **No**\.
-
-1. Choose **Create**\.
-
-1. Repeat the same steps to create an alias record set for your secondary load balancer, with the following exceptions:
-   + For **Alias Target**, select your secondary load balancer\.
-   + For **Failover Record Type**, select **Secondary**\.
-   + For **Evaluate Target Health**, select **Yes** to evaluate the health of the secondary load balancer\. If the secondary load balancer is unhealthy, Route 53 routes traffic to the primary load balancer\. If you select **No**, Route 53 assumes that the secondary load balancer is healthy and routes traffic to it whenever the primary load balancer is unhealthy\.
 
 For more information, see [Configuring DNS failover](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html) in the *Amazon Route 53 Developer Guide*\.
 

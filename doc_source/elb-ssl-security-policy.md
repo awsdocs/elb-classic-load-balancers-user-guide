@@ -29,7 +29,7 @@ For information about creating a custom security policy, see [Update the SSL neg
 
 The *SSL protocol* establishes a secure connection between a client and a server, and ensures that all the data passed between the client and your load balancer is private\.
 
-Secure Sockets Layer \(SSL\) and Transport Layer Security \(TLS\) are cryptographic protocols that are used to encrypt confidential data over insecure networks such as the Internet\. The TLS protocol is a newer version of the SSL protocol\. In the Elastic Load Balancing documentation, we refer to both SSL and TLS protocols as the SSL protocol\.
+Secure Sockets Layer \(SSL\) and Transport Layer Security \(TLS\) are cryptographic protocols that are used to encrypt confidential data over insecure networks such as the internet\. The TLS protocol is a newer version of the SSL protocol\. In the Elastic Load Balancing documentation, we refer to both SSL and TLS protocols as the SSL protocol\.
 
 **SSL protocols**
 
@@ -48,7 +48,7 @@ Elastic Load Balancing supports the *Server Order Preference* option for negotia
 
 ## SSL ciphers<a name="ssl-ciphers"></a>
 
-An *SSL cipher* is an encryption algorithm that uses encryption keys to create a coded message\. SSL protocols use several SSL ciphers to encrypt data over the Internet\.
+An *SSL cipher* is an encryption algorithm that uses encryption keys to create a coded message\. SSL protocols use several SSL ciphers to encrypt data over the internet\.
 
 Note that a certificate provided by AWS Certificate Manager \(ACM\) contains an RSA public key\. Therefore, you must include a cipher suite that uses RSA in your security policy if you use a certificate provided by ACM; otherwise, the TLS connection fails\.
 
