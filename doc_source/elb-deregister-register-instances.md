@@ -15,6 +15,8 @@ Elastic Load Balancing registers your EC2 instance with your load balancer using
 **Topics**
 + [Prerequisites](#elb-register-instances-prereq)
 + [Register an instance](#elb-register-instances)
++ [View the instances registered with a load balancer](#elb-describe-load-balancer-instances)
++ [Determine the load balancer for a registered instance](#elb-describe-instance-load-balancer)
 + [Deregister an instance](#elb-deregister-instances)
 
 ## Prerequisites<a name="elb-register-instances-prereq"></a>
@@ -61,6 +63,36 @@ The following is an example response that lists the instances registered with th
         }
     ]
 }
+```
+
+## View the instances registered with a load balancer<a name="elb-describe-load-balancer-instances"></a>
+
+Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to list the instances registered with the specified load balancer:
+
+```
+aws elb describe-load-balancers --load-balancer-names my-load-balancer --output text --query "LoadBalancerDescriptions[*].Instances[*].InstanceId"
+```
+
+The following is example output:
+
+```
+i-e905622e
+i-315b7e51
+i-4e05f721
+```
+
+## Determine the load balancer for a registered instance<a name="elb-describe-instance-load-balancer"></a>
+
+Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to get the name of the load balancer to which the specified instance is registered:
+
+```
+aws elb describe-load-balancers --output text --query "LoadBalancerDescriptions[?Instances[?InstanceId==`i-e905622e`]].[LoadBalancerName]"
+```
+
+The following is example output:
+
+```
+my-load-balancer
 ```
 
 ## Deregister an instance<a name="elb-deregister-instances"></a>

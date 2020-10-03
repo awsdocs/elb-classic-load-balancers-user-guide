@@ -27,7 +27,7 @@ Using a Classic Load Balancer instead of an Application Load Balancer has the fo
 + Support for TCP and SSL listeners
 + Support for sticky sessions using application\-generated cookies
 
-For more information about the features supported by each load balancer type, see [Product comparison](https://aws.amazon.com/elasticloadbalancing/details/#compare) for Elastic Load Balancing\.
+For more information about the features supported by each load balancer type, see [Product comparisons](http://aws.amazon.com/elasticloadbalancing/features/#Product_comparisons) for Elastic Load Balancing\.
 
 ## How to get started<a name="classic-load-balancer-getting-started"></a>
 + To learn how to create a Classic Load Balancer and register EC2 instances with it, see [Tutorial: Create a Classic Load Balancer](elb-getting-started.md)\.
