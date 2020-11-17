@@ -22,7 +22,7 @@ Note that you can create your load balancer for use with EC2\-Classic or a VPC\.
 
 ## Step 1: Select a load balancer type<a name="select-load-balancer-type"></a>
 
-Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. For this tutorial, you create a Classic Load Balancer\. Alternatively, to create an Application Load Balancer, see [Getting started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html) in the *User Guide for Application Load Balancers*\. To create a Network Load Balancer, see [Getting started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html) in the *User Guide for Network Load Balancers*\.
+Elastic Load Balancing supports different types of load balancers\. For this tutorial, you create a Classic Load Balancer\.
 
 **To create a Classic Load Balancer**
 

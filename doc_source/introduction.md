@@ -1,6 +1,8 @@
 # What is a Classic Load Balancer?<a name="introduction"></a>
 
-Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers\. This guide discusses Classic Load Balancers\. For more information about Application Load Balancers, see the [User Guide for Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/)\. For more information about Network Load Balancers, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/)\.
+Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones\. It monitors the health of its registered targets, and routes traffic only to the healthy targets\. Elastic Load Balancing scales your load balancer incoming traffic changes over time\. It can automatically scale to the vast majority of workloads\.
+
+Elastic Load Balancing supports the following load balancers: Application Load Balancers, Network Load Balancers, Gateway Load Balancers, and Classic Load Balancers\. You can select the type of load balancer that best suits your needs\. This guide discusses Classic Load Balancers\. For more information about the other load balancers, see the [User Guide for Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/), the [User Guide for Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/), and the [User Guide for Gateway Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/)\.
 
 ## Classic Load Balancer overview<a name="classic-load-balancer-overview"></a>
 
