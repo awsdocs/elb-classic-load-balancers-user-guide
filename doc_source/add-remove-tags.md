@@ -60,7 +60,9 @@ You can remove tags from your load balancer whenever you are finished with them\
 
 1. On the **Tags** tab, choose **Add/Edit Tags**\.
 
-1. On the **Add/Edit Tags** page, choose the remove icon of the tag\.  
+1. On the **Add/Edit Tags** page, choose the remove icon of the tag\.
+
+      
 ![\[Add-Edit Tags\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/RemoveTags.png)
 
 1. After you are have finished removing tags, choose **Save**\. 

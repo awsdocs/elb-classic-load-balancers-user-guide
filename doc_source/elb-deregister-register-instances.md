@@ -86,7 +86,7 @@ i-4e05f721
 Use the following [describe\-load\-balancers](https://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html) command to get the name of the load balancer to which the specified instance is registered:
 
 ```
-aws elb describe-load-balancers --output text --query "LoadBalancerDescriptions[?Instances[?InstanceId==`i-e905622e`]].[LoadBalancerName]"
+aws elb describe-load-balancers --output text --query "LoadBalancerDescriptions[?Instances[?InstanceId=='i-e905622e']].[LoadBalancerName]"
 ```
 
 The following is example output:

@@ -21,15 +21,15 @@ A health configuration contains the information that a load balancer uses to det
 
 | Field | Description | 
 | --- | --- | 
-|  Ping Protocol  |  The protocol to use to connect with the instance\. Valid values: `TCP`, `HTTP`, `HTTPS`, and `SSL` Console default: `HTTP` CLI/API default: `TCP`  | 
-|  Ping Port  |  The port to use to connect with the instance, as a `protocol:port` pair\. If the load balancer fails to connect with the instance at the specified port within the configured response timeout period, the instance is considered unhealthy\. Ping protocols: `TCP`, `HTTP`, `HTTPS`, and `SSL` Ping port range: 1 to 65535 Console default: `HTTP:80` CLI/API default: `TCP:80`  | 
-|  Ping Path  |  The destination for the HTTP or HTTPS request\. An HTTP or HTTPS GET request is issued to the instance on the ping port and the ping path\. If the load balancer receives any response other than "200 OK" within the response timeout period, the instance is considered unhealthy\. If the response includes a body, your application must either set the Content\-Length header to a value greater than or equal to zero, or specify Transfer\-Encoding with a value set to 'chunked'\. Default: `/index.html`  | 
+|  Protocol  |  The protocol to use to connect with the instance\. Valid values: `TCP`, `HTTP`, `HTTPS`, and `SSL` Console default: `HTTP` CLI/API default: `TCP`  | 
+|  Port  |  The port to use to connect with the instance, as a `protocol:port` pair\. If the load balancer fails to connect with the instance at the specified port within the configured response timeout period, the instance is considered unhealthy\. Protocols: `TCP`, `HTTP`, `HTTPS`, and `SSL` Port range: 1 to 65535 Console default: `HTTP:80` CLI/API default: `TCP:80`  | 
+|  Path  |  The destination for the HTTP or HTTPS request\. An HTTP or HTTPS GET request is issued to the instance on the port and the path\. If the load balancer receives any response other than "200 OK" within the response timeout period, the instance is considered unhealthy\. If the response includes a body, your application must either set the Content\-Length header to a value greater than or equal to zero, or specify Transfer\-Encoding with a value set to 'chunked'\. Default: `/index.html`  | 
 |  Response Timeout  |  The amount of time to wait when receiving a response from the health check, in seconds\. Valid values: 2 to 60 Default: 5  | 
 |  HealthCheck Interval  |  The amount of time between health checks of an individual instance, in seconds\. Valid values: 5 to 300 Default: 30  | 
 |  Unhealthy Threshold  |  The number of consecutive failed health checks that must occur before declaring an EC2 instance unhealthy\. Valid values: 2 to 10 Default: 2  | 
 |  Healthy Threshold  |  The number of consecutive successful health checks that must occur before declaring an EC2 instance healthy\. Valid values: 2 to 10 Default: 10  | 
 
-The load balancer sends a health check request to each registered instance every `Interval` seconds, using the specified port, protocol, and ping path\. Each health check request is independent and lasts the entire interval\. The time it takes for the instance to respond does not affect the interval for the next health check\. If the health checks exceed **UnhealthyThresholdCount** consecutive failures, the load balancer takes the instance out of service\. When the health checks exceed **HealthyThresholdCount** consecutive successes, the load balancer puts the instance back in service\.
+The load balancer sends a health check request to each registered instance every `Interval` seconds, using the specified port, protocol, and path\. Each health check request is independent and lasts the entire interval\. The time it takes for the instance to respond does not affect the interval for the next health check\. If the health checks exceed **UnhealthyThresholdCount** consecutive failures, the load balancer takes the instance out of service\. When the health checks exceed **HealthyThresholdCount** consecutive successes, the load balancer puts the instance back in service\.
 
 An HTTP/HTTPS health check succeeds if the instance returns a 200 response code within the health check interval\. A TCP health check succeeds if the TCP connection succeeds\. An SSL health check succeeds if the SSL handshake succeeds\.
 
@@ -55,7 +55,7 @@ You can update the health check configuration for your load balancer at any time
 Use the following [configure\-health\-check](http://docs.aws.amazon.com/cli/latest/reference/elb/configure-health-check.html) command:
 
 ```
-aws elb configure-health-check --load-balancer-name my-load-balancer --health-check Target=HTTP:80/ping,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
+aws elb configure-health-check --load-balancer-name my-load-balancer --health-check Target=HTTP:80/path,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
 ```
 
 ## Check the health of your instances<a name="check-instance-health"></a>

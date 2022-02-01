@@ -4,7 +4,9 @@ You can choose one of the predefined security policies for your HTTPS/SSL listen
 
 The RSA\- and DSA\-based ciphers are specific to the signing algorithm used to create SSL certificate\. Make sure to create an SSL certificate using the signing algorithm that is based on the ciphers that are enabled for your security policy\.
 
-The following table describes the most recent predefined security policies for Classic Load Balancers, including their enabled SSL protocols and SSL ciphers\. If you select a policy that is enabled for Server Order Preference, the load balancer uses the ciphers in the order that they are specified here to negotiate connections between the client and load balancer\. Otherwise, the load balancer uses the ciphers in the order that they are presented by the client\.
+If you select a policy that is enabled for Server Order Preference, the load balancer uses the ciphers in the order that they are specified here to negotiate connections between the client and load balancer\. Otherwise, the load balancer uses the ciphers in the order that they are presented by the client\.
+
+The following table describes the most recent predefined security policies for Classic Load Balancers, including their enabled SSL protocols, SSL ciphers, and the default policy, `ELBSecurityPolicy-2016-08`\. The `ELBSecurityPolicy-` has been removed from policy names in the heading row so that they fit\. 
 
 **Tip**  
 This table applies only to Classic Load Balancers\. For information that applies to the other load balancers, see [Security policies for Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) and [Security policies for Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)\.
@@ -14,35 +16,35 @@ This table applies only to Classic Load Balancers\. For information that applies
 | --- |--- |--- |--- |--- |--- |--- |
 | **SSL Protocols** | 
 | --- |
-| Protocol\-TLSv1 | ♦ |  |  | ♦ | ♦ | ♦ | 
-| Protocol\-TLSv1\.1 | ♦ | ♦ |  | ♦ | ♦ | ♦ | 
-| Protocol\-TLSv1\.2 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| Protocol\-TLSv1 | ✓ |  |  | ✓ | ✓ | ✓ | 
+| Protocol\-TLSv1\.1 | ✓ | ✓ |  | ✓ | ✓ | ✓ | 
+| Protocol\-TLSv1\.2 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
 | **SSL Options** | 
 | --- |
-| Server Order Preference | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| Server Order Preference | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
 | **SSL Ciphers** | 
 | --- |
-| ECDHE\-ECDSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-ECDSA\-AES128\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES128\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-ECDSA\-AES128\-SHA | ♦ | ♦ |  | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES128\-SHA | ♦ | ♦ |  | ♦ | ♦ | ♦ | 
-| DHE\-RSA\-AES128\-SHA |  |  |  |  | ♦ | ♦ | 
-| ECDHE\-ECDSA\-AES256\-GCM\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES256\-GCM\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-ECDSA\-AES256\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES256\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES256\-SHA | ♦ | ♦ |  | ♦ | ♦ | ♦ | 
-| ECDHE\-ECDSA\-AES256\-SHA | ♦ | ♦ |  | ♦ | ♦ | ♦ | 
-| AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| AES128\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| AES128\-SHA | ♦ | ♦ |  | ♦ | ♦ | ♦ | 
-| AES256\-GCM\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| AES256\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| AES256\-SHA | ♦ | ♦ |  | ♦ | ♦ | ♦ | 
-| DHE\-DSS\-AES128\-SHA |  |  |  |  | ♦ | ♦ | 
-| DES\-CBC3\-SHA |  |  |  | ♦ | ♦ |  | 
+| ECDHE\-ECDSA\-AES128\-GCM\-SHA256 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-RSA\-AES128\-GCM\-SHA256 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-ECDSA\-AES128\-SHA256 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-RSA\-AES128\-SHA256 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-ECDSA\-AES128\-SHA | ✓ | ✓ |  | ✓ | ✓ | ✓ | 
+| ECDHE\-RSA\-AES128\-SHA | ✓ | ✓ |  | ✓ | ✓ | ✓ | 
+| DHE\-RSA\-AES128\-SHA |  |  |  |  | ✓ | ✓ | 
+| ECDHE\-ECDSA\-AES256\-GCM\-SHA384 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-RSA\-AES256\-GCM\-SHA384 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-ECDSA\-AES256\-SHA384 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-RSA\-AES256\-SHA384 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| ECDHE\-RSA\-AES256\-SHA | ✓ | ✓ |  | ✓ | ✓ | ✓ | 
+| ECDHE\-ECDSA\-AES256\-SHA | ✓ | ✓ |  | ✓ | ✓ | ✓ | 
+| AES128\-GCM\-SHA256 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| AES128\-SHA256 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| AES128\-SHA | ✓ | ✓ |  | ✓ | ✓ | ✓ | 
+| AES256\-GCM\-SHA384 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| AES256\-SHA256 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 
+| AES256\-SHA | ✓ | ✓ |  | ✓ | ✓ | ✓ | 
+| DHE\-DSS\-AES128\-SHA |  |  |  |  | ✓ | ✓ | 
+| DES\-CBC3\-SHA |  |  |  | ✓ | ✓ |  | 
 
 **Predefined security policies**
 

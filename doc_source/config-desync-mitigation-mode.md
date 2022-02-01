@@ -9,6 +9,9 @@ The http\_desync\_guardian library analyzes HTTP requests to prevent HTTP Desync
 + [Modes](#desync-mitigation-modes)
 + [Modify desync mitigation mode](#update-desync-mitigation-mode)
 
+**Tip**  
+This configuration applies only to Classic Load Balancers\. For information that applies to Application Load Balancers, see [Desync mitigation mode for Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#desync-mitigation-mode)\.
+
 ## Classifications<a name="desync-mitigation-classification"></a>
 
 The classifications are as follows\.
@@ -31,8 +34,8 @@ The following lists describe the issues for each classification\.
 + There are multiple Content\-Length headers with the same value\.
 + A header is empty or there is a line with only spaces\.
 + There is a header that can be normalized to Transfer\-Encoding or Content\-Length using common text normalization techniques\. 
-+ There is no Content\-Length header defined for a GET or HEAD request\.
-+ There is no Transfer\-Encoding header defined for GET or HEAD request\.
++ There is a Content\-Length header for a GET or HEAD request\.
++ There is a Transfer\-Encoding header for a GET or HEAD request\.
 
 **Severe**
 + The request URI contains a null character or carriage return\.
