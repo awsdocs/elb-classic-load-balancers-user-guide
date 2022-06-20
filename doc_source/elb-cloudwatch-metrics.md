@@ -13,7 +13,6 @@ For more information about Amazon CloudWatch, see the *[Amazon CloudWatch User G
 + [Metric dimensions for Classic Load Balancers](#load-balancer-metric-dimensions-clb)
 + [Statistics for Classic Load Balancer metrics](#measure-stats)
 + [View CloudWatch metrics for your load balancer](#ViewingDataUsingCloudWatch)
-+ [Create CloudWatch alarms for your load balancer](#create_cw_alarms)
 
 ## Classic Load Balancer metrics<a name="loadbalancing-metrics-clb"></a>
 
@@ -113,43 +112,3 @@ Alternatively, you can view metrics for your load balancer using the CloudWatch 
    + To view a metric across all dimensions, type its name in the search field\.
    + To view the metrics for a single load balancer, type its name in the search field\.
    + To view the metrics for a single Availability Zone, type its name in the search field\.
-
-## Create CloudWatch alarms for your load balancer<a name="create_cw_alarms"></a>
-
-An alarm watches a single metric over the time period that you specify\. Depending on the value of the metric relative to a threshold that you define, the alarm can send one or more notifications using Amazon SNS, a service that enables applications, end users, and devices to instantly send and receive notifications\. For more information, see [Get started with Amazon SNS](https://docs.aws.amazon.com/sns/latest/gsg/Welcome.html)\.
-
-An alarm sends notifications to Amazon SNS when the specified metric reaches the defined range and remains in that range for a specified period of time\. An alarm has three possible states:
-+ `OK`—The value of the metric is within the range you've specified\.
-+ `ALARM`—The value of the metric is outside the range that you've specified for the specified period of time\.
-+ `INSUFFICIENT_DATA`—Either the metric is not yet available or there is not enough data to determine the alarm state\.
-
-Whenever the state of an alarm changes, CloudWatch uses Amazon SNS to send a notification to the email addresses that you specified\.
-
-Use the following procedure to create an alarm for your load balancer using the Amazon EC2 console\. The alarm sends notifications to an SNS topic whenever the load balancer's latency is above 120 seconds for 1 consecutive period of 5 minutes\. Note that a short period creates a more sensitive alarm, while a longer period can mitigate brief spikes in a metric\.
-
-**Note**  
-Alternately, you can create an alarm for your load balancer using the CloudWatch console\. For more information, see [Send email based on load balancer alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_AlarmAtThresholdELB.html) in the *Amazon CloudWatch User Guide*\.
-
-**To create an alarm for your load balancer**
-
-1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
-
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
-
-1. Select your load balancer\.
-
-1. On the **Monitoring** tab, choose **Create Alarm**\.
-
-1. If you have an SNS topic that you want to use, select it from **Send a notification to**\. Otherwise, create an SNS topic as follows:
-
-   1. Choose **create topic**\.
-
-   1. For **Send a notification to**, type a name for your topic\.
-
-   1. For **With these recipients**, type the email addresses of the recipients to notify, separated by commas\. You can enter up to 10 email addresses\. Each recipient receives an email from Amazon SNS with a link to subscribe to the SNS topic in order to receive notifications\.
-
-1. Define the threshold for your alarm as follows\. For **Whenever**, select **Average** and **Average Latency**\. For **Is**, select **>** and enter `120`\. For **For at least**, type `1` and select a consecutive period of **5 minutes**\.
-
-1. For **Name of alarm**, a name is automatically generated for you\. If you prefer, you can type a different name\.
-
-1. Choose **Create Alarm**\.

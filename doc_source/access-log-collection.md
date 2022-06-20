@@ -31,7 +31,7 @@ bucket[/prefix]/AWSLogs/aws-account-id/elasticloadbalancing/region/yyyy/mm/dd/aw
 The name of the S3 bucket\.
 
 *prefix*  
-The prefix \(logical hierarchy\) in the bucket\. If you don't specify a prefix, the logs are placed at the root level of the bucket\.
+The prefix \(logical hierarchy\) in the bucket\. If you don't specify a prefix, the logs are placed at the root level of the bucket\. The prefix that you specify must not include `AWSLogs`\. We add the portion of the file name starting with `AWSLogs` after the bucket name and prefix that you specify\.
 
 *aws\-account\-id*  
 The AWS account ID of the owner\.
