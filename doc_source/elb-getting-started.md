@@ -1,5 +1,10 @@
 # Tutorial: Create a Classic Load Balancer<a name="elb-getting-started"></a>
 
+
+|  | 
+| --- |
+| We are retiring EC2\-Classic network\. We recommend that you migrate your Classic Load Balancers from the EC2\-Classic network to a VPC\. For more information, see [Migrate from EC2\-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the Amazon EC2 User Guide and the blog [EC2\-Classic Networking is Retiring – Here's How to Prepare](http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)\. | 
+
 This tutorial provides a hands\-on introduction to Classic Load Balancers through the AWS Management Console, a web\-based interface\. You'll create a load balancer that receives public HTTP traffic and sends it to your EC2 instances\.
 
 Note that you can create your load balancer for use with EC2\-Classic or a VPC\. Some of the tasks described in this tutorial apply only to load balancers in a VPC\.
@@ -46,7 +51,7 @@ A *listener* is a process that checks for connection requests\. It is configured
 
 1. For **Load Balancer name**, type a name for your load balancer\.
 
-   The name of your Classic Load Balancer must be unique within your set of Classic Load Balancers for the region, can have a maximum of 32 characters, can contain only alphanumeric characters and hyphens, and must not begin or end with a hyphen\.
+   The name of your Classic Load Balancer must be unique within your set of Classic Load Balancers for the Region, can have a maximum of 32 characters, can contain only alphanumeric characters and hyphens, and must not begin or end with a hyphen\.
 
 1. For **Create LB inside**, select the same network that you selected for your instances: EC2\-Classic or a specific VPC\.
 
@@ -154,7 +159,7 @@ As soon as your load balancer becomes available, you are billed for each hour or
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Select the load balancer\.
 

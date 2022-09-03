@@ -1,12 +1,12 @@
 # Disable access logs for your Classic Load Balancer<a name="disable-access-logs"></a>
 
-You can disable access logs for your load balancer at any time\. After you disable access logging, your access logs remain in your Amazon S3 until you delete the them\. For information about managing your S3 bucket, see [Working with buckets](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/BucketOperations.html) in the *Amazon Simple Storage Service User Guide*\.
+You can disable access logs for your load balancer at any time\. After you disable access logs, your access logs remain in your Amazon S3 until you delete the them\. For information about managing your S3 bucket, see [Working with buckets](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/BucketOperations.html) in the *Amazon Simple Storage Service User Guide*\.
 
-**To disable access logging using the console**
+**To disable access logs using the console**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Select your load balancer\.
 
@@ -16,8 +16,8 @@ You can disable access logs for your load balancer at any time\. After you disab
 
 1. Choose **Save**\.
 
-**To disable access logging using the AWS CLI**  
-Use the following [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command to disable access logging:
+**To disable access logs using the AWS CLI**  
+Use the following [modify\-load\-balancer\-attributes](https://docs.aws.amazon.com/cli/latest/reference/elb/modify-load-balancer-attributes.html) command to disable access logs:
 
 ```
 aws elb modify-load-balancer-attributes --load-balancer-name my-loadbalancer --load-balancer-attributes "{\"AccessLog\":{\"Enabled\":false}}"

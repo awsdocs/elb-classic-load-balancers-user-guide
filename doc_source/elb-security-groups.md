@@ -69,7 +69,7 @@ Use the following procedure to change the security groups associated with your l
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Select your load balancer\.
 
@@ -177,7 +177,7 @@ Use the following procedure to lock down traffic between your load balancer and 
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Select your load balancer\.
 

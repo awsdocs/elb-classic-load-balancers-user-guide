@@ -41,7 +41,7 @@ You can update the health check configuration for your load balancer at any time
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Select your load balancer\.
 
@@ -66,7 +66,7 @@ You can check the health status of your registered instances\.
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Select your load balancer\.
 

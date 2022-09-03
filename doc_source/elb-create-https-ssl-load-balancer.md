@@ -48,7 +48,7 @@ In this example, you configure two listeners for your load balancer\. The first 
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Choose **Create Load Balancer**\.
 
@@ -56,7 +56,7 @@ In this example, you configure two listeners for your load balancer\. The first 
 
 1. For **Load Balancer name**, type a name for your load balancer\.
 
-   The name of your Classic Load Balancer must be unique within your set of Classic Load Balancers for the region, can have a maximum of 32 characters, can contain only alphanumeric characters and hyphens, and must not begin or end with a hyphen\.
+   The name of your Classic Load Balancer must be unique within your set of Classic Load Balancers for the Region, can have a maximum of 32 characters, can contain only alphanumeric characters and hyphens, and must not begin or end with a hyphen\.
 
 1. For **Create LB inside**, select the same network that you selected for your instances: EC2\-Classic or a specific VPC\.
 
@@ -195,7 +195,7 @@ As soon as your load balancer becomes available, you are billed for each hour or
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**\.
+1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
 1. Select the load balancer\.
 

@@ -1,5 +1,10 @@
 # Listeners for your Classic Load Balancer<a name="elb-listener-config"></a>
 
+
+|  | 
+| --- |
+| We are retiring EC2\-Classic network\. We recommend that you migrate your Classic Load Balancers from the EC2\-Classic network to a VPC\. For more information, see [Migrate from EC2\-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the Amazon EC2 User Guide and the blog [EC2\-Classic Networking is Retiring – Here's How to Prepare](http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)\. | 
+
 Before you start using Elastic Load Balancing, you must configure one or more *listeners* for your Classic Load Balancer\. A listener is a process that checks for connection requests\. It is configured with a protocol and a port for front\-end \(client to load balancer\) connections, and a protocol and a port for back\-end \(load balancer to back\-end instance\) connections\.
 
 Elastic Load Balancing supports the following protocols:

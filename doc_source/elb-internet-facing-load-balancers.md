@@ -1,5 +1,10 @@
 # Internet\-facing Classic Load Balancers<a name="elb-internet-facing-load-balancers"></a>
 
+
+|  | 
+| --- |
+| We are retiring EC2\-Classic network\. We recommend that you migrate your Classic Load Balancers from the EC2\-Classic network to a VPC\. For more information, see [Migrate from EC2\-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the Amazon EC2 User Guide and the blog [EC2\-Classic Networking is Retiring – Here's How to Prepare](http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)\. | 
+
 An internet\-facing load balancer has a publicly resolvable DNS name, so it can route requests from clients over the internet to the EC2 instances that are registered with the load balancer\.
 
 ![\[An internet-facing load balancer routes traffic from the internet to your EC2 instances.\]](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/images/internet_facing_load_balancer.png)
