@@ -8,11 +8,11 @@ You can disable access logs for your load balancer at any time\. After you disab
 
 1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
-1. Select your load balancer\.
+1. Select the name of your load balancer to open its details page\.
 
-1. On the **Description** tab, choose **Configure Access Logs**\.
+1. On the **Description** tab, choose **Configure access logs**\.
 
-1. On the **Configure Access Logs** page, clear **Enable access logs**\.
+1. On the **Configure access logs** page, clear **Enable access logs**\.
 
 1. Choose **Save**\.
 

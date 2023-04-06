@@ -7,6 +7,7 @@ To enable access logs for your load balancer, you must specify the name of the A
 + [Step 2: Attach a policy to your S3 bucket](#attach-bucket-policy)
 + [Step 3: Configure access logs](#configure-access-logs)
 + [Step 4: Verify bucket permissions](#verify-access-logs)
++ [Troubleshooting](#enable-access-logs-troubleshooting)
 
 ## Step 1: Create an S3 bucket<a name="create-s3-bucket"></a>
 
@@ -38,7 +39,7 @@ Use the following procedure to create a bucket manually using the Amazon S3 cons
 
    1. For **AWS Region**, select the Region where you created your load balancer\.
 
-   1. \(Optional\) Enable server\-side encryption using Amazon S3\-managed keys \(SSE\-S3\)\.
+   1. For **Default encryption**, choose **Amazon S3\-managed keys \(SSE\-S3\)**\.
 
    1. Choose **Create bucket**\.
 
@@ -48,7 +49,81 @@ Your S3 bucket must have a bucket policy that grants Elastic Load Balancing perm
 
 If you're using an existing bucket that already has an attached policy, you can add the statement for Elastic Load Balancing access logs to the policy\. If you do so, we recommend that you evaluate the resulting set of permissions to ensure that they are appropriate for the users that need access to the bucket for access logs\.
 
-**To attach a bucket policy for access logs to your bucket**
+**Available bucket policies**  
+The bucket policy that you'll use depends on the AWS Region of the bucket\.  Each expandable section below contains a bucket policy and information about when to use that policy\.
+
+### Regions available as of August 2022 or later<a name="bucket-policy-logdelivery"></a>
+
+This policy grants permissions to the specified log delivery service\. Use this policy for load balancers in Availability Zones and Local Zones in the following Regions:
++ Asia Pacific \(Hyderabad\)
++ Asia Pacific \(Melbourne\)
++ Europe \(Spain\)
++ Europe \(Zurich\)
++ Middle East \(UAE\)
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "logdelivery.elasticloadbalancing.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::bucket-name/prefix/AWSLogs/aws-account-id/*"
+    }
+  ]
+}
+```
+
+### Regions available before August 2022<a name="bucket-policy-account-ids"></a>
+
+This policy grants permissions to the specified Elastic Load Balancing account ID\. Use this policy for load balancers in Availability Zones or Local Zones in the Regions in the list below\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::elb-account-id:root"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::bucket-name/prefix/AWSLogs/your-aws-account-id/*"
+    }
+  ]
+}
+```
+
+Replace *elb\-account\-id* with the ID of the AWS account for Elastic Load Balancing for your Region:
++ US East \(N\. Virginia\) – 127311923021
++ US East \(Ohio\) – 033677994240
++ US West \(N\. California\) – 027434742980
++ US West \(Oregon\) – 797873946194
++ Africa \(Cape Town\) – 098369216593
++ Asia Pacific \(Hong Kong\) – 754344448648
++ Asia Pacific \(Jakarta\) – 589379963580
++ Asia Pacific \(Mumbai\) – 718504428378
++ Asia Pacific \(Osaka\) – 383597477331
++ Asia Pacific \(Seoul\) – 600734575887
++ Asia Pacific \(Singapore\) – 114774131450
++ Asia Pacific \(Sydney\) – 783225319266
++ Asia Pacific \(Tokyo\) – 582318560864
++ Canada \(Central\) – 985666609251
++ Europe \(Frankfurt\) – 054676820928
++ Europe \(Ireland\) – 156460612806
++ Europe \(London\) – 652711504416
++ Europe \(Milan\) – 635631232127
++ Europe \(Paris\) – 009996457667
++ Europe \(Stockholm\) – 897822967062
++ Middle East \(Bahrain\) – 076674570225
++ South America \(São Paulo\) – 507241528517
++ AWS GovCloud \(US\-West\) – 048591011584
++ AWS GovCloud \(US\-East\) – 190560391635
+
+**To attach a bucket policy for access logs to your bucket using the Amazon S3 console**
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
@@ -56,73 +131,16 @@ If you're using an existing bucket that already has an attached policy, you can 
 
 1. Choose **Permissions** and then choose **Bucket policy**, **Edit**\.
 
-1. Create or update the bucket policy to grant the required permissions\. The bucket policy you'll use depends on the AWS Region of the bucket\.
-   + For the Regions in the list below, use the following policy, which grants permissions to the specified Elastic Load Balancing account ID\.
-
-     ```
-     {
-       "Version": "2012-10-17",
-       "Statement": [
-         {
-           "Effect": "Allow",
-           "Principal": {
-             "AWS": "arn:aws:iam::elb-account-id:root"
-           },
-           "Action": "s3:PutObject",
-           "Resource": "arn:aws:s3:::bucket-name/prefix/AWSLogs/your-aws-account-id/*"
-         }
-       ]
-     }
-     ```
-
-     Replace *elb\-account\-id* with the ID of the AWS account for Elastic Load Balancing for your Region:
-     + US East \(N\. Virginia\) – 127311923021
-     + US East \(Ohio\) – 033677994240
-     + US West \(N\. California\) – 027434742980
-     + US West \(Oregon\) – 797873946194
-     + Africa \(Cape Town\) – 098369216593
-     + Asia Pacific \(Hong Kong\) – 754344448648
-     + Asia Pacific \(Jakarta\) – 589379963580
-     + Asia Pacific \(Mumbai\) – 718504428378
-     + Asia Pacific \(Osaka\) – 383597477331
-     + Asia Pacific \(Seoul\) – 600734575887
-     + Asia Pacific \(Singapore\) – 114774131450
-     + Asia Pacific \(Sydney\) – 783225319266
-     + Asia Pacific \(Tokyo\) – 582318560864
-     + Canada \(Central\) – 985666609251
-     + Europe \(Frankfurt\) – 054676820928
-     + Europe \(Ireland\) – 156460612806
-     + Europe \(London\) – 652711504416
-     + Europe \(Milan\) – 635631232127
-     + Europe \(Paris\) – 009996457667
-     + Europe \(Stockholm\) – 897822967062
-     + Middle East \(Bahrain\) – 076674570225
-     + South America \(São Paulo\) – 507241528517
-     + AWS GovCloud \(US\-West\) – 048591011584
-     + AWS GovCloud \(US\-East\) – 190560391635
-   + For the Regions that do not appear in the list above, such as Middle East \(UAE\), use the following policy, which grants permissions to the specified log delivery service\.
-
-     ```
-     {
-       "Version": "2012-10-17",
-       "Statement": [
-         {
-           "Effect": "Allow",
-           "Principal": {
-             "Service": "logdelivery.elasticloadbalancing.amazonaws.com"
-           },
-           "Action": "s3:PutObject",
-           "Resource": "arn:aws:s3:::bucket-name/prefix/AWSLogs/aws-account-id/*"
-         }
-       ]
-     }
-     ```
+1. Update the bucket policy to grant the required permissions\.
 
 1. Choose **Save changes**\.
 
 ## Step 3: Configure access logs<a name="configure-access-logs"></a>
 
-Use the following procedure to configure access logs to capture and deliver log files to your S3 bucket every 60 minutes \(the default interval\)\. Note that you can optionally have Elastic Load Balancing create the bucket and add the required policy, if you did not use the previous steps to do so manually\. If you specify an existing bucket, be sure that you own the bucket and that you added the required bucket policy\.
+Use the following procedure to configure access logs to capture and deliver log files to your S3 bucket every 60 minutes \(the default interval\)\. You can optionally have Elastic Load Balancing create the bucket and add the required policy, if you did not use the previous steps to do so manually\. If you specify an existing bucket, be sure that you own the bucket and that you added the required bucket policy\.
+
+**Requirements**  
+If you specify a bucket that you created, the bucket must meet the requirements described in [step 1](#create-s3-bucket), and you must attach a bucket policy as described in [step 2](#attach-bucket-policy)\.
 
 **To configure access logs for your load balancer using the console**
 
@@ -130,7 +148,7 @@ Use the following procedure to configure access logs to capture and deliver log 
 
 1. On the navigation pane, under **Load Balancing**, choose **Load Balancers**\.
 
-1. Select your load balancer\.
+1. Select the name of your load balancer to open its details page\.
 
 1. On the **Description** tab, choose **Configure access logs**\.
 
@@ -200,3 +218,11 @@ After access logs are enabled for your load balancer, Elastic Load Balancing val
    ```
    my-bucket/prefix/AWSLogs/123456789012/ELBAccessLogTestFile
    ```
+
+## Troubleshooting<a name="enable-access-logs-troubleshooting"></a>
+
+**Access Denied for bucket: *bucket\-name*\. Please check S3bucket permission**
+
+If you receive this error, the following are possible causes:
++ The bucket policy does not grant Elastic Load Balancing permission to write access logs to the bucket\.
++ The bucket uses an unsupported server\-side encryption option\. The bucket must use Amazon S3\-managed keys \(SSE\-S3\)\.
